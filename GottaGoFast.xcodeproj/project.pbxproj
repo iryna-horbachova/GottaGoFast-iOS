@@ -62,6 +62,14 @@
 		898B9B5C2829C29A007DAE4F /* EmptyResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B5A2829C29A007DAE4F /* EmptyResult.swift */; };
 		898B9B5E2829C343007DAE4F /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B5D2829C343007DAE4F /* AuthenticationService.swift */; };
 		898B9B5F2829C343007DAE4F /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B5D2829C343007DAE4F /* AuthenticationService.swift */; };
+		898B9B612829CD09007DAE4F /* MobilityEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B602829CD09007DAE4F /* MobilityEndpoint.swift */; };
+		898B9B622829CD09007DAE4F /* MobilityEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B602829CD09007DAE4F /* MobilityEndpoint.swift */; };
+		898B9B642829D14F007DAE4F /* MobilityServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B632829D14F007DAE4F /* MobilityServiceType.swift */; };
+		898B9B652829D14F007DAE4F /* MobilityServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B632829D14F007DAE4F /* MobilityServiceType.swift */; };
+		898B9B672829D20D007DAE4F /* Geotag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B662829D20D007DAE4F /* Geotag.swift */; };
+		898B9B682829D20D007DAE4F /* Geotag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B662829D20D007DAE4F /* Geotag.swift */; };
+		898B9B6A2829D29D007DAE4F /* MobilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B692829D29D007DAE4F /* MobilityService.swift */; };
+		898B9B6B2829D29D007DAE4F /* MobilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B692829D29D007DAE4F /* MobilityService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +105,10 @@
 		898B9B57282909BC007DAE4F /* AuthenticationServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceType.swift; sourceTree = "<group>"; };
 		898B9B5A2829C29A007DAE4F /* EmptyResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResult.swift; sourceTree = "<group>"; };
 		898B9B5D2829C343007DAE4F /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		898B9B602829CD09007DAE4F /* MobilityEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobilityEndpoint.swift; sourceTree = "<group>"; };
+		898B9B632829D14F007DAE4F /* MobilityServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobilityServiceType.swift; sourceTree = "<group>"; };
+		898B9B662829D20D007DAE4F /* Geotag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geotag.swift; sourceTree = "<group>"; };
+		898B9B692829D29D007DAE4F /* MobilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobilityService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +202,7 @@
 				898B9B24282872D2007DAE4F /* RideRequest.swift */,
 				898B9B2728287376007DAE4F /* DesignatedRide.swift */,
 				898B9B5A2829C29A007DAE4F /* EmptyResult.swift */,
+				898B9B662829D20D007DAE4F /* Geotag.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -254,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				898B9B542829049C007DAE4F /* AuthenticationEndpoint.swift */,
+				898B9B602829CD09007DAE4F /* MobilityEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -263,6 +277,8 @@
 			children = (
 				898B9B57282909BC007DAE4F /* AuthenticationServiceType.swift */,
 				898B9B5D2829C343007DAE4F /* AuthenticationService.swift */,
+				898B9B632829D14F007DAE4F /* MobilityServiceType.swift */,
+				898B9B692829D29D007DAE4F /* MobilityService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -372,11 +388,14 @@
 				898B9B552829049C007DAE4F /* AuthenticationEndpoint.swift in Sources */,
 				898B9B22282871F5007DAE4F /* Vehicle.swift in Sources */,
 				898B9B58282909BC007DAE4F /* AuthenticationServiceType.swift in Sources */,
+				898B9B612829CD09007DAE4F /* MobilityEndpoint.swift in Sources */,
 				898B9B46282879CC007DAE4F /* AuthenticationManager.swift in Sources */,
 				898B9B3C28287749007DAE4F /* String+Extensions.swift in Sources */,
 				898B9B25282872D2007DAE4F /* RideRequest.swift in Sources */,
 				891B306F2828204C002CEA82 /* ViewController.swift in Sources */,
+				898B9B672829D20D007DAE4F /* Geotag.swift in Sources */,
 				898B9B2D2828753E007DAE4F /* HTTPMethod.swift in Sources */,
+				898B9B6A2829D29D007DAE4F /* MobilityService.swift in Sources */,
 				898B9B42282877F0007DAE4F /* EndpointType.swift in Sources */,
 				898B9B1F282871CC007DAE4F /* Client.swift in Sources */,
 				891B306B2828204C002CEA82 /* AppDelegate.swift in Sources */,
@@ -389,6 +408,7 @@
 				898B9B19282868B6007DAE4F /* User.swift in Sources */,
 				898B9B50282902A3007DAE4F /* NetworkingService.swift in Sources */,
 				898B9B4A28287C06007DAE4F /* DataEncoder.swift in Sources */,
+				898B9B642829D14F007DAE4F /* MobilityServiceType.swift in Sources */,
 				898B9B302828762C007DAE4F /* NetworkingError.swift in Sources */,
 				898B9B162828684F007DAE4F /* Token.swift in Sources */,
 				898B9B5E2829C343007DAE4F /* AuthenticationService.swift in Sources */,
@@ -402,11 +422,14 @@
 				898B9B562829049C007DAE4F /* AuthenticationEndpoint.swift in Sources */,
 				898B9B23282871F5007DAE4F /* Vehicle.swift in Sources */,
 				898B9B59282909BC007DAE4F /* AuthenticationServiceType.swift in Sources */,
+				898B9B622829CD09007DAE4F /* MobilityEndpoint.swift in Sources */,
 				898B9B47282879CC007DAE4F /* AuthenticationManager.swift in Sources */,
 				898B9B3D28287749007DAE4F /* String+Extensions.swift in Sources */,
 				898B9B26282872D2007DAE4F /* RideRequest.swift in Sources */,
 				891B3080282821A4002CEA82 /* ViewController.swift in Sources */,
+				898B9B682829D20D007DAE4F /* Geotag.swift in Sources */,
 				898B9B2E2828753E007DAE4F /* HTTPMethod.swift in Sources */,
+				898B9B6B2829D29D007DAE4F /* MobilityService.swift in Sources */,
 				898B9B43282877F0007DAE4F /* EndpointType.swift in Sources */,
 				898B9B20282871CC007DAE4F /* Client.swift in Sources */,
 				891B3081282821A4002CEA82 /* AppDelegate.swift in Sources */,
@@ -419,6 +442,7 @@
 				898B9B1A282868B6007DAE4F /* User.swift in Sources */,
 				898B9B51282902A3007DAE4F /* NetworkingService.swift in Sources */,
 				898B9B4B28287C06007DAE4F /* DataEncoder.swift in Sources */,
+				898B9B652829D14F007DAE4F /* MobilityServiceType.swift in Sources */,
 				898B9B312828762C007DAE4F /* NetworkingError.swift in Sources */,
 				898B9B172828684F007DAE4F /* Token.swift in Sources */,
 				898B9B5F2829C343007DAE4F /* AuthenticationService.swift in Sources */,
