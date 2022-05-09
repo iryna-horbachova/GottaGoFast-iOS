@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  GottaGoFast
+
+  Created by Iryna Horbachova on 09.05.2022.
+  
+*/
+
+"networking.error.invalid.data" = "The data returned from the server was invalid. Please repeat your request.";
+"networking.error.invalid.response" = "Invalid response from the server. Please try again.";
+"networking.error.completion.unabled" = "Unable to complete your request. Please check your internet connection";
+"networking.error.encoding.failed" = "Failed to encode specified data";
+"networking.error.decoding.failed" = "Failed to decode specified data";
