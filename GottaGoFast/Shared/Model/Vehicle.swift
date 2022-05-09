@@ -8,6 +8,7 @@
 import Foundation
 
 struct Vehicle: Codable {
+  let id: String?
   let model: String
   let type: String
   let category: String

@@ -22,7 +22,7 @@ extension EndpointType {
   }
   
   private var baseURL: URL {
-    return URL(string: "http://127.0.0.1:8000/")!
+    return URL(string: "http://127.0.0.1")!
   }
   
   func buildURLRequest() throws -> URLRequest {

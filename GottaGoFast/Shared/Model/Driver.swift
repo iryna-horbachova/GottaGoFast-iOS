@@ -8,6 +8,7 @@
 import Foundation
 
 struct Driver: Codable {
+  let id: String?
   let user: User
   let vehicle: Vehicle
   let passportNumber: String
