@@ -70,6 +70,8 @@
 		898B9B682829D20D007DAE4F /* Geotag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B662829D20D007DAE4F /* Geotag.swift */; };
 		898B9B6A2829D29D007DAE4F /* MobilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B692829D29D007DAE4F /* MobilityService.swift */; };
 		898B9B6B2829D29D007DAE4F /* MobilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B692829D29D007DAE4F /* MobilityService.swift */; };
+		898B9B712829D7A7007DAE4F /* SecureStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B702829D7A7007DAE4F /* SecureStorageManager.swift */; };
+		898B9B722829D7A7007DAE4F /* SecureStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B702829D7A7007DAE4F /* SecureStorageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +111,7 @@
 		898B9B632829D14F007DAE4F /* MobilityServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobilityServiceType.swift; sourceTree = "<group>"; };
 		898B9B662829D20D007DAE4F /* Geotag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geotag.swift; sourceTree = "<group>"; };
 		898B9B692829D29D007DAE4F /* MobilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobilityService.swift; sourceTree = "<group>"; };
+		898B9B702829D7A7007DAE4F /* SecureStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +183,7 @@
 		891B309128283FE9002CEA82 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				898B9B6C2829D693007DAE4F /* Storage */,
 				898B9B44282879B0007DAE4F /* Authentication */,
 				898B9B3A2828773A007DAE4F /* Utilities */,
 				898B9B3928287690007DAE4F /* Resources */,
@@ -281,6 +285,14 @@
 				898B9B692829D29D007DAE4F /* MobilityService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		898B9B6C2829D693007DAE4F /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				898B9B702829D7A7007DAE4F /* SecureStorageManager.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -405,6 +417,7 @@
 				898B9B1C2828719D007DAE4F /* Driver.swift in Sources */,
 				898B9B4D28287C87007DAE4F /* DataDecoder.swift in Sources */,
 				898B9B2828287376007DAE4F /* DesignatedRide.swift in Sources */,
+				898B9B712829D7A7007DAE4F /* SecureStorageManager.swift in Sources */,
 				898B9B19282868B6007DAE4F /* User.swift in Sources */,
 				898B9B50282902A3007DAE4F /* NetworkingService.swift in Sources */,
 				898B9B4A28287C06007DAE4F /* DataEncoder.swift in Sources */,
@@ -439,6 +452,7 @@
 				898B9B1D2828719D007DAE4F /* Driver.swift in Sources */,
 				898B9B4E28287C87007DAE4F /* DataDecoder.swift in Sources */,
 				898B9B2928287376007DAE4F /* DesignatedRide.swift in Sources */,
+				898B9B722829D7A7007DAE4F /* SecureStorageManager.swift in Sources */,
 				898B9B1A282868B6007DAE4F /* User.swift in Sources */,
 				898B9B51282902A3007DAE4F /* NetworkingService.swift in Sources */,
 				898B9B4B28287C06007DAE4F /* DataEncoder.swift in Sources */,
