@@ -21,19 +21,19 @@ extension EndpointType {
     return ["Content-Type": "application/json"]
   }
   
-  private var baseURL: URL {
-    return URL(string: "http://127.0.0.1")!
+  private var baseURL: String {
+    return "http://127.0.0.1"
   }
   
   func buildURLRequest() throws -> URLRequest {
-    var request = URLRequest(url: baseURL.appendingPathComponent(path))
+    var request = URLRequest(url: URL(string: baseURL.appending(path))!)
     var httpHeaders = defaultHeaders
 
     if let headers = headers {
       httpHeaders = defaultHeaders.merging(headers) { (current, _) in current }
     }
 
-    if needsAuthorization, let token = AuthenticationManager.shared.currentToken?.accessToken {
+    if needsAuthorization, let token = AuthenticationManager.shared.currentToken?.access {
       httpHeaders["Authorization"] = "Bearer \(token)"
     }
 
@@ -43,6 +43,7 @@ extension EndpointType {
       let httpBody = try JSONDataEncoder.encode(body)
       request.httpBody = httpBody
     }
+    request.httpMethod = method.rawValue
     return request
   }
 }

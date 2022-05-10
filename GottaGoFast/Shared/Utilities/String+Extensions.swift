@@ -7,7 +7,11 @@
 
 import Foundation
 
-extension String {
+protocol Localizable {
+    var localized: String { get }
+}
+
+extension String: Localizable {
   var localized: String {
     NSLocalizedString(self, comment: "")
   }

@@ -11,3 +11,10 @@
 "networking.error.completion.unabled" = "Unable to complete your request. Please check your internet connection";
 "networking.error.encoding.failed" = "Failed to encode specified data";
 "networking.error.decoding.failed" = "Failed to decode specified data";
+
+
+"signin.title.label" = "Welcome back!";
+"signin.email.title.label" = "Email";
+"signin.password.title.label" = "Password";
+
+"button.next.title" = "Sign in";

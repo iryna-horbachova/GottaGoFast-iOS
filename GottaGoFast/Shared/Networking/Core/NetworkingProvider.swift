@@ -39,25 +39,31 @@ final class NetworkingProvider: NetworkingProviderType {
     completion: @escaping (Result<Model, NetworkingError>) -> Void
   ) where Model : Decodable {
 
+    
     do {
       let request = try endpoint.buildURLRequest()
       NSLog("Performing URL request: \(request)")
 
       let task =
       urlSession.dataTask(with: request) { [weak self] (data, response, error) in
-        DispatchQueue.main.async {
-          self?.networkIndicatorManager.isNetworkActivityIndicatorVisible = false
-        }
-
-        if let error = error {
-          NSLog("URLRequest (\(request) failed with error: \(error)")
+        guard let self = self else {
+          NSLog("Self was dealocated - NetworkingProvider")
           completion(.failure(NetworkingError.invalidResponse))
           return
         }
+        DispatchQueue.main.async {
+          self.networkIndicatorManager.isNetworkActivityIndicatorVisible = false
+        }
 
-        guard let self = self, let response = response as? HTTPURLResponse,
+        if let error = error {
+          NSLog("URLRequest \(request) failed with error: \(error)")
+          completion(.failure(NetworkingError.invalidResponse))
+          return
+        }
+        
+        guard let response = response as? HTTPURLResponse,
                 self.successCodeRange ~= response.statusCode else {
-          NSLog("URLRequest (\(request) failed with with invalid respose")
+          NSLog("URLRequest \(request) failed with invalid respose")
           completion(.failure(NetworkingError.invalidResponse))
           return
         }
@@ -71,6 +77,7 @@ final class NetworkingProvider: NetworkingProviderType {
         
         do {
           let model =  try JSONDataDecoder.decode(Model.self, from: data)
+          NSLog("Received model: \(model)")
           completion(.success(model))
         } catch {
           completion(.failure(.invalidData))

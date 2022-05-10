@@ -21,7 +21,7 @@ enum SecureStoreDataType: String {
 
 class SecureStorageManager {
 
-  let shared = SecureStorageManager()
+  static let shared = SecureStorageManager()
   
   private init() { }
 

@@ -9,17 +9,12 @@
 /* Begin PBXBuildFile section */
 		891B306B2828204C002CEA82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891B306A2828204C002CEA82 /* AppDelegate.swift */; };
 		891B306D2828204C002CEA82 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891B306C2828204C002CEA82 /* SceneDelegate.swift */; };
-		891B306F2828204C002CEA82 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891B306E2828204C002CEA82 /* ViewController.swift */; };
-		891B30722828204C002CEA82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 891B30702828204C002CEA82 /* Main.storyboard */; };
 		891B307428282051002CEA82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 891B307328282051002CEA82 /* Assets.xcassets */; };
 		891B307728282051002CEA82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 891B307528282051002CEA82 /* LaunchScreen.storyboard */; };
-		891B3080282821A4002CEA82 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891B306E2828204C002CEA82 /* ViewController.swift */; };
 		891B3081282821A4002CEA82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891B306A2828204C002CEA82 /* AppDelegate.swift */; };
 		891B3082282821A4002CEA82 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891B306C2828204C002CEA82 /* SceneDelegate.swift */; };
 		891B3085282821A4002CEA82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 891B307528282051002CEA82 /* LaunchScreen.storyboard */; };
 		891B3086282821A4002CEA82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 891B307328282051002CEA82 /* Assets.xcassets */; };
-		891B3087282821A4002CEA82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 891B30702828204C002CEA82 /* Main.storyboard */; };
-		898B9B1328285715007DAE4F /* DriverMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 898B9B1228285715007DAE4F /* DriverMain.storyboard */; };
 		898B9B162828684F007DAE4F /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B152828684F007DAE4F /* Token.swift */; };
 		898B9B172828684F007DAE4F /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B152828684F007DAE4F /* Token.swift */; };
 		898B9B19282868B6007DAE4F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B18282868B6007DAE4F /* User.swift */; };
@@ -72,20 +67,33 @@
 		898B9B6B2829D29D007DAE4F /* MobilityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B692829D29D007DAE4F /* MobilityService.swift */; };
 		898B9B712829D7A7007DAE4F /* SecureStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B702829D7A7007DAE4F /* SecureStorageManager.swift */; };
 		898B9B722829D7A7007DAE4F /* SecureStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B702829D7A7007DAE4F /* SecureStorageManager.swift */; };
+		898B9B7B282ABCA7007DAE4F /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B7A282ABCA7007DAE4F /* TargetType.swift */; };
+		898B9B7C282ABCA7007DAE4F /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B7A282ABCA7007DAE4F /* TargetType.swift */; };
+		898B9B80282ABE57007DAE4F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B7E282ABE57007DAE4F /* SignInViewController.swift */; };
+		898B9B81282ABE57007DAE4F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B7E282ABE57007DAE4F /* SignInViewController.swift */; };
+		898B9B82282ABE57007DAE4F /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898B9B7F282ABE57007DAE4F /* SignInViewController.xib */; };
+		898B9B83282ABE57007DAE4F /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898B9B7F282ABE57007DAE4F /* SignInViewController.xib */; };
+		898B9B89282AC854007DAE4F /* AppModeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B88282AC854007DAE4F /* AppModeManager.swift */; };
+		898B9B8A282AC854007DAE4F /* AppModeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B88282AC854007DAE4F /* AppModeManager.swift */; };
+		898B9B8D282ACD79007DAE4F /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B8C282ACD79007DAE4F /* SignInViewModel.swift */; };
+		898B9B8E282ACD79007DAE4F /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B8C282ACD79007DAE4F /* SignInViewModel.swift */; };
+		898B9B90282ACE23007DAE4F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B8F282ACE23007DAE4F /* Validator.swift */; };
+		898B9B91282ACE23007DAE4F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B8F282ACE23007DAE4F /* Validator.swift */; };
+		898B9B93282AD364007DAE4F /* XIBLocalizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B92282AD364007DAE4F /* XIBLocalizable.swift */; };
+		898B9B94282AD364007DAE4F /* XIBLocalizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B92282AD364007DAE4F /* XIBLocalizable.swift */; };
+		898B9B98282ADA66007DAE4F /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B97282ADA66007DAE4F /* UIAlertController+Extensions.swift */; };
+		898B9B99282ADA66007DAE4F /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B97282ADA66007DAE4F /* UIAlertController+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		891B30672828204C002CEA82 /* GottaGoFastClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GottaGoFastClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		891B306A2828204C002CEA82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		891B306C2828204C002CEA82 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		891B306E2828204C002CEA82 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		891B30712828204C002CEA82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		891B307328282051002CEA82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		891B307628282051002CEA82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		891B307828282051002CEA82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		891B308B282821A4002CEA82 /* GottaGoFastDriver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GottaGoFastDriver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		891B308C282821A4002CEA82 /* GottaGoFastDriver-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GottaGoFastDriver-Info.plist"; path = "/Users/irynahorbachova/Desktop/диплом/GottaGoFast/GottaGoFastDriver-Info.plist"; sourceTree = "<absolute>"; };
-		898B9B1228285715007DAE4F /* DriverMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DriverMain.storyboard; sourceTree = "<group>"; };
 		898B9B152828684F007DAE4F /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		898B9B18282868B6007DAE4F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		898B9B1B2828719D007DAE4F /* Driver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Driver.swift; sourceTree = "<group>"; };
@@ -112,6 +120,14 @@
 		898B9B662829D20D007DAE4F /* Geotag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geotag.swift; sourceTree = "<group>"; };
 		898B9B692829D29D007DAE4F /* MobilityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobilityService.swift; sourceTree = "<group>"; };
 		898B9B702829D7A7007DAE4F /* SecureStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorageManager.swift; sourceTree = "<group>"; };
+		898B9B7A282ABCA7007DAE4F /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
+		898B9B7E282ABE57007DAE4F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		898B9B7F282ABE57007DAE4F /* SignInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
+		898B9B88282AC854007DAE4F /* AppModeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModeManager.swift; sourceTree = "<group>"; };
+		898B9B8C282ACD79007DAE4F /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		898B9B8F282ACE23007DAE4F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		898B9B92282AD364007DAE4F /* XIBLocalizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIBLocalizable.swift; sourceTree = "<group>"; };
+		898B9B97282ADA66007DAE4F /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +172,6 @@
 				891B309128283FE9002CEA82 /* Shared */,
 				891B309028283FE2002CEA82 /* Client */,
 				891B308F28283FD9002CEA82 /* Driver */,
-				891B306E2828204C002CEA82 /* ViewController.swift */,
 				891B307328282051002CEA82 /* Assets.xcassets */,
 				891B307528282051002CEA82 /* LaunchScreen.storyboard */,
 				891B307828282051002CEA82 /* Info.plist */,
@@ -167,7 +182,7 @@
 		891B308F28283FD9002CEA82 /* Driver */ = {
 			isa = PBXGroup;
 			children = (
-				898B9B1228285715007DAE4F /* DriverMain.storyboard */,
+				898B9B78282A6B65007DAE4F /* Interface */,
 			);
 			path = Driver;
 			sourceTree = "<group>";
@@ -175,7 +190,7 @@
 		891B309028283FE2002CEA82 /* Client */ = {
 			isa = PBXGroup;
 			children = (
-				891B30702828204C002CEA82 /* Main.storyboard */,
+				898B9B77282A6B5F007DAE4F /* Interface */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -183,14 +198,14 @@
 		891B309128283FE9002CEA82 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				898B9B95282AD4BC007DAE4F /* App */,
+				898B9B79282A6B6C007DAE4F /* Interface */,
 				898B9B6C2829D693007DAE4F /* Storage */,
 				898B9B44282879B0007DAE4F /* Authentication */,
 				898B9B3A2828773A007DAE4F /* Utilities */,
 				898B9B3928287690007DAE4F /* Resources */,
 				898B9B2A28287441007DAE4F /* Networking */,
 				898B9B142828681B007DAE4F /* Model */,
-				891B306A2828204C002CEA82 /* AppDelegate.swift */,
-				891B306C2828204C002CEA82 /* SceneDelegate.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -207,6 +222,7 @@
 				898B9B2728287376007DAE4F /* DesignatedRide.swift */,
 				898B9B5A2829C29A007DAE4F /* EmptyResult.swift */,
 				898B9B662829D20D007DAE4F /* Geotag.swift */,
+				898B9B7A282ABCA7007DAE4F /* TargetType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -246,6 +262,8 @@
 			isa = PBXGroup;
 			children = (
 				898B9B3B28287749007DAE4F /* String+Extensions.swift */,
+				898B9B8F282ACE23007DAE4F /* Validator.swift */,
+				898B9B92282AD364007DAE4F /* XIBLocalizable.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -291,8 +309,59 @@
 			isa = PBXGroup;
 			children = (
 				898B9B702829D7A7007DAE4F /* SecureStorageManager.swift */,
+				898B9B88282AC854007DAE4F /* AppModeManager.swift */,
 			);
 			path = Storage;
+			sourceTree = "<group>";
+		};
+		898B9B77282A6B5F007DAE4F /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		898B9B78282A6B65007DAE4F /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		898B9B79282A6B6C007DAE4F /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				898B9B96282ADA50007DAE4F /* UIElements */,
+				898B9B8B282ACCCB007DAE4F /* SignIn */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		898B9B8B282ACCCB007DAE4F /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				898B9B7E282ABE57007DAE4F /* SignInViewController.swift */,
+				898B9B7F282ABE57007DAE4F /* SignInViewController.xib */,
+				898B9B8C282ACD79007DAE4F /* SignInViewModel.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		898B9B95282AD4BC007DAE4F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				891B306C2828204C002CEA82 /* SceneDelegate.swift */,
+				891B306A2828204C002CEA82 /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		898B9B96282ADA50007DAE4F /* UIElements */ = {
+			isa = PBXGroup;
+			children = (
+				898B9B97282ADA66007DAE4F /* UIAlertController+Extensions.swift */,
+			);
+			path = UIElements;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,10 +440,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				898B9B82282ABE57007DAE4F /* SignInViewController.xib in Resources */,
 				891B307728282051002CEA82 /* LaunchScreen.storyboard in Resources */,
 				898B9B3528287655007DAE4F /* Localizable.strings in Resources */,
 				891B307428282051002CEA82 /* Assets.xcassets in Resources */,
-				891B30722828204C002CEA82 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,9 +453,8 @@
 			files = (
 				898B9B3628287655007DAE4F /* Localizable.strings in Resources */,
 				891B3085282821A4002CEA82 /* LaunchScreen.storyboard in Resources */,
-				898B9B1328285715007DAE4F /* DriverMain.storyboard in Resources */,
 				891B3086282821A4002CEA82 /* Assets.xcassets in Resources */,
-				891B3087282821A4002CEA82 /* Main.storyboard in Resources */,
+				898B9B83282ABE57007DAE4F /* SignInViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,22 +468,28 @@
 				898B9B552829049C007DAE4F /* AuthenticationEndpoint.swift in Sources */,
 				898B9B22282871F5007DAE4F /* Vehicle.swift in Sources */,
 				898B9B58282909BC007DAE4F /* AuthenticationServiceType.swift in Sources */,
+				898B9B7B282ABCA7007DAE4F /* TargetType.swift in Sources */,
 				898B9B612829CD09007DAE4F /* MobilityEndpoint.swift in Sources */,
 				898B9B46282879CC007DAE4F /* AuthenticationManager.swift in Sources */,
 				898B9B3C28287749007DAE4F /* String+Extensions.swift in Sources */,
+				898B9B93282AD364007DAE4F /* XIBLocalizable.swift in Sources */,
 				898B9B25282872D2007DAE4F /* RideRequest.swift in Sources */,
-				891B306F2828204C002CEA82 /* ViewController.swift in Sources */,
+				898B9B8D282ACD79007DAE4F /* SignInViewModel.swift in Sources */,
+				898B9B80282ABE57007DAE4F /* SignInViewController.swift in Sources */,
 				898B9B672829D20D007DAE4F /* Geotag.swift in Sources */,
+				898B9B90282ACE23007DAE4F /* Validator.swift in Sources */,
 				898B9B2D2828753E007DAE4F /* HTTPMethod.swift in Sources */,
 				898B9B6A2829D29D007DAE4F /* MobilityService.swift in Sources */,
 				898B9B42282877F0007DAE4F /* EndpointType.swift in Sources */,
 				898B9B1F282871CC007DAE4F /* Client.swift in Sources */,
 				891B306B2828204C002CEA82 /* AppDelegate.swift in Sources */,
+				898B9B89282AC854007DAE4F /* AppModeManager.swift in Sources */,
 				891B306D2828204C002CEA82 /* SceneDelegate.swift in Sources */,
 				898B9B5B2829C29A007DAE4F /* EmptyResult.swift in Sources */,
 				898B9B3F282877B3007DAE4F /* NetworkingProvider.swift in Sources */,
 				898B9B1C2828719D007DAE4F /* Driver.swift in Sources */,
 				898B9B4D28287C87007DAE4F /* DataDecoder.swift in Sources */,
+				898B9B98282ADA66007DAE4F /* UIAlertController+Extensions.swift in Sources */,
 				898B9B2828287376007DAE4F /* DesignatedRide.swift in Sources */,
 				898B9B712829D7A7007DAE4F /* SecureStorageManager.swift in Sources */,
 				898B9B19282868B6007DAE4F /* User.swift in Sources */,
@@ -435,22 +509,28 @@
 				898B9B562829049C007DAE4F /* AuthenticationEndpoint.swift in Sources */,
 				898B9B23282871F5007DAE4F /* Vehicle.swift in Sources */,
 				898B9B59282909BC007DAE4F /* AuthenticationServiceType.swift in Sources */,
+				898B9B7C282ABCA7007DAE4F /* TargetType.swift in Sources */,
 				898B9B622829CD09007DAE4F /* MobilityEndpoint.swift in Sources */,
 				898B9B47282879CC007DAE4F /* AuthenticationManager.swift in Sources */,
 				898B9B3D28287749007DAE4F /* String+Extensions.swift in Sources */,
+				898B9B94282AD364007DAE4F /* XIBLocalizable.swift in Sources */,
 				898B9B26282872D2007DAE4F /* RideRequest.swift in Sources */,
-				891B3080282821A4002CEA82 /* ViewController.swift in Sources */,
+				898B9B8E282ACD79007DAE4F /* SignInViewModel.swift in Sources */,
+				898B9B81282ABE57007DAE4F /* SignInViewController.swift in Sources */,
 				898B9B682829D20D007DAE4F /* Geotag.swift in Sources */,
+				898B9B91282ACE23007DAE4F /* Validator.swift in Sources */,
 				898B9B2E2828753E007DAE4F /* HTTPMethod.swift in Sources */,
 				898B9B6B2829D29D007DAE4F /* MobilityService.swift in Sources */,
 				898B9B43282877F0007DAE4F /* EndpointType.swift in Sources */,
 				898B9B20282871CC007DAE4F /* Client.swift in Sources */,
 				891B3081282821A4002CEA82 /* AppDelegate.swift in Sources */,
+				898B9B8A282AC854007DAE4F /* AppModeManager.swift in Sources */,
 				891B3082282821A4002CEA82 /* SceneDelegate.swift in Sources */,
 				898B9B5C2829C29A007DAE4F /* EmptyResult.swift in Sources */,
 				898B9B40282877B3007DAE4F /* NetworkingProvider.swift in Sources */,
 				898B9B1D2828719D007DAE4F /* Driver.swift in Sources */,
 				898B9B4E28287C87007DAE4F /* DataDecoder.swift in Sources */,
+				898B9B99282ADA66007DAE4F /* UIAlertController+Extensions.swift in Sources */,
 				898B9B2928287376007DAE4F /* DesignatedRide.swift in Sources */,
 				898B9B722829D7A7007DAE4F /* SecureStorageManager.swift in Sources */,
 				898B9B1A282868B6007DAE4F /* User.swift in Sources */,
@@ -466,14 +546,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		891B30702828204C002CEA82 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				891B30712828204C002CEA82 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		891B307528282051002CEA82 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -620,7 +692,6 @@
 				INFOPLIST_KEY_CFBundleDisplayName = GottaGoFastClient;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -650,7 +721,6 @@
 				INFOPLIST_KEY_CFBundleDisplayName = GottaGoFastClient;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -680,7 +750,6 @@
 				INFOPLIST_KEY_CFBundleDisplayName = GottaGoFastDriver;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = DriverMain;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -710,7 +779,6 @@
 				INFOPLIST_KEY_CFBundleDisplayName = GottaGoFastDriver;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = DriverMain;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

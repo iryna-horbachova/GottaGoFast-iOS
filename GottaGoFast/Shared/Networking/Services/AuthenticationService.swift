@@ -18,6 +18,14 @@ final class AuthenticationService: NetworkingService, AuthenticationServiceType 
       switch result {
       case .success(let token):
         AuthenticationManager.shared.currentToken = token
+        do {
+          try SecureStorageManager.shared.addIdentityData(token.refresh, type: .refreshToken)
+          try SecureStorageManager.shared.addIdentityData(token.access, type: .accessToken)
+          AppModeManager.shared.setAppMode(mode: .authenticated)
+        } catch {
+          AppModeManager.shared.setAppMode(mode: .notAuthenticated)
+          NSLog("Failed to store token")
+        }
         completion(.success(EmptyResult()))
       case .failure(let error):
         completion(.failure(error))

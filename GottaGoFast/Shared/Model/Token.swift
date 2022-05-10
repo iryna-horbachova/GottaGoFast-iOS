@@ -7,6 +7,6 @@
 
 struct Token: Codable {
   let userId: Int
-  let accessToken: String
-  let refreshToken: String
+  let access: String
+  let refresh: String
 }
