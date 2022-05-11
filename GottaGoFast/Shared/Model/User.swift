@@ -14,5 +14,5 @@ struct User: Codable {
   let lastName: String
   let gender: String
   let phoneNumber: String
-  let birthdate: String?
+  //let birthdate: String?
 }

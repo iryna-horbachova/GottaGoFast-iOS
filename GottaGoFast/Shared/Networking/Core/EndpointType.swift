@@ -42,8 +42,7 @@ extension EndpointType {
     if let body = body {
       let httpBody = try JSONDataEncoder.encode(body)
       request.httpBody = httpBody
-      print("httpbody", httpBody as? String)
-      print(String(decoding: httpBody, as: UTF8.self))
+      NSLog(String(decoding: httpBody, as: UTF8.self))
     }
     request.httpMethod = method.rawValue
     return request

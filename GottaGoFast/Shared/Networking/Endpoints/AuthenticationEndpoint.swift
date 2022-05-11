@@ -11,7 +11,7 @@ enum AuthenticationEndpoint {
   case performLogin(email: String, password: String)
   case refreshLogin(refreshToken: String)
   case registerClient(_ clientRegistration: ClientRegistration)
-  case registerDriver(_ driver: Driver)
+  case registerDriver(_ driver: DriverRegistration)
 }
 
 extension AuthenticationEndpoint: EndpointType {

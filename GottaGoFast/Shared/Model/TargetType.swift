@@ -8,10 +8,10 @@
 import Foundation
 
 enum TargetType: String {
-  case GottaGoFastDriver = "GottaGoFastDriver"
-  case GottaGoFastClient = "GottaGoFastClient"
+  case driver = "GottaGoFastDriver"
+  case client = "GottaGoFastClient"
 
-  func getCurrentTarget() -> String {
-    return Bundle.main.infoDictionary?["TargetName"] as? String ?? ""
+  static func getCurrentTarget() -> TargetType {
+    return TargetType(rawValue: Bundle.main.infoDictionary?["TargetName"] as? String ?? "") ?? .client
   }
 }

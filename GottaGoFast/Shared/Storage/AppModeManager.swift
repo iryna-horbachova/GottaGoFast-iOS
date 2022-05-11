@@ -18,10 +18,6 @@ class AppModeManager {
     case authenticated = "Authenticated"
     case notAuthenticated = "NotAuthenticated"
     case undefined = "Undefined"
-    
-    func getAppTarget() -> String {
-      return Bundle.main.infoDictionary?["TargetName"] as? String ?? "GottaGoFast"
-    }
   }
 
   func setAppMode(mode: AppMode) {

@@ -25,3 +25,16 @@
 "name.first.title.label" = "First name";
 "name.last.title.label" = "Last name";
 "phone.number.title.label" = "Phone number";
+
+"passport.number.title.label" = "Passport number";
+"driver.license.number.title.label" = "Driver license";
+"taxi.license.number.title.label" = "Taxi license";
+
+"vehicle.model.title.label" = "Vehicle model";
+"vehicle.type.title.label" = "Vehicle type";
+"vehicle.insurance.policy.number.title.label" = "Vehicle insurance policy";
+"vehicle.adults.seats.title.label" = "Adults seats quantity";
+"vehicle.children.seats.title.label" = "Children seats quantity";
+"vehicle.animal.seats.title.label" = "Animal seats quantity";
+"vehicle.trunk.capacity.title.label" = "Trunk capacity";
+"vehicle.air.conditioner.present.title.label" = "Air conditioner present";

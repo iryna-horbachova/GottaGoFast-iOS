@@ -65,7 +65,7 @@ final class AuthenticationService: NetworkingService, AuthenticationServiceType 
   }
 
   func registerDriver(
-    _ driver: Driver,
+    _ driver: DriverRegistration,
     completion: @escaping (Result<Driver, NetworkingError>) -> Void
   ) {
     provider.request(AuthenticationEndpoint.registerDriver(driver)) { (result: Result<Driver, NetworkingError>) in

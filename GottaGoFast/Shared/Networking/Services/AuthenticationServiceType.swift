@@ -24,7 +24,7 @@ protocol AuthenticationServiceType {
   )
 
   func registerDriver(
-    _ driver: Driver,
+    _ driver: DriverRegistration,
     completion: @escaping (Result <Driver, NetworkingError>) -> Void
   )
 }
