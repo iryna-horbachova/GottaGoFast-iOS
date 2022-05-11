@@ -29,7 +29,7 @@ extension Encodable {
   func toJSONData() -> Data? {
     let encoder = JSONEncoder()
     encoder.keyEncodingStrategy = .convertToSnakeCase
-    return try? JSONEncoder().encode(self)
+    return try? encoder.encode(self)
   }
 
 }

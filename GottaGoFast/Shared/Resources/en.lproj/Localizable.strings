@@ -17,4 +17,11 @@
 "signin.email.title.label" = "Email";
 "signin.password.title.label" = "Password";
 
-"button.next.title" = "Sign in";
+"button.next.title" = "Continue";
+
+"signup.title.label" = "Sign up";
+"signup.password.repeat.title.label" = "Repeat password";
+
+"name.first.title.label" = "First name";
+"name.last.title.label" = "Last name";
+"phone.number.title.label" = "Phone number";

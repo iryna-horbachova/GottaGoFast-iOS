@@ -50,10 +50,10 @@ final class AuthenticationService: NetworkingService, AuthenticationServiceType 
   }
 
   func registerClient(
-    _ client: Client,
+    _ clientRegistration: ClientRegistration,
     completion: @escaping (Result<Client, NetworkingError>) -> Void
   ) {
-    provider.request(AuthenticationEndpoint.registerClient(client)) { (result: Result<Client, NetworkingError>) in
+    provider.request(AuthenticationEndpoint.registerClient(clientRegistration)) { (result: Result<Client, NetworkingError>) in
       
       switch result {
       case .success(let client):

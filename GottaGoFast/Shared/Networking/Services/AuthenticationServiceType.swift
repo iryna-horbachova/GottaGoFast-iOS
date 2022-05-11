@@ -19,7 +19,7 @@ protocol AuthenticationServiceType {
   )
 
   func registerClient(
-    _ client: Client,
+    _ clientRegistraion: ClientRegistration,
     completion: @escaping (Result <Client, NetworkingError>) -> Void
   )
 

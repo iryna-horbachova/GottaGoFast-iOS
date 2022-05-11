@@ -76,13 +76,19 @@
 		898B9B89282AC854007DAE4F /* AppModeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B88282AC854007DAE4F /* AppModeManager.swift */; };
 		898B9B8A282AC854007DAE4F /* AppModeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B88282AC854007DAE4F /* AppModeManager.swift */; };
 		898B9B8D282ACD79007DAE4F /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B8C282ACD79007DAE4F /* SignInViewModel.swift */; };
-		898B9B8E282ACD79007DAE4F /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B8C282ACD79007DAE4F /* SignInViewModel.swift */; };
 		898B9B90282ACE23007DAE4F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B8F282ACE23007DAE4F /* Validator.swift */; };
 		898B9B91282ACE23007DAE4F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B8F282ACE23007DAE4F /* Validator.swift */; };
 		898B9B93282AD364007DAE4F /* XIBLocalizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B92282AD364007DAE4F /* XIBLocalizable.swift */; };
 		898B9B94282AD364007DAE4F /* XIBLocalizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B92282AD364007DAE4F /* XIBLocalizable.swift */; };
 		898B9B98282ADA66007DAE4F /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B97282ADA66007DAE4F /* UIAlertController+Extensions.swift */; };
 		898B9B99282ADA66007DAE4F /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B97282ADA66007DAE4F /* UIAlertController+Extensions.swift */; };
+		898B9B9C282B976A007DAE4F /* SignUpClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B9A282B976A007DAE4F /* SignUpClientViewController.swift */; };
+		898B9B9D282B976A007DAE4F /* SignUpClientViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898B9B9B282B976A007DAE4F /* SignUpClientViewController.xib */; };
+		898B9BA0282B9782007DAE4F /* SignUpDriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B9E282B9782007DAE4F /* SignUpDriverViewController.swift */; };
+		898B9BA1282B9782007DAE4F /* SignUpDriverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898B9B9F282B9782007DAE4F /* SignUpDriverViewController.xib */; };
+		898B9BA5282C128C007DAE4F /* SignUpClientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BA3282C123B007DAE4F /* SignUpClientViewModel.swift */; };
+		898B9BA7282C1422007DAE4F /* ClientRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BA6282C1422007DAE4F /* ClientRegistration.swift */; };
+		898B9BA8282C1A11007DAE4F /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9B8C282ACD79007DAE4F /* SignInViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +134,12 @@
 		898B9B8F282ACE23007DAE4F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		898B9B92282AD364007DAE4F /* XIBLocalizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIBLocalizable.swift; sourceTree = "<group>"; };
 		898B9B97282ADA66007DAE4F /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
+		898B9B9A282B976A007DAE4F /* SignUpClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpClientViewController.swift; sourceTree = "<group>"; };
+		898B9B9B282B976A007DAE4F /* SignUpClientViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpClientViewController.xib; sourceTree = "<group>"; };
+		898B9B9E282B9782007DAE4F /* SignUpDriverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpDriverViewController.swift; sourceTree = "<group>"; };
+		898B9B9F282B9782007DAE4F /* SignUpDriverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpDriverViewController.xib; sourceTree = "<group>"; };
+		898B9BA3282C123B007DAE4F /* SignUpClientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpClientViewModel.swift; sourceTree = "<group>"; };
+		898B9BA6282C1422007DAE4F /* ClientRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientRegistration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +235,7 @@
 				898B9B5A2829C29A007DAE4F /* EmptyResult.swift */,
 				898B9B662829D20D007DAE4F /* Geotag.swift */,
 				898B9B7A282ABCA7007DAE4F /* TargetType.swift */,
+				898B9BA6282C1422007DAE4F /* ClientRegistration.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -317,6 +330,7 @@
 		898B9B77282A6B5F007DAE4F /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				898B9BA2282C121F007DAE4F /*  SignUp */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -324,6 +338,8 @@
 		898B9B78282A6B65007DAE4F /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				898B9B9E282B9782007DAE4F /* SignUpDriverViewController.swift */,
+				898B9B9F282B9782007DAE4F /* SignUpDriverViewController.xib */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -362,6 +378,16 @@
 				898B9B97282ADA66007DAE4F /* UIAlertController+Extensions.swift */,
 			);
 			path = UIElements;
+			sourceTree = "<group>";
+		};
+		898B9BA2282C121F007DAE4F /*  SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				898B9B9B282B976A007DAE4F /* SignUpClientViewController.xib */,
+				898B9B9A282B976A007DAE4F /* SignUpClientViewController.swift */,
+				898B9BA3282C123B007DAE4F /* SignUpClientViewModel.swift */,
+			);
+			path = " SignUp";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -443,6 +469,7 @@
 				898B9B82282ABE57007DAE4F /* SignInViewController.xib in Resources */,
 				891B307728282051002CEA82 /* LaunchScreen.storyboard in Resources */,
 				898B9B3528287655007DAE4F /* Localizable.strings in Resources */,
+				898B9B9D282B976A007DAE4F /* SignUpClientViewController.xib in Resources */,
 				891B307428282051002CEA82 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -451,6 +478,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				898B9BA1282B9782007DAE4F /* SignUpDriverViewController.xib in Resources */,
 				898B9B3628287655007DAE4F /* Localizable.strings in Resources */,
 				891B3085282821A4002CEA82 /* LaunchScreen.storyboard in Resources */,
 				891B3086282821A4002CEA82 /* Assets.xcassets in Resources */,
@@ -468,6 +496,7 @@
 				898B9B552829049C007DAE4F /* AuthenticationEndpoint.swift in Sources */,
 				898B9B22282871F5007DAE4F /* Vehicle.swift in Sources */,
 				898B9B58282909BC007DAE4F /* AuthenticationServiceType.swift in Sources */,
+				898B9BA5282C128C007DAE4F /* SignUpClientViewModel.swift in Sources */,
 				898B9B7B282ABCA7007DAE4F /* TargetType.swift in Sources */,
 				898B9B612829CD09007DAE4F /* MobilityEndpoint.swift in Sources */,
 				898B9B46282879CC007DAE4F /* AuthenticationManager.swift in Sources */,
@@ -486,6 +515,7 @@
 				898B9B89282AC854007DAE4F /* AppModeManager.swift in Sources */,
 				891B306D2828204C002CEA82 /* SceneDelegate.swift in Sources */,
 				898B9B5B2829C29A007DAE4F /* EmptyResult.swift in Sources */,
+				898B9BA7282C1422007DAE4F /* ClientRegistration.swift in Sources */,
 				898B9B3F282877B3007DAE4F /* NetworkingProvider.swift in Sources */,
 				898B9B1C2828719D007DAE4F /* Driver.swift in Sources */,
 				898B9B4D28287C87007DAE4F /* DataDecoder.swift in Sources */,
@@ -498,6 +528,7 @@
 				898B9B642829D14F007DAE4F /* MobilityServiceType.swift in Sources */,
 				898B9B302828762C007DAE4F /* NetworkingError.swift in Sources */,
 				898B9B162828684F007DAE4F /* Token.swift in Sources */,
+				898B9B9C282B976A007DAE4F /* SignUpClientViewController.swift in Sources */,
 				898B9B5E2829C343007DAE4F /* AuthenticationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -515,7 +546,6 @@
 				898B9B3D28287749007DAE4F /* String+Extensions.swift in Sources */,
 				898B9B94282AD364007DAE4F /* XIBLocalizable.swift in Sources */,
 				898B9B26282872D2007DAE4F /* RideRequest.swift in Sources */,
-				898B9B8E282ACD79007DAE4F /* SignInViewModel.swift in Sources */,
 				898B9B81282ABE57007DAE4F /* SignInViewController.swift in Sources */,
 				898B9B682829D20D007DAE4F /* Geotag.swift in Sources */,
 				898B9B91282ACE23007DAE4F /* Validator.swift in Sources */,
@@ -536,9 +566,11 @@
 				898B9B1A282868B6007DAE4F /* User.swift in Sources */,
 				898B9B51282902A3007DAE4F /* NetworkingService.swift in Sources */,
 				898B9B4B28287C06007DAE4F /* DataEncoder.swift in Sources */,
+				898B9BA8282C1A11007DAE4F /* SignInViewModel.swift in Sources */,
 				898B9B652829D14F007DAE4F /* MobilityServiceType.swift in Sources */,
 				898B9B312828762C007DAE4F /* NetworkingError.swift in Sources */,
 				898B9B172828684F007DAE4F /* Token.swift in Sources */,
+				898B9BA0282B9782007DAE4F /* SignUpDriverViewController.swift in Sources */,
 				898B9B5F2829C343007DAE4F /* AuthenticationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

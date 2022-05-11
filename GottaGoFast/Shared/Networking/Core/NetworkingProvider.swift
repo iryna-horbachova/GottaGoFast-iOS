@@ -60,7 +60,9 @@ final class NetworkingProvider: NetworkingProviderType {
           completion(.failure(NetworkingError.invalidResponse))
           return
         }
-        
+        var tResponse = response as! HTTPURLResponse
+        print("RESPONSE")
+        print(tResponse)
         guard let response = response as? HTTPURLResponse,
                 self.successCodeRange ~= response.statusCode else {
           NSLog("URLRequest \(request) failed with invalid respose")

@@ -10,7 +10,7 @@ import Foundation
 enum AuthenticationEndpoint {
   case performLogin(email: String, password: String)
   case refreshLogin(refreshToken: String)
-  case registerClient(_ client: Client)
+  case registerClient(_ clientRegistration: ClientRegistration)
   case registerDriver(_ driver: Driver)
 }
 
