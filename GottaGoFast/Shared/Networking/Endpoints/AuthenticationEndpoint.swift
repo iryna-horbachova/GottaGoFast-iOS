@@ -12,6 +12,8 @@ enum AuthenticationEndpoint {
   case refreshLogin(refreshToken: String)
   case registerClient(_ clientRegistration: ClientRegistration)
   case registerDriver(_ driver: DriverRegistration)
+  case getClientProfile(id: String)
+  case getDriverProfile(id: String)
 }
 
 extension AuthenticationEndpoint: EndpointType {
@@ -25,19 +27,21 @@ extension AuthenticationEndpoint: EndpointType {
       return ":8000/api/profile/clients/register/"
     case .registerDriver:
       return ":8000/api/profile/drivers/register/"
+    case .getClientProfile(let id):
+      return ":8000/api/profile/clients/\(id)/"
+    case .getDriverProfile(let id):
+      return ":8000/api/profile/drivers/\(id)/"
     }
   }
 
   var method: HTTPMethod {
     switch self {
-    case .performLogin:
+    case .performLogin, .refreshLogin:
       return .post
-    case .refreshLogin:
+    case .registerClient, .registerDriver:
       return .post
-    case .registerClient:
-      return .post
-    case .registerDriver:
-      return .post
+    case .getClientProfile, .getDriverProfile:
+      return .get
     }
   }
 
@@ -46,7 +50,12 @@ extension AuthenticationEndpoint: EndpointType {
   }
 
   var needsAuthorization: Bool {
-    return false
+    switch self {
+    case .getClientProfile, .getDriverProfile:
+      return true
+    default:
+      return false
+    }
   }
 
   var body: Encodable? {
@@ -59,6 +68,8 @@ extension AuthenticationEndpoint: EndpointType {
       return client
     case .registerDriver(let driver):
       return driver
+    case .getClientProfile, .getDriverProfile:
+      return nil
     }
   }
 }

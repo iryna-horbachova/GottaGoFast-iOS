@@ -17,27 +17,29 @@ enum KeychainError: Error {
 enum SecureStoreDataType: String {
   case accessToken = "AccessToken"
   case refreshToken = "RefreshToken"
+  case userId = "UserId"
 }
 
 class SecureStorageManager {
 
   static let shared = SecureStorageManager()
+  private let server = "AuthenticationServer"
   
   private init() { }
 
   func addIdentityData(_ value: String, type: SecureStoreDataType) throws {
-    let itemQuery = [
-      kSecValueData: value.data(using: .utf8)!,
-      kSecAttrAccount: type.rawValue,
-      kSecClass: kSecClassIdentity
-    ] as CFDictionary
+    let itemQuery: [String: Any] = [
+      kSecValueData as String: value.data(using: String.Encoding.utf8)!,
+      kSecAttrAccount as String: type.rawValue,
+      kSecClass as String: kSecClassGenericPassword
+    ]
 
     let status = SecItemAdd(itemQuery as CFDictionary, nil)
     guard status == errSecSuccess else { throw KeychainError.unhandledError(status: status) }
   }
 
   func getIdentityData(type: SecureStoreDataType) throws -> String {
-    let itemQuery: [String: Any] = [kSecClass as String: kSecClassIdentity,
+    let itemQuery: [String: Any] = [kSecClass as String: kSecClassGenericPassword,
                                     kSecAttrAccount as String: type.rawValue,
                                     kSecMatchLimit as String: kSecMatchLimitOne,
                                     kSecReturnAttributes as String: true,
@@ -59,7 +61,8 @@ class SecureStorageManager {
   func updateIdentityData(newValue: String, type: SecureStoreDataType) throws {
     let itemQuery: [String: Any] = [
       kSecAttrAccount as String: type.rawValue,
-      kSecClass as String: kSecClassIdentity
+      kSecClass as String: kSecClassIdentity,
+      kSecAttrServer as String: server,
     ]
 
     let attributes: [String: Any] = [

@@ -10,7 +10,6 @@ import Foundation
 class SignUpDriverViewModel {
   weak var viewController: SignUpDriverViewController!
   private let authenticationService = AuthenticationService()
-  private let networkingService = NetworkingService(provider: NetworkingProvider())
 
   init(viewController: SignUpDriverViewController) {
     self.viewController = viewController

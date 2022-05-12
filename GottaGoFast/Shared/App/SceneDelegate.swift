@@ -30,6 +30,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       NSLog("Not authenticated")
       window?.rootViewController = SignInViewController(nibName: "SignInViewController", bundle: .main) 
     }
+    do {
+      print(try SecureStorageManager.shared.getIdentityData(type: .accessToken))
+    }
+    catch {
+      print("Error")
+    }
+    
     
     window?.makeKeyAndVisible()
   }

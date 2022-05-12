@@ -27,4 +27,14 @@ protocol AuthenticationServiceType {
     _ driver: DriverRegistration,
     completion: @escaping (Result <Driver, NetworkingError>) -> Void
   )
+  
+  func getClientProfile(
+    id: String,
+    completion: @escaping (Result <Client, NetworkingError>) -> Void
+  )
+  
+  func getDriverProfile(
+    id: String,
+    completion: @escaping (Result <Driver, NetworkingError>) -> Void
+  )
 }

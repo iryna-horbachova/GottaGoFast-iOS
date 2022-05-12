@@ -15,6 +15,10 @@ protocol EndpointType {
   var body: Encodable? { get }
 }
 
+enum EndointTypeError: Error {
+  case authorizationFailed
+}
+
 extension EndpointType {
   
   private var defaultHeaders: [String: String] {
@@ -33,8 +37,16 @@ extension EndpointType {
       httpHeaders = defaultHeaders.merging(headers) { (current, _) in current }
     }
 
-    if needsAuthorization, let token = AuthenticationManager.shared.currentToken?.access {
-      httpHeaders["Authorization"] = "Bearer \(token)"
+    if needsAuthorization {
+      do {
+        let accessToken = try SecureStorageManager.shared.getIdentityData(type: .accessToken)
+        httpHeaders["Authorization"] = "Bearer \(accessToken)"
+      }
+      catch {
+        NSLog("Failed to fetch access token")
+        throw EndointTypeError.authorizationFailed
+      }
+      
     }
 
     request.allHTTPHeaderFields = httpHeaders

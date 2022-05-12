@@ -21,6 +21,7 @@ final class AuthenticationService: NetworkingService, AuthenticationServiceType 
         do {
           try SecureStorageManager.shared.addIdentityData(token.refresh, type: .refreshToken)
           try SecureStorageManager.shared.addIdentityData(token.access, type: .accessToken)
+          try SecureStorageManager.shared.addIdentityData(String(token.userId), type: .userId)
           AppModeManager.shared.setAppMode(mode: .authenticated)
         } catch {
           AppModeManager.shared.setAppMode(mode: .notAuthenticated)
@@ -69,6 +70,36 @@ final class AuthenticationService: NetworkingService, AuthenticationServiceType 
     completion: @escaping (Result<Driver, NetworkingError>) -> Void
   ) {
     provider.request(AuthenticationEndpoint.registerDriver(driver)) { (result: Result<Driver, NetworkingError>) in
+      
+      switch result {
+      case .success(let driver):
+        completion(.success(driver))
+      case .failure(let error):
+        completion(.failure(error))
+      }
+    }
+  }
+  
+  func getClientProfile(
+    id: String,
+    completion: @escaping (Result<Client, NetworkingError>) -> Void
+  ) {
+    provider.request(AuthenticationEndpoint.getClientProfile(id: id)) { (result: Result<Client, NetworkingError>) in
+      
+      switch result {
+      case .success(let client):
+        completion(.success(client))
+      case .failure(let error):
+        completion(.failure(error))
+      }
+    }
+  }
+  
+  func getDriverProfile(
+    id: String,
+    completion: @escaping (Result<Driver, NetworkingError>) -> Void
+  ) {
+    provider.request(AuthenticationEndpoint.getDriverProfile(id: id)) { (result: Result<Driver, NetworkingError>) in
       
       switch result {
       case .success(let driver):

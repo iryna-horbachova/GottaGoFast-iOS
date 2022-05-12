@@ -38,7 +38,7 @@ class SignUpClientViewModel {
     authenticationService.performLogin(email: email, password: password) { [weak self] result in
       switch result {
       case .success(_):
-        NSLog("SUCCESS")
+        NSLog("Login successfully performed")
         self?.viewController.authenticationCompleted = true
       case .failure(let error):
         NSLog("Error \(error)")

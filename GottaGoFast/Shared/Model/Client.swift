@@ -8,7 +8,6 @@
 import Foundation
 
 struct Client: Codable {
-  let id: String?
   let user: User
   let rideDiscount: Int?
 }

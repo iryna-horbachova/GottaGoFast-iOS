@@ -10,6 +10,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ClientProfileViewController" customModule="GottaGoFastClient" customModuleProvider="target">
             <connections>
+                <outlet property="emailLabel" destination="mow-fP-UR9" id="x92-Nd-QVH"/>
+                <outlet property="firstNameLabel" destination="IWU-dw-sjY" id="Aok-vm-GzV"/>
+                <outlet property="lastNameLabel" destination="TUI-NK-ow8" id="jLr-Xj-rfb"/>
+                <outlet property="phoneNumberLabel" destination="acf-Tj-1EE" id="7a7-Na-Agp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,14 +21,82 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJ7-tz-t6r">
+                    <rect key="frame" x="20" y="79" width="113" height="30"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWU-dw-sjY">
+                    <rect key="frame" x="20" y="119" width="80" height="21"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mi5-Rr-uz2">
+                    <rect key="frame" x="20" y="160" width="112" height="30"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRk-oG-jEE">
+                    <rect key="frame" x="20" y="241" width="58.5" height="30"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email@me.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mow-fP-UR9">
+                    <rect key="frame" x="20" y="281" width="117" height="21"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUI-NK-ow8">
+                    <rect key="frame" x="20" y="200" width="80" height="21"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z00-kR-rOT">
+                    <rect key="frame" x="20" y="322" width="158" height="30"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24942348" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acf-Tj-1EE">
+                    <rect key="frame" x="20" y="362" width="82" height="21"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemOrangeColor"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="ZRk-oG-jEE" firstAttribute="top" secondItem="TUI-NK-ow8" secondAttribute="bottom" constant="20" id="2Ec-o2-f76"/>
+                <constraint firstItem="eJ7-tz-t6r" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="A5h-4g-n25"/>
+                <constraint firstItem="mow-fP-UR9" firstAttribute="top" secondItem="ZRk-oG-jEE" secondAttribute="bottom" constant="10" id="Emp-K9-Un2"/>
+                <constraint firstItem="TUI-NK-ow8" firstAttribute="top" secondItem="mi5-Rr-uz2" secondAttribute="bottom" constant="10" id="FeK-Ag-3Gi"/>
+                <constraint firstItem="IWU-dw-sjY" firstAttribute="top" secondItem="eJ7-tz-t6r" secondAttribute="bottom" constant="10" id="Hcp-JH-0YX"/>
+                <constraint firstItem="Z00-kR-rOT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="NBu-Zo-9vn"/>
+                <constraint firstItem="mi5-Rr-uz2" firstAttribute="top" secondItem="IWU-dw-sjY" secondAttribute="bottom" constant="20" id="NPc-vF-Exd"/>
+                <constraint firstItem="ZRk-oG-jEE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="RIa-sg-Xdx"/>
+                <constraint firstItem="mow-fP-UR9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Xew-Qa-QO6"/>
+                <constraint firstItem="TUI-NK-ow8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Y01-bF-ZSQ"/>
+                <constraint firstItem="eJ7-tz-t6r" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="35" id="fHm-Rh-faa"/>
+                <constraint firstItem="acf-Tj-1EE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="gjV-4i-Yf5"/>
+                <constraint firstItem="IWU-dw-sjY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="hME-ox-erS"/>
+                <constraint firstItem="Z00-kR-rOT" firstAttribute="top" secondItem="mow-fP-UR9" secondAttribute="bottom" constant="20" id="hag-mb-Iu6"/>
+                <constraint firstItem="mi5-Rr-uz2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="us4-n9-pij"/>
+                <constraint firstItem="acf-Tj-1EE" firstAttribute="top" secondItem="Z00-kR-rOT" secondAttribute="bottom" constant="10" id="zyM-bD-9DT"/>
+            </constraints>
             <point key="canvasLocation" x="139" y="76"/>
         </view>
     </objects>
     <resources>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
