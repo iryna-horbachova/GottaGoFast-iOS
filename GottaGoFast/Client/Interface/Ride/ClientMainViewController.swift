@@ -15,7 +15,6 @@ class ClientMainViewController: UIViewController,
 
   @IBOutlet weak var mapView: MKMapView!
   var locationManager: CLLocationManager!
-  var currentLocationStr = "Current location"
 
   override func viewDidLoad() {
     super.viewDidLoad()
