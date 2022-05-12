@@ -19,9 +19,9 @@ final class AuthenticationService: NetworkingService, AuthenticationServiceType 
       case .success(let token):
         AuthenticationManager.shared.currentToken = token
         do {
-          try SecureStorageManager.shared.addIdentityData(token.refresh, type: .refreshToken)
-          try SecureStorageManager.shared.addIdentityData(token.access, type: .accessToken)
-          try SecureStorageManager.shared.addIdentityData(String(token.userId), type: .userId)
+          try SecureStorageManager.shared.updateData(token.refresh, type: .refreshToken)
+          try SecureStorageManager.shared.updateData(token.access, type: .accessToken)
+          try SecureStorageManager.shared.updateData(String(token.userId), type: .userId)
           AppModeManager.shared.setAppMode(mode: .authenticated)
         } catch {
           AppModeManager.shared.setAppMode(mode: .notAuthenticated)

@@ -31,7 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       window?.rootViewController = SignInViewController(nibName: "SignInViewController", bundle: .main) 
     }
     do {
-      print(try SecureStorageManager.shared.getIdentityData(type: .accessToken))
+      print(try SecureStorageManager.shared.getData(type: .accessToken))
     }
     catch {
       print("Error")

@@ -27,7 +27,7 @@ class SecureStorageManager {
   
   private init() { }
 
-  func addIdentityData(_ value: String, type: SecureStoreDataType) throws {
+  func addData(_ value: String, type: SecureStoreDataType) throws {
     let itemQuery: [String: Any] = [
       kSecValueData as String: value.data(using: String.Encoding.utf8)!,
       kSecAttrAccount as String: type.rawValue,
@@ -38,7 +38,7 @@ class SecureStorageManager {
     guard status == errSecSuccess else { throw KeychainError.unhandledError(status: status) }
   }
 
-  func getIdentityData(type: SecureStoreDataType) throws -> String {
+  func getData(type: SecureStoreDataType) throws -> String {
     let itemQuery: [String: Any] = [kSecClass as String: kSecClassGenericPassword,
                                     kSecAttrAccount as String: type.rawValue,
                                     kSecMatchLimit as String: kSecMatchLimitOne,
@@ -58,11 +58,10 @@ class SecureStorageManager {
     return token
   }
 
-  func updateIdentityData(newValue: String, type: SecureStoreDataType) throws {
+  func updateData(_ newValue: String, type: SecureStoreDataType) throws {
     let itemQuery: [String: Any] = [
       kSecAttrAccount as String: type.rawValue,
-      kSecClass as String: kSecClassIdentity,
-      kSecAttrServer as String: server,
+      kSecClass as String: kSecClassGenericPassword
     ]
 
     let attributes: [String: Any] = [
@@ -75,7 +74,8 @@ class SecureStorageManager {
     )
 
     guard status != errSecItemNotFound else {
-        throw KeychainError.noToken
+      try addData(newValue, type: type)
+      return
     }
 
     guard status == errSecSuccess else {

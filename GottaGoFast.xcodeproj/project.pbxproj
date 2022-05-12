@@ -123,6 +123,8 @@
 		898B9BDC282CFC46007DAE4F /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BDA282CFC46007DAE4F /* UIViewController+Extensions.swift */; };
 		898B9BDE282D0F98007DAE4F /* ClientProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BDD282D0F98007DAE4F /* ClientProfileViewModel.swift */; };
 		898B9BDF282D0F98007DAE4F /* ClientProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BDD282D0F98007DAE4F /* ClientProfileViewModel.swift */; };
+		898B9BE1282D356D007DAE4F /* DriverProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BE0282D356D007DAE4F /* DriverProfileViewModel.swift */; };
+		898B9BE2282D356D007DAE4F /* DriverProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BE0282D356D007DAE4F /* DriverProfileViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -189,6 +191,7 @@
 		898B9BD5282CEA71007DAE4F /* DriverProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DriverProfileViewController.xib; sourceTree = "<group>"; };
 		898B9BDA282CFC46007DAE4F /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		898B9BDD282D0F98007DAE4F /* ClientProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProfileViewModel.swift; sourceTree = "<group>"; };
+		898B9BE0282D356D007DAE4F /* DriverProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverProfileViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -490,6 +493,7 @@
 			children = (
 				898B9BD4282CEA71007DAE4F /* DriverProfileViewController.swift */,
 				898B9BD5282CEA71007DAE4F /* DriverProfileViewController.xib */,
+				898B9BE0282D356D007DAE4F /* DriverProfileViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -607,6 +611,7 @@
 			files = (
 				898B9B552829049C007DAE4F /* AuthenticationEndpoint.swift in Sources */,
 				898B9B22282871F5007DAE4F /* Vehicle.swift in Sources */,
+				898B9BE1282D356D007DAE4F /* DriverProfileViewModel.swift in Sources */,
 				898B9B58282909BC007DAE4F /* AuthenticationServiceType.swift in Sources */,
 				898B9BA5282C128C007DAE4F /* SignUpClientViewModel.swift in Sources */,
 				898B9B7B282ABCA7007DAE4F /* TargetType.swift in Sources */,
@@ -663,6 +668,7 @@
 			files = (
 				898B9B562829049C007DAE4F /* AuthenticationEndpoint.swift in Sources */,
 				898B9B23282871F5007DAE4F /* Vehicle.swift in Sources */,
+				898B9BE2282D356D007DAE4F /* DriverProfileViewModel.swift in Sources */,
 				898B9B59282909BC007DAE4F /* AuthenticationServiceType.swift in Sources */,
 				898B9B7C282ABCA7007DAE4F /* TargetType.swift in Sources */,
 				898B9B622829CD09007DAE4F /* MobilityEndpoint.swift in Sources */,

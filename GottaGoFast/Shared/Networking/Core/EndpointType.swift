@@ -39,7 +39,7 @@ extension EndpointType {
 
     if needsAuthorization {
       do {
-        let accessToken = try SecureStorageManager.shared.getIdentityData(type: .accessToken)
+        let accessToken = try SecureStorageManager.shared.getData(type: .accessToken)
         httpHeaders["Authorization"] = "Bearer \(accessToken)"
       }
       catch {
