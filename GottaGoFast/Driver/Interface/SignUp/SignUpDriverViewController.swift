@@ -137,11 +137,12 @@ class SignUpDriverViewController: UIViewController {
     viewModel.performSignUp(driverRegistration: driverRegistration)
   }
   
-  
-  // TODO
-  func proceedToMainApplication() {
-    // Proceed to the tabbar
+  @IBAction func tappedSignInButton(_ sender: UIButton) {
+    performTransition(to: SignInViewController(nibName: "SignInViewController", bundle: .main) )
   }
 
-  
+  func proceedToMainApplication() {
+    performTransition(to: DriverTabBarController())
+  }
+
 }

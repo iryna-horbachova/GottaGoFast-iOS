@@ -39,11 +39,9 @@ class SignUpClientViewController: UIViewController {
 
     viewModel = SignUpClientViewModel(viewController: self)
   }
-  
 
-  // TODO
   func proceedToMainApplication() {
-    // Proceed to the tabbar
+    performTransition(to: ClientTabBarController())
   }
 
   @IBAction func tappedSignUpButton(_ sender: UIButton) {
@@ -55,6 +53,10 @@ class SignUpClientViewController: UIViewController {
     let user = UserRegistration(email: email, firstName: firstName, lastName: lastName, gender: "U", phoneNumber: phoneNumber, birthDate: nil)
     let clientRegistration = ClientRegistration(user: user, rideDiscount: nil, password: password, confirmPassword: confirmPassword)
     viewModel.performSignUp(clientRegistration: clientRegistration)
+  }
+
+  @IBAction func tappedSignInButton(_ sender: UIButton) {
+    performTransition(to: SignInViewController(nibName: "SignInViewController", bundle: .main) )
   }
   
 }

@@ -38,3 +38,6 @@
 "vehicle.animal.seats.title.label" = "Animal seats quantity";
 "vehicle.trunk.capacity.title.label" = "Trunk capacity";
 "vehicle.air.conditioner.present.title.label" = "Air conditioner present";
+
+"title.main" = "Main";
+"title.profile" = "Profile";

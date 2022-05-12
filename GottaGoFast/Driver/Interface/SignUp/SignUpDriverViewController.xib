@@ -364,6 +364,14 @@
                                         <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="vehicle.air.conditioner.present.title.label"/>
                                     </userDefinedRuntimeAttributes>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BJd-86-h23">
+                                    <rect key="frame" x="20" y="1419" width="374" height="31"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Already have an account? Sign in"/>
+                                    <connections>
+                                        <action selector="tappedSignInButton:" destination="-1" eventType="touchUpInside" id="szg-Yp-wBB"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
@@ -390,6 +398,7 @@
                                 <constraint firstItem="ACS-Qv-H27" firstAttribute="top" secondItem="bUK-u5-Bb5" secondAttribute="bottom" constant="15" id="C8k-pl-ygl"/>
                                 <constraint firstItem="KqJ-64-LLc" firstAttribute="top" secondItem="seX-jY-NlS" secondAttribute="bottom" constant="15" id="CNY-OH-nOt"/>
                                 <constraint firstItem="vkv-7y-do6" firstAttribute="top" secondItem="ZcG-VW-VFC" secondAttribute="bottom" constant="7" id="COK-oZ-8EO"/>
+                                <constraint firstItem="BJd-86-h23" firstAttribute="leading" secondItem="V8C-2P-I3U" secondAttribute="leading" constant="20" id="DKw-6o-SQY"/>
                                 <constraint firstItem="aJI-zC-8iJ" firstAttribute="top" secondItem="V8C-2P-I3U" secondAttribute="top" constant="50" id="EaL-Lq-yL0"/>
                                 <constraint firstItem="ZiW-XG-Vbm" firstAttribute="top" secondItem="S11-LQ-gMU" secondAttribute="bottom" constant="7" id="Ei3-y0-qf7"/>
                                 <constraint firstItem="3TI-op-qMA" firstAttribute="leading" secondItem="V8C-2P-I3U" secondAttribute="leading" constant="20" id="FDp-EJ-b09"/>
@@ -425,6 +434,7 @@
                                 <constraint firstItem="F2n-aY-eMf" firstAttribute="leading" secondItem="V8C-2P-I3U" secondAttribute="leading" constant="20" id="d9K-ww-mSw"/>
                                 <constraint firstItem="Qu6-4a-kOk" firstAttribute="top" secondItem="Mum-rO-BF1" secondAttribute="bottom" constant="15" id="dRG-HM-GiV"/>
                                 <constraint firstItem="Y2w-cc-Tn2" firstAttribute="leading" secondItem="V8C-2P-I3U" secondAttribute="leading" constant="20" id="evd-G4-Pjx"/>
+                                <constraint firstItem="BJd-86-h23" firstAttribute="top" secondItem="9OL-wC-7mQ" secondAttribute="bottom" constant="20" id="fTc-ZG-fXW"/>
                                 <constraint firstItem="zfT-2i-PdX" firstAttribute="top" secondItem="UR0-1W-CXd" secondAttribute="bottom" constant="7" id="gn4-Wd-YFj"/>
                                 <constraint firstAttribute="trailing" secondItem="F2n-aY-eMf" secondAttribute="trailing" constant="20" id="goU-n9-AR9"/>
                                 <constraint firstItem="bDI-12-iba" firstAttribute="top" secondItem="ZiW-XG-Vbm" secondAttribute="bottom" constant="15" id="guy-Gb-oHf"/>
@@ -450,6 +460,7 @@
                                 <constraint firstItem="UR0-1W-CXd" firstAttribute="leading" secondItem="V8C-2P-I3U" secondAttribute="leading" constant="20" id="vGO-j3-7Ul"/>
                                 <constraint firstAttribute="trailing" secondItem="MdC-Tb-GfD" secondAttribute="trailing" constant="20" id="veq-h9-hvP"/>
                                 <constraint firstItem="3TI-op-qMA" firstAttribute="top" secondItem="zfT-2i-PdX" secondAttribute="bottom" constant="15" id="xHP-Nh-lgL"/>
+                                <constraint firstAttribute="trailing" secondItem="BJd-86-h23" secondAttribute="trailing" constant="20" id="xIN-7d-Ih6"/>
                                 <constraint firstAttribute="trailing" secondItem="9OL-wC-7mQ" secondAttribute="trailing" constant="20" id="xnY-X7-0cK"/>
                                 <constraint firstItem="uzV-6e-nSQ" firstAttribute="leading" secondItem="V8C-2P-I3U" secondAttribute="leading" constant="20" id="yHb-cj-2Sg"/>
                                 <constraint firstItem="bUK-u5-Bb5" firstAttribute="top" secondItem="88M-GJ-3aS" secondAttribute="bottom" constant="7" id="ygq-Ud-blD"/>

@@ -142,6 +142,14 @@
                                         <action selector="tappedSignUpButton:" destination="-1" eventType="touchUpInside" id="pTF-Ma-2e4"/>
                                     </connections>
                                 </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4c-qv-kvG">
+                                    <rect key="frame" x="20" y="625" width="374" height="31"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Already have an account? Sign in!"/>
+                                    <connections>
+                                        <action selector="tappedSignInButton:" destination="-1" eventType="touchUpInside" id="AeJ-3b-3uv"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
@@ -157,14 +165,17 @@
                                 <constraint firstItem="hfI-XO-dsW" firstAttribute="leading" secondItem="OfN-g6-dOx" secondAttribute="leading" constant="20" id="HeQ-aY-OXi"/>
                                 <constraint firstItem="xex-It-gy1" firstAttribute="top" secondItem="2XH-9I-Hk5" secondAttribute="bottom" constant="15" id="I1c-0U-5Fg"/>
                                 <constraint firstItem="2XH-9I-Hk5" firstAttribute="leading" secondItem="OfN-g6-dOx" secondAttribute="leading" constant="20" id="KYh-MN-vI9"/>
+                                <constraint firstAttribute="trailing" secondItem="W4c-qv-kvG" secondAttribute="trailing" constant="20" id="Lib-lr-e71"/>
                                 <constraint firstAttribute="trailing" secondItem="XAX-GS-OzQ" secondAttribute="trailing" constant="20" id="NTs-4Y-b4e"/>
                                 <constraint firstAttribute="trailing" secondItem="hfI-XO-dsW" secondAttribute="trailing" constant="20" id="O7H-mu-MdC"/>
                                 <constraint firstItem="H7w-uW-NC7" firstAttribute="leading" secondItem="OfN-g6-dOx" secondAttribute="leading" constant="20" id="QBo-VL-1MM"/>
+                                <constraint firstItem="W4c-qv-kvG" firstAttribute="leading" secondItem="OfN-g6-dOx" secondAttribute="leading" constant="20" id="QF6-Dt-hwp"/>
                                 <constraint firstItem="cTd-FB-v53" firstAttribute="leading" secondItem="OfN-g6-dOx" secondAttribute="leading" constant="20" id="RjI-v6-w7s"/>
                                 <constraint firstAttribute="trailing" secondItem="2XH-9I-Hk5" secondAttribute="trailing" constant="20" id="TR2-em-wc1"/>
                                 <constraint firstItem="cv6-2n-6Ad" firstAttribute="leading" secondItem="OfN-g6-dOx" secondAttribute="leading" constant="20" id="WLx-ew-WM9"/>
                                 <constraint firstAttribute="trailing" secondItem="9XG-3s-Gut" secondAttribute="trailing" constant="20" id="Y57-uI-IAw"/>
                                 <constraint firstItem="H7w-uW-NC7" firstAttribute="top" secondItem="NlW-n9-JtO" secondAttribute="bottom" constant="7" id="aBd-LR-d9F"/>
+                                <constraint firstItem="W4c-qv-kvG" firstAttribute="top" secondItem="9XG-3s-Gut" secondAttribute="bottom" constant="20" id="c3D-HU-Cwc"/>
                                 <constraint firstItem="gaA-wr-bhC" firstAttribute="top" secondItem="XAX-GS-OzQ" secondAttribute="bottom" constant="7" id="c7E-gg-TlD"/>
                                 <constraint firstAttribute="trailing" secondItem="NlW-n9-JtO" secondAttribute="trailing" constant="20" id="cws-WS-g9w"/>
                                 <constraint firstItem="NlW-n9-JtO" firstAttribute="leading" secondItem="OfN-g6-dOx" secondAttribute="leading" constant="20" id="d68-vQ-qYG"/>

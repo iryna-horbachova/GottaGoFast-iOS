@@ -19,6 +19,9 @@ class SignInViewController: UIViewController {
     didSet {
       if isSignedIn {
         NSLog("User signed in -- your VC")
+        DispatchQueue.main.async {
+          self.transitionToMainApplication()
+        }
       }
     }
   }
@@ -51,7 +54,22 @@ class SignInViewController: UIViewController {
     }
     
     viewModel.performSignIn(email: email, password: password)
-    
+  }
+  
+  @IBAction func tappedRegisterButton(_ sender: UIButton) {
+    let vc = TargetType.getCurrentTarget() == .client ?
+    SignUpClientViewController(nibName:"SignUpClientViewController", bundle: .main) :
+    SignUpDriverViewController(nibName:"SignUpDriverViewController", bundle: .main)
+    performTransition(to: vc)
+  }
+
+  func transitionToMainApplication() {
+    if TargetType.getCurrentTarget() == .client {
+      performTransition(to: ClientTabBarController())
+    }
+    else {
+      performTransition(to: DriverTabBarController())
+    }
   }
   
 }

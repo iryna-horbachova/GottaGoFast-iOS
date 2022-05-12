@@ -24,12 +24,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     switch appMode {
     case .authenticated:
       NSLog("Authenticated")
-      window?.rootViewController = UITabBarController()
+      window?.rootViewController = TargetType.getCurrentTarget() == TargetType.client ?
+      ClientTabBarController() : DriverTabBarController()
     case .notAuthenticated, .undefined:
       NSLog("Not authenticated")
-      window?.rootViewController = TargetType.getCurrentTarget() == TargetType.client ?
-      SignUpClientViewController(nibName:"SignUpClientViewController", bundle: .main) :
-      SignUpDriverViewController(nibName:"SignUpDriverViewController", bundle: .main)
+      window?.rootViewController = SignInViewController(nibName: "SignInViewController", bundle: .main) 
     }
     
     window?.makeKeyAndVisible()

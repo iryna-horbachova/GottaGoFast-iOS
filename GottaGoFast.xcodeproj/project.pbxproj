@@ -99,6 +99,28 @@
 		898B9BB4282C51EC007DAE4F /* UserRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BB2282C51EC007DAE4F /* UserRegistration.swift */; };
 		898B9BB6282C5202007DAE4F /* DriverRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BB5282C5202007DAE4F /* DriverRegistration.swift */; };
 		898B9BB7282C5202007DAE4F /* DriverRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BB5282C5202007DAE4F /* DriverRegistration.swift */; };
+		898B9BB9282CE8EC007DAE4F /* ClientTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BB8282CE8EC007DAE4F /* ClientTabBarController.swift */; };
+		898B9BBA282CE8EC007DAE4F /* ClientTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BB8282CE8EC007DAE4F /* ClientTabBarController.swift */; };
+		898B9BC1282CE95B007DAE4F /* ClientProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BBF282CE95B007DAE4F /* ClientProfileViewController.swift */; };
+		898B9BC2282CE95B007DAE4F /* ClientProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BBF282CE95B007DAE4F /* ClientProfileViewController.swift */; };
+		898B9BC3282CE95B007DAE4F /* ClientProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898B9BC0282CE95B007DAE4F /* ClientProfileViewController.xib */; };
+		898B9BC4282CE95B007DAE4F /* ClientProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898B9BC0282CE95B007DAE4F /* ClientProfileViewController.xib */; };
+		898B9BC7282CE973007DAE4F /* ClientMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BC5282CE973007DAE4F /* ClientMainViewController.swift */; };
+		898B9BC8282CE973007DAE4F /* ClientMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BC5282CE973007DAE4F /* ClientMainViewController.swift */; };
+		898B9BC9282CE973007DAE4F /* ClientMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898B9BC6282CE973007DAE4F /* ClientMainViewController.xib */; };
+		898B9BCA282CE973007DAE4F /* ClientMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898B9BC6282CE973007DAE4F /* ClientMainViewController.xib */; };
+		898B9BCC282CE99D007DAE4F /* DriverTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BCB282CE99D007DAE4F /* DriverTabBarController.swift */; };
+		898B9BCD282CE99D007DAE4F /* DriverTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BCB282CE99D007DAE4F /* DriverTabBarController.swift */; };
+		898B9BD0282CEA60007DAE4F /* DriverMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BCE282CEA60007DAE4F /* DriverMainViewController.swift */; };
+		898B9BD1282CEA60007DAE4F /* DriverMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BCE282CEA60007DAE4F /* DriverMainViewController.swift */; };
+		898B9BD2282CEA60007DAE4F /* DriverMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898B9BCF282CEA60007DAE4F /* DriverMainViewController.xib */; };
+		898B9BD3282CEA60007DAE4F /* DriverMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898B9BCF282CEA60007DAE4F /* DriverMainViewController.xib */; };
+		898B9BD6282CEA71007DAE4F /* DriverProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BD4282CEA71007DAE4F /* DriverProfileViewController.swift */; };
+		898B9BD7282CEA71007DAE4F /* DriverProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BD4282CEA71007DAE4F /* DriverProfileViewController.swift */; };
+		898B9BD8282CEA71007DAE4F /* DriverProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898B9BD5282CEA71007DAE4F /* DriverProfileViewController.xib */; };
+		898B9BD9282CEA71007DAE4F /* DriverProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 898B9BD5282CEA71007DAE4F /* DriverProfileViewController.xib */; };
+		898B9BDB282CFC46007DAE4F /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BDA282CFC46007DAE4F /* UIViewController+Extensions.swift */; };
+		898B9BDC282CFC46007DAE4F /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BDA282CFC46007DAE4F /* UIViewController+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -153,6 +175,17 @@
 		898B9BAF282C51A4007DAE4F /* SignUpDriverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpDriverViewModel.swift; sourceTree = "<group>"; };
 		898B9BB2282C51EC007DAE4F /* UserRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistration.swift; sourceTree = "<group>"; };
 		898B9BB5282C5202007DAE4F /* DriverRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverRegistration.swift; sourceTree = "<group>"; };
+		898B9BB8282CE8EC007DAE4F /* ClientTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTabBarController.swift; sourceTree = "<group>"; };
+		898B9BBF282CE95B007DAE4F /* ClientProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProfileViewController.swift; sourceTree = "<group>"; };
+		898B9BC0282CE95B007DAE4F /* ClientProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClientProfileViewController.xib; sourceTree = "<group>"; };
+		898B9BC5282CE973007DAE4F /* ClientMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientMainViewController.swift; sourceTree = "<group>"; };
+		898B9BC6282CE973007DAE4F /* ClientMainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClientMainViewController.xib; sourceTree = "<group>"; };
+		898B9BCB282CE99D007DAE4F /* DriverTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverTabBarController.swift; sourceTree = "<group>"; };
+		898B9BCE282CEA60007DAE4F /* DriverMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverMainViewController.swift; sourceTree = "<group>"; };
+		898B9BCF282CEA60007DAE4F /* DriverMainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DriverMainViewController.xib; sourceTree = "<group>"; };
+		898B9BD4282CEA71007DAE4F /* DriverProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverProfileViewController.swift; sourceTree = "<group>"; };
+		898B9BD5282CEA71007DAE4F /* DriverProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DriverProfileViewController.xib; sourceTree = "<group>"; };
+		898B9BDA282CFC46007DAE4F /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,7 +378,10 @@
 		898B9B77282A6B5F007DAE4F /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				898B9BBC282CE92F007DAE4F /* Profile */,
+				898B9BBB282CE922007DAE4F /* Ride */,
 				898B9BA2282C121F007DAE4F /*  SignUp */,
+				898B9BB8282CE8EC007DAE4F /* ClientTabBarController.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -353,7 +389,10 @@
 		898B9B78282A6B65007DAE4F /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				898B9BBE282CE93D007DAE4F /* Profile */,
+				898B9BBD282CE937007DAE4F /* Ride */,
 				898B9BAE282C518A007DAE4F /* SignUp */,
+				898B9BCB282CE99D007DAE4F /* DriverTabBarController.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -390,6 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				898B9B97282ADA66007DAE4F /* UIAlertController+Extensions.swift */,
+				898B9BDA282CFC46007DAE4F /* UIViewController+Extensions.swift */,
 			);
 			path = UIElements;
 			sourceTree = "<group>";
@@ -412,6 +452,42 @@
 				898B9BAF282C51A4007DAE4F /* SignUpDriverViewModel.swift */,
 			);
 			path = SignUp;
+			sourceTree = "<group>";
+		};
+		898B9BBB282CE922007DAE4F /* Ride */ = {
+			isa = PBXGroup;
+			children = (
+				898B9BC5282CE973007DAE4F /* ClientMainViewController.swift */,
+				898B9BC6282CE973007DAE4F /* ClientMainViewController.xib */,
+			);
+			path = Ride;
+			sourceTree = "<group>";
+		};
+		898B9BBC282CE92F007DAE4F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				898B9BBF282CE95B007DAE4F /* ClientProfileViewController.swift */,
+				898B9BC0282CE95B007DAE4F /* ClientProfileViewController.xib */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		898B9BBD282CE937007DAE4F /* Ride */ = {
+			isa = PBXGroup;
+			children = (
+				898B9BCE282CEA60007DAE4F /* DriverMainViewController.swift */,
+				898B9BCF282CEA60007DAE4F /* DriverMainViewController.xib */,
+			);
+			path = Ride;
+			sourceTree = "<group>";
+		};
+		898B9BBE282CE93D007DAE4F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				898B9BD4282CEA71007DAE4F /* DriverProfileViewController.swift */,
+				898B9BD5282CEA71007DAE4F /* DriverProfileViewController.xib */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -491,9 +567,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				898B9B82282ABE57007DAE4F /* SignInViewController.xib in Resources */,
+				898B9BD8282CEA71007DAE4F /* DriverProfileViewController.xib in Resources */,
+				898B9BC3282CE95B007DAE4F /* ClientProfileViewController.xib in Resources */,
 				891B307728282051002CEA82 /* LaunchScreen.storyboard in Resources */,
 				898B9B3528287655007DAE4F /* Localizable.strings in Resources */,
 				898B9B9D282B976A007DAE4F /* SignUpClientViewController.xib in Resources */,
+				898B9BD2282CEA60007DAE4F /* DriverMainViewController.xib in Resources */,
+				898B9BC9282CE973007DAE4F /* ClientMainViewController.xib in Resources */,
 				891B307428282051002CEA82 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,9 +583,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				898B9BA1282B9782007DAE4F /* SignUpDriverViewController.xib in Resources */,
+				898B9BD9282CEA71007DAE4F /* DriverProfileViewController.xib in Resources */,
+				898B9BC4282CE95B007DAE4F /* ClientProfileViewController.xib in Resources */,
 				898B9B3628287655007DAE4F /* Localizable.strings in Resources */,
 				891B3085282821A4002CEA82 /* LaunchScreen.storyboard in Resources */,
 				891B3086282821A4002CEA82 /* Assets.xcassets in Resources */,
+				898B9BD3282CEA60007DAE4F /* DriverMainViewController.xib in Resources */,
+				898B9BCA282CE973007DAE4F /* ClientMainViewController.xib in Resources */,
 				898B9B83282ABE57007DAE4F /* SignInViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -529,8 +613,12 @@
 				898B9B93282AD364007DAE4F /* XIBLocalizable.swift in Sources */,
 				898B9B25282872D2007DAE4F /* RideRequest.swift in Sources */,
 				898B9B8D282ACD79007DAE4F /* SignInViewModel.swift in Sources */,
+				898B9BB9282CE8EC007DAE4F /* ClientTabBarController.swift in Sources */,
 				898B9BB3282C51EC007DAE4F /* UserRegistration.swift in Sources */,
 				898B9B80282ABE57007DAE4F /* SignInViewController.swift in Sources */,
+				898B9BCC282CE99D007DAE4F /* DriverTabBarController.swift in Sources */,
+				898B9BC1282CE95B007DAE4F /* ClientProfileViewController.swift in Sources */,
+				898B9BD0282CEA60007DAE4F /* DriverMainViewController.swift in Sources */,
 				898B9B672829D20D007DAE4F /* Geotag.swift in Sources */,
 				898B9B90282ACE23007DAE4F /* Validator.swift in Sources */,
 				898B9B2D2828753E007DAE4F /* HTTPMethod.swift in Sources */,
@@ -541,6 +629,7 @@
 				898B9B89282AC854007DAE4F /* AppModeManager.swift in Sources */,
 				898B9BB0282C51A4007DAE4F /* SignUpDriverViewModel.swift in Sources */,
 				891B306D2828204C002CEA82 /* SceneDelegate.swift in Sources */,
+				898B9BDB282CFC46007DAE4F /* UIViewController+Extensions.swift in Sources */,
 				898B9B5B2829C29A007DAE4F /* EmptyResult.swift in Sources */,
 				898B9BA9282C4F76007DAE4F /* SignUpDriverViewController.swift in Sources */,
 				898B9BA7282C1422007DAE4F /* ClientRegistration.swift in Sources */,
@@ -554,7 +643,9 @@
 				898B9B50282902A3007DAE4F /* NetworkingService.swift in Sources */,
 				898B9B4A28287C06007DAE4F /* DataEncoder.swift in Sources */,
 				898B9B642829D14F007DAE4F /* MobilityServiceType.swift in Sources */,
+				898B9BD6282CEA71007DAE4F /* DriverProfileViewController.swift in Sources */,
 				898B9B302828762C007DAE4F /* NetworkingError.swift in Sources */,
+				898B9BC7282CE973007DAE4F /* ClientMainViewController.swift in Sources */,
 				898B9B162828684F007DAE4F /* Token.swift in Sources */,
 				898B9B9C282B976A007DAE4F /* SignUpClientViewController.swift in Sources */,
 				898B9B5E2829C343007DAE4F /* AuthenticationService.swift in Sources */,
@@ -577,8 +668,12 @@
 				898B9B94282AD364007DAE4F /* XIBLocalizable.swift in Sources */,
 				898B9B26282872D2007DAE4F /* RideRequest.swift in Sources */,
 				898B9B81282ABE57007DAE4F /* SignInViewController.swift in Sources */,
+				898B9BBA282CE8EC007DAE4F /* ClientTabBarController.swift in Sources */,
 				898B9BB4282C51EC007DAE4F /* UserRegistration.swift in Sources */,
 				898B9B682829D20D007DAE4F /* Geotag.swift in Sources */,
+				898B9BCD282CE99D007DAE4F /* DriverTabBarController.swift in Sources */,
+				898B9BC2282CE95B007DAE4F /* ClientProfileViewController.swift in Sources */,
+				898B9BD1282CEA60007DAE4F /* DriverMainViewController.swift in Sources */,
 				898B9B91282ACE23007DAE4F /* Validator.swift in Sources */,
 				898B9B2E2828753E007DAE4F /* HTTPMethod.swift in Sources */,
 				898B9B6B2829D29D007DAE4F /* MobilityService.swift in Sources */,
@@ -589,6 +684,7 @@
 				898B9B8A282AC854007DAE4F /* AppModeManager.swift in Sources */,
 				898B9BB1282C51A4007DAE4F /* SignUpDriverViewModel.swift in Sources */,
 				891B3082282821A4002CEA82 /* SceneDelegate.swift in Sources */,
+				898B9BDC282CFC46007DAE4F /* UIViewController+Extensions.swift in Sources */,
 				898B9B5C2829C29A007DAE4F /* EmptyResult.swift in Sources */,
 				898B9B40282877B3007DAE4F /* NetworkingProvider.swift in Sources */,
 				898B9BAC282C510E007DAE4F /* ClientRegistration.swift in Sources */,
@@ -602,7 +698,9 @@
 				898B9B4B28287C06007DAE4F /* DataEncoder.swift in Sources */,
 				898B9BA8282C1A11007DAE4F /* SignInViewModel.swift in Sources */,
 				898B9B652829D14F007DAE4F /* MobilityServiceType.swift in Sources */,
+				898B9BD7282CEA71007DAE4F /* DriverProfileViewController.swift in Sources */,
 				898B9B312828762C007DAE4F /* NetworkingError.swift in Sources */,
+				898B9BC8282CE973007DAE4F /* ClientMainViewController.swift in Sources */,
 				898B9B172828684F007DAE4F /* Token.swift in Sources */,
 				898B9BA0282B9782007DAE4F /* SignUpDriverViewController.swift in Sources */,
 				898B9B5F2829C343007DAE4F /* AuthenticationService.swift in Sources */,

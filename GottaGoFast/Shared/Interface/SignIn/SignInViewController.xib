@@ -75,22 +75,33 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hDs-bn-b2P">
+                    <rect key="frame" x="20" y="367" width="374" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Don't have an account yet? Register!"/>
+                    <connections>
+                        <action selector="tappedRegisterButton:" destination="-1" eventType="touchUpInside" id="rxK-th-K4S"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hDs-bn-b2P" secondAttribute="trailing" constant="20" id="0gF-SL-lzu"/>
                 <constraint firstItem="zxJ-sV-W8V" firstAttribute="top" secondItem="EHH-N8-j9d" secondAttribute="bottom" constant="25" id="1P5-iN-dRC"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7Xx-8j-AdB" secondAttribute="trailing" constant="20" id="4dD-Ho-lyZ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="EHH-N8-j9d" secondAttribute="trailing" constant="20" id="4jQ-Xh-4Rm"/>
                 <constraint firstItem="EHH-N8-j9d" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="9vs-2s-jyl"/>
                 <constraint firstItem="6c3-Wq-KyI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Agd-1N-KWv"/>
                 <constraint firstItem="6c3-Wq-KyI" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="G5d-wP-s2B"/>
+                <constraint firstItem="hDs-bn-b2P" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="GBZ-tw-T4k"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zxJ-sV-W8V" secondAttribute="trailing" constant="20" id="Mfv-G1-ZYl"/>
                 <constraint firstItem="dfz-W7-riA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="QFw-kd-sHS"/>
                 <constraint firstItem="dfz-W7-riA" firstAttribute="top" secondItem="7Xx-8j-AdB" secondAttribute="bottom" constant="15" id="Xy3-E7-gbZ"/>
                 <constraint firstItem="dY5-il-dKo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="d3G-M1-eYM"/>
                 <constraint firstItem="7Xx-8j-AdB" firstAttribute="top" secondItem="dY5-il-dKo" secondAttribute="bottom" constant="7" id="ed5-Jp-tgc"/>
                 <constraint firstItem="EHH-N8-j9d" firstAttribute="top" secondItem="dfz-W7-riA" secondAttribute="bottom" constant="7" id="fgc-HK-L5y"/>
+                <constraint firstItem="hDs-bn-b2P" firstAttribute="top" secondItem="zxJ-sV-W8V" secondAttribute="bottom" constant="20" id="pVN-rR-vfg"/>
                 <constraint firstItem="zxJ-sV-W8V" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="pwz-ac-WOn"/>
                 <constraint firstItem="dY5-il-dKo" firstAttribute="top" secondItem="6c3-Wq-KyI" secondAttribute="bottom" constant="15" id="sPP-xs-VVz"/>
                 <constraint firstItem="7Xx-8j-AdB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="yQs-3Q-LZz"/>
