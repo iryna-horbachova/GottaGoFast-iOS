@@ -4,6 +4,10 @@
 <dict>
 	<key>TargetName</key>
 	<string>$(TARGET_NAME)</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Allow app to know your location for rides</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Allow app to know your location for rides</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ClientMainViewController" customModule="GottaGoFastClient" customModuleProvider="target">
             <connections>
+                <outlet property="mapView" destination="7fN-20-D6o" id="rZp-Ny-vdo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,14 +18,25 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7fN-20-D6o">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                </mapView>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemMintColor"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="7fN-20-D6o" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0GS-iX-uic"/>
+                <constraint firstAttribute="trailing" secondItem="7fN-20-D6o" secondAttribute="trailing" id="GBp-3U-atK"/>
+                <constraint firstItem="7fN-20-D6o" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Iup-5n-ghp"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="7fN-20-D6o" secondAttribute="bottom" id="v1e-6d-WHx"/>
+            </constraints>
             <point key="canvasLocation" x="139" y="76"/>
         </view>
     </objects>
     <resources>
-        <systemColor name="systemMintColor">
-            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
