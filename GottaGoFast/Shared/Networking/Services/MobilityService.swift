@@ -26,10 +26,10 @@ final class MobilityService: NetworkingService, MobilityServiceType {
 
   func getDesignatedRideDetailForClient(
     rideRequestId: Int,
-    completion: @escaping (Result<DesignatedRide, NetworkingError>) -> Void
+    completion: @escaping (Result<DesignatedRide?, NetworkingError>) -> Void
   ) {
     provider.request(MobilityEndpoint.getDesignatedRideDetailForClient(rideRequestId: rideRequestId)) {
-      (result: Result<DesignatedRide, NetworkingError>) in
+      (result: Result<DesignatedRide?, NetworkingError>) in
 
       switch result {
       case .success(let designatedRide):
@@ -42,10 +42,10 @@ final class MobilityService: NetworkingService, MobilityServiceType {
 
   func getDesignatedRideDetailForDriver(
     driverId: Int,
-    completion: @escaping (Result<DesignatedRide, NetworkingError>) -> Void
+    completion: @escaping (Result<DesignatedRide?, NetworkingError>) -> Void
   ) {
     provider.request(MobilityEndpoint.getDesignatedRideDetailForDriver(driverId: driverId)) {
-      (result: Result<DesignatedRide, NetworkingError>) in
+      (result: Result<DesignatedRide?, NetworkingError>) in
 
       switch result {
       case .success(let designatedRide):

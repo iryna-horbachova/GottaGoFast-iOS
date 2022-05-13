@@ -8,6 +8,7 @@
 import Foundation
 
 struct RideRequest: Codable {
+  let id: Int?
   let clientId: Int
   let startLocationLatitude: Double
   let startLocationLongitude: Double

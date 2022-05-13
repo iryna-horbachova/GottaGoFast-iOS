@@ -15,14 +15,18 @@ class ClientMainViewController: UIViewController,
 
   @IBOutlet weak var mapView: MKMapView!
   var locationManager: CLLocationManager!
+  var viewModel: ClientMainViewModel!
 
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    viewModel = ClientMainViewModel(viewController: self)
     title = "title.ride".localized
     navigationController?.navigationBar.prefersLargeTitles = true
     determineCurrentLocation()
   }
+  
+  // MARK: - Location
   
   func locationManager(
     _ manager: CLLocationManager,
@@ -30,11 +34,22 @@ class ClientMainViewController: UIViewController,
   ) {
     let userLocation = locations[0] as CLLocation
     
-    let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
-    let mRegion = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
+    let center = CLLocationCoordinate2D(
+                                        latitude: userLocation.coordinate.latitude,
+                                        longitude: userLocation.coordinate.longitude
+                                        )
+    let mRegion = MKCoordinateRegion(
+                                     center: center,
+                                     span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
+                                    )
     
     mapView.setRegion(mRegion, animated: true)
     addAnnotation(location: userLocation)
+
+    viewModel.sendUserLocation(
+                               latitude: userLocation.coordinate.latitude,
+                               longitude: userLocation.coordinate.longitude
+                              )
   }
 
   func locationManager(
@@ -64,5 +79,18 @@ class ClientMainViewController: UIViewController,
       locationManager.startUpdatingLocation()
     }
   }
+  
+  // MARK: - Update UI
+  
+  func updateUIForDesignatedRide() {
+    
+  }
+  
+  func updateUIForWaiting() {
+    
+  }
 
+  func updateDriverLocation(_ driverLocation: Geotag) {
+    
+  }
 }

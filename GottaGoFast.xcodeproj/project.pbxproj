@@ -125,6 +125,8 @@
 		898B9BDF282D0F98007DAE4F /* ClientProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BDD282D0F98007DAE4F /* ClientProfileViewModel.swift */; };
 		898B9BE1282D356D007DAE4F /* DriverProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BE0282D356D007DAE4F /* DriverProfileViewModel.swift */; };
 		898B9BE2282D356D007DAE4F /* DriverProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BE0282D356D007DAE4F /* DriverProfileViewModel.swift */; };
+		898B9BEA282EDFF2007DAE4F /* ClientMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BE9282EDFF1007DAE4F /* ClientMainViewModel.swift */; };
+		898B9BEB282EDFF2007DAE4F /* ClientMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BE9282EDFF1007DAE4F /* ClientMainViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -192,6 +194,7 @@
 		898B9BDA282CFC46007DAE4F /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		898B9BDD282D0F98007DAE4F /* ClientProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProfileViewModel.swift; sourceTree = "<group>"; };
 		898B9BE0282D356D007DAE4F /* DriverProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverProfileViewModel.swift; sourceTree = "<group>"; };
+		898B9BE9282EDFF1007DAE4F /* ClientMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientMainViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -465,6 +468,7 @@
 			children = (
 				898B9BC5282CE973007DAE4F /* ClientMainViewController.swift */,
 				898B9BC6282CE973007DAE4F /* ClientMainViewController.xib */,
+				898B9BE9282EDFF1007DAE4F /* ClientMainViewModel.swift */,
 			);
 			path = Ride;
 			sourceTree = "<group>";
@@ -643,6 +647,7 @@
 				898B9BA9282C4F76007DAE4F /* SignUpDriverViewController.swift in Sources */,
 				898B9BA7282C1422007DAE4F /* ClientRegistration.swift in Sources */,
 				898B9B3F282877B3007DAE4F /* NetworkingProvider.swift in Sources */,
+				898B9BEA282EDFF2007DAE4F /* ClientMainViewModel.swift in Sources */,
 				898B9B1C2828719D007DAE4F /* Driver.swift in Sources */,
 				898B9B4D28287C87007DAE4F /* DataDecoder.swift in Sources */,
 				898B9B98282ADA66007DAE4F /* UIAlertController+Extensions.swift in Sources */,
@@ -700,6 +705,7 @@
 				898B9B40282877B3007DAE4F /* NetworkingProvider.swift in Sources */,
 				898B9BAC282C510E007DAE4F /* ClientRegistration.swift in Sources */,
 				898B9B1D2828719D007DAE4F /* Driver.swift in Sources */,
+				898B9BEB282EDFF2007DAE4F /* ClientMainViewModel.swift in Sources */,
 				898B9B4E28287C87007DAE4F /* DataDecoder.swift in Sources */,
 				898B9B99282ADA66007DAE4F /* UIAlertController+Extensions.swift in Sources */,
 				898B9B2928287376007DAE4F /* DesignatedRide.swift in Sources */,

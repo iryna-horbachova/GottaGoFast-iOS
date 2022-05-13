@@ -11,5 +11,5 @@ struct Geotag: Codable {
   let userId: Int?
   let latitude: Double
   let longitude: Double
-  let tiimestamp: String?
+  let timestamp: String?
 }
