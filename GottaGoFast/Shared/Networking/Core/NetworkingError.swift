@@ -13,6 +13,7 @@ enum NetworkingError: Error {
   case unableToComplete
   case encodingFailed
   case decodingFailed
+  case authenticationFailed
 }
 
 extension NetworkingError: LocalizedError {
@@ -29,6 +30,8 @@ extension NetworkingError: LocalizedError {
       return "networking.error.encoding.failed".localized
     case .decodingFailed:
       return "networking.error.decoding.failed".localized
+    case .authenticationFailed:
+      return "networking.error.authentication.failed".localized
     }
   }
 }

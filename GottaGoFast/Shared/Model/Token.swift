@@ -10,3 +10,7 @@ struct Token: Codable {
   let access: String
   let refresh: String
 }
+
+struct RefreshedToken: Codable {
+  let access: String
+}

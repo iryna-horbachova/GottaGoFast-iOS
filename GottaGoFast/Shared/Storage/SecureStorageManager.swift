@@ -36,6 +36,7 @@ class SecureStorageManager {
 
     let status = SecItemAdd(itemQuery as CFDictionary, nil)
     guard status == errSecSuccess else { throw KeychainError.unhandledError(status: status) }
+    UserDefaults.standard.set(Date(), forKey: "AuthenticationDate")
   }
 
   func getData(type: SecureStoreDataType) throws -> String {
@@ -79,7 +80,18 @@ class SecureStorageManager {
     }
 
     guard status == errSecSuccess else {
-        throw KeychainError.unhandledError(status: status)
+      throw KeychainError.unhandledError(status: status)
     }
+    UserDefaults.standard.set(Date(), forKey: "AuthenticationDate")
+  }
+  
+  func isAccessTokenValid() -> Bool {
+    guard let date = UserDefaults.standard.object(forKey: "AuthenticationDate") as? Date else {
+      return false
+    }
+    if date.addingTimeInterval(86400) < Date() {
+      return false
+    }
+    return true
   }
 }

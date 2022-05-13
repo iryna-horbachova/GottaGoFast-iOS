@@ -34,22 +34,6 @@ final class AuthenticationService: NetworkingService, AuthenticationServiceType 
     }
   }
 
-  func refreshLogin(
-    refreshToken: String,
-    completion: @escaping (Result<EmptyResult, NetworkingError>) -> Void
-  ) {
-    provider.request(AuthenticationEndpoint.refreshLogin(refreshToken: refreshToken)) { (result: Result<Token, NetworkingError>) in
-      
-      switch result {
-      case .success(let token):
-        AuthenticationManager.shared.currentToken = token
-        completion(.success(EmptyResult()))
-      case .failure(let error):
-        completion(.failure(error))
-      }
-    }
-  }
-
   func registerClient(
     _ clientRegistration: ClientRegistration,
     completion: @escaping (Result<Client, NetworkingError>) -> Void

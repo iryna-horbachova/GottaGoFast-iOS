@@ -13,11 +13,6 @@ protocol AuthenticationServiceType {
     completion: @escaping (Result <EmptyResult, NetworkingError>) -> Void
   )
 
-  func refreshLogin(
-    refreshToken: String,
-    completion: @escaping (Result <EmptyResult, NetworkingError>) -> Void
-  )
-
   func registerClient(
     _ clientRegistraion: ClientRegistration,
     completion: @escaping (Result <Client, NetworkingError>) -> Void
