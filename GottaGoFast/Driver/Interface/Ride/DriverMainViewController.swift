@@ -64,4 +64,12 @@ class DriverMainViewController: UIViewController,
       locationManager.startUpdatingLocation()
     }
   }
+  
+  func updateUserLocation(_ userLocation: Geotag) {
+    
+  }
+  
+  func updateUIForDesignatedRide() {
+    
+  }
 }

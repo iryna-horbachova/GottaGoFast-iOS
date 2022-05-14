@@ -127,6 +127,8 @@
 		898B9BE2282D356D007DAE4F /* DriverProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BE0282D356D007DAE4F /* DriverProfileViewModel.swift */; };
 		898B9BEA282EDFF2007DAE4F /* ClientMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BE9282EDFF1007DAE4F /* ClientMainViewModel.swift */; };
 		898B9BEB282EDFF2007DAE4F /* ClientMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BE9282EDFF1007DAE4F /* ClientMainViewModel.swift */; };
+		898B9BED282F7408007DAE4F /* DriverMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BEC282F7408007DAE4F /* DriverMainViewModel.swift */; };
+		898B9BEE282F7408007DAE4F /* DriverMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BEC282F7408007DAE4F /* DriverMainViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -195,6 +197,7 @@
 		898B9BDD282D0F98007DAE4F /* ClientProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProfileViewModel.swift; sourceTree = "<group>"; };
 		898B9BE0282D356D007DAE4F /* DriverProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverProfileViewModel.swift; sourceTree = "<group>"; };
 		898B9BE9282EDFF1007DAE4F /* ClientMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientMainViewModel.swift; sourceTree = "<group>"; };
+		898B9BEC282F7408007DAE4F /* DriverMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverMainViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -488,6 +491,7 @@
 			children = (
 				898B9BCE282CEA60007DAE4F /* DriverMainViewController.swift */,
 				898B9BCF282CEA60007DAE4F /* DriverMainViewController.xib */,
+				898B9BEC282F7408007DAE4F /* DriverMainViewModel.swift */,
 			);
 			path = Ride;
 			sourceTree = "<group>";
@@ -634,6 +638,7 @@
 				898B9BD0282CEA60007DAE4F /* DriverMainViewController.swift in Sources */,
 				898B9B672829D20D007DAE4F /* Geotag.swift in Sources */,
 				898B9B90282ACE23007DAE4F /* Validator.swift in Sources */,
+				898B9BED282F7408007DAE4F /* DriverMainViewModel.swift in Sources */,
 				898B9B2D2828753E007DAE4F /* HTTPMethod.swift in Sources */,
 				898B9B6A2829D29D007DAE4F /* MobilityService.swift in Sources */,
 				898B9B42282877F0007DAE4F /* EndpointType.swift in Sources */,
@@ -692,6 +697,7 @@
 				898B9BD1282CEA60007DAE4F /* DriverMainViewController.swift in Sources */,
 				898B9B91282ACE23007DAE4F /* Validator.swift in Sources */,
 				898B9B2E2828753E007DAE4F /* HTTPMethod.swift in Sources */,
+				898B9BEE282F7408007DAE4F /* DriverMainViewModel.swift in Sources */,
 				898B9B6B2829D29D007DAE4F /* MobilityService.swift in Sources */,
 				898B9BAB282C510B007DAE4F /* SignUpClientViewController.swift in Sources */,
 				898B9B43282877F0007DAE4F /* EndpointType.swift in Sources */,
