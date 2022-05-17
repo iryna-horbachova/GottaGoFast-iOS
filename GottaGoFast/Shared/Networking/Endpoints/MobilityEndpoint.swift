@@ -13,6 +13,7 @@ enum MobilityEndpoint {
   case getDesignatedRideDetailForDriver(driverId: Int)
   case updateUserLocation(location: Geotag)
   case getLatestUserLocation(userId: Int)
+  case updateDesignatedRideStatus(id: Int, status: String)
 }
 
 extension MobilityEndpoint: EndpointType {
@@ -28,6 +29,8 @@ extension MobilityEndpoint: EndpointType {
       return ":8080/api/mobility/location/update/"
     case .getLatestUserLocation(let userId):
       return ":8080/api/mobility/location/get/\(userId)/"
+    case .updateDesignatedRideStatus(let id, _):
+      return ":8080/api/mobility/ride/designated/status/\(id)/"
     }
   }
 
@@ -43,6 +46,8 @@ extension MobilityEndpoint: EndpointType {
       return .post
     case .getLatestUserLocation:
       return .get
+    case .updateDesignatedRideStatus:
+      return .put
     }
   }
 
@@ -66,6 +71,8 @@ extension MobilityEndpoint: EndpointType {
       return geotag
     case .getLatestUserLocation:
       return nil
+    case .updateDesignatedRideStatus(_, let status):
+      return ["status": status]
     }
   }
 }

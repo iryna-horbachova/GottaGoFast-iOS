@@ -32,4 +32,10 @@ protocol MobilityServiceType {
     userId: Int,
     completion: @escaping (Result <Geotag, NetworkingError>) -> Void
   )
+  
+  func updateDesignatedRideStatus(
+    id: Int,
+    status: String,
+    completion: @escaping (Result <EmptyResult, NetworkingError>) -> Void
+  )
 }

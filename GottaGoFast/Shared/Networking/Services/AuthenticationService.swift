@@ -13,7 +13,8 @@ final class AuthenticationService: NetworkingService, AuthenticationServiceType 
     email: String, password: String,
     completion: @escaping (Result<EmptyResult, NetworkingError>) -> Void
   ) {
-    provider.request(AuthenticationEndpoint.performLogin(email: email, password: password)) { (result: Result<Token, NetworkingError>) in
+    provider.request(AuthenticationEndpoint.performLogin(email: email, password: password)) {
+      (result: Result<Token, NetworkingError>) in
       
       switch result {
       case .success(let token):
@@ -38,7 +39,8 @@ final class AuthenticationService: NetworkingService, AuthenticationServiceType 
     _ clientRegistration: ClientRegistration,
     completion: @escaping (Result<Client, NetworkingError>) -> Void
   ) {
-    provider.request(AuthenticationEndpoint.registerClient(clientRegistration)) { (result: Result<Client, NetworkingError>) in
+    provider.request(AuthenticationEndpoint.registerClient(clientRegistration)) {
+      (result: Result<Client, NetworkingError>) in
       
       switch result {
       case .success(let client):
@@ -53,7 +55,8 @@ final class AuthenticationService: NetworkingService, AuthenticationServiceType 
     _ driver: DriverRegistration,
     completion: @escaping (Result<Driver, NetworkingError>) -> Void
   ) {
-    provider.request(AuthenticationEndpoint.registerDriver(driver)) { (result: Result<Driver, NetworkingError>) in
+    provider.request(AuthenticationEndpoint.registerDriver(driver)) {
+      (result: Result<Driver, NetworkingError>) in
       
       switch result {
       case .success(let driver):
@@ -68,7 +71,8 @@ final class AuthenticationService: NetworkingService, AuthenticationServiceType 
     id: String,
     completion: @escaping (Result<Client, NetworkingError>) -> Void
   ) {
-    provider.request(AuthenticationEndpoint.getClientProfile(id: id)) { (result: Result<Client, NetworkingError>) in
+    provider.request(AuthenticationEndpoint.getClientProfile(id: id)) {
+      (result: Result<Client, NetworkingError>) in
       
       switch result {
       case .success(let client):
@@ -83,11 +87,28 @@ final class AuthenticationService: NetworkingService, AuthenticationServiceType 
     id: String,
     completion: @escaping (Result<Driver, NetworkingError>) -> Void
   ) {
-    provider.request(AuthenticationEndpoint.getDriverProfile(id: id)) { (result: Result<Driver, NetworkingError>) in
+    provider.request(AuthenticationEndpoint.getDriverProfile(id: id)) {
+      (result: Result<Driver, NetworkingError>) in
       
       switch result {
       case .success(let driver):
         completion(.success(driver))
+      case .failure(let error):
+        completion(.failure(error))
+      }
+    }
+  }
+  
+  func updateDriverStatus(
+    id: Int,
+    status: String,
+    completion: @escaping (Result<EmptyResult, NetworkingError>) -> Void
+  ) {
+    provider.request(AuthenticationEndpoint.updateDriverStatus(driverId: id, newStatus: status)) {
+      (result: Result<EmptyResult, NetworkingError>) in
+      switch result {
+      case .success(_):
+        completion(.success(EmptyResult()))
       case .failure(let error):
         completion(.failure(error))
       }

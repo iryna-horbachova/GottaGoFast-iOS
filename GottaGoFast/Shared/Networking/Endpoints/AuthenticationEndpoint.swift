@@ -14,6 +14,7 @@ enum AuthenticationEndpoint {
   case registerDriver(_ driver: DriverRegistration)
   case getClientProfile(id: String)
   case getDriverProfile(id: String)
+  case updateDriverStatus(driverId: Int, newStatus: String)
 }
 
 extension AuthenticationEndpoint: EndpointType {
@@ -31,6 +32,8 @@ extension AuthenticationEndpoint: EndpointType {
       return ":8000/api/profile/clients/\(id)/"
     case .getDriverProfile(let id):
       return ":8000/api/profile/drivers/\(id)/"
+    case .updateDriverStatus(let driverId, _):
+      return ":8000/api/profile/drivers/status/\(driverId)/"
     }
   }
 
@@ -42,6 +45,8 @@ extension AuthenticationEndpoint: EndpointType {
       return .post
     case .getClientProfile, .getDriverProfile:
       return .get
+    case .updateDriverStatus:
+      return .put
     }
   }
 
@@ -70,6 +75,8 @@ extension AuthenticationEndpoint: EndpointType {
       return driver
     case .getClientProfile, .getDriverProfile:
       return nil
+    case .updateDriverStatus(_, let newStatus):
+      return ["status": newStatus]
     }
   }
 }

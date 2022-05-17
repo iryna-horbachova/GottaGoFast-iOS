@@ -32,4 +32,10 @@ protocol AuthenticationServiceType {
     id: String,
     completion: @escaping (Result <Driver, NetworkingError>) -> Void
   )
+  
+  func updateDriverStatus(
+    id: Int,
+    status: String,
+    completion: @escaping (Result <EmptyResult, NetworkingError>) -> Void
+  )
 }

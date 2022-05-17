@@ -11,6 +11,7 @@ class DriverMainViewModel {
   weak var viewController: DriverMainViewController!
   
   private let mobilityService = MobilityService()
+  private let authenticationService = AuthenticationService()
   private var timer = Timer()
   
   private var driverId: Int?
@@ -83,8 +84,6 @@ class DriverMainViewModel {
       return
     }
 
-
-    
     mobilityService.getDesignatedRideDetailForDriver(
       driverId: driverId
     ) { result in
@@ -101,12 +100,35 @@ class DriverMainViewModel {
     }
   }
   
-  func updateDriverStatus() {
-    
+  func updateDriverStatus(status: String) {
+    guard let driverId = driverId else {
+      return
+    }
+  
+    authenticationService.updateDriverStatus(id: driverId, status: status) { result in
+      switch result {
+      case .success(_):
+        NSLog("Updated driver status!")
+      case .failure(let error):
+        NSLog("Updating driver status failed with error: \(error.localizedDescription)")
+      }
+    }
   }
   
   func updateDesignatedRideStatus(status: String) {
     
+    guard let designatedRide = designatedRide else {
+      return
+    }
+    
+    mobilityService.updateDesignatedRideStatus(id: designatedRide.id, status: status) { result in
+      switch result {
+      case .success(_):
+        NSLog("Updated designated ride status!")
+      case .failure(let error):
+        NSLog("Updating designated ride status failed with error: \(error.localizedDescription)")
+      }
+    }
   }
   
 }

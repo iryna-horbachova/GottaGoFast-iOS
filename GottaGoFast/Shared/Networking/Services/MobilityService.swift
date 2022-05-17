@@ -87,4 +87,21 @@ final class MobilityService: NetworkingService, MobilityServiceType {
       }
     }
   }
+  
+  func updateDesignatedRideStatus(
+    id: Int,
+    status: String,
+    completion: @escaping (Result <EmptyResult, NetworkingError>) -> Void
+  ) {
+    provider.request(MobilityEndpoint.updateDesignatedRideStatus(id: id, status: status)) {
+      (result: Result<EmptyResult, NetworkingError>) in
+
+      switch result {
+      case .success(_):
+        completion(.success(EmptyResult()))
+      case .failure(let error):
+        completion(.failure(error))
+      }
+    }
+  }
 }

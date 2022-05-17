@@ -8,6 +8,7 @@
 import Foundation
 
 struct DesignatedRide: Codable {
+  let id: Int
   let driverId: Int
   let requestRideId: Int
   let price: Double
