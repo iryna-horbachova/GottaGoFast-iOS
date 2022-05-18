@@ -102,7 +102,8 @@ final class NetworkingProvider: NetworkingProviderType {
   ) where Model : Decodable {
 
     do {
-      guard SecureStorageManager.shared.isAccessTokenValid() else {
+      guard !SecureStorageManager.shared.isUserLoggedIn() ||
+            SecureStorageManager.shared.isAccessTokenValid() else {
         refreshLogin() { result in
           switch result {
           case .success(_):

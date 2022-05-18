@@ -85,6 +85,13 @@ class SecureStorageManager {
     UserDefaults.standard.set(Date(), forKey: "AuthenticationDate")
   }
   
+  func isUserLoggedIn() -> Bool {
+    guard UserDefaults.standard.object(forKey: "AuthenticationDate") is Date else {
+      return false
+    }
+    return true
+  }
+  
   func isAccessTokenValid() -> Bool {
     guard let date = UserDefaults.standard.object(forKey: "AuthenticationDate") as? Date else {
       return false

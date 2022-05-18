@@ -22,6 +22,8 @@ class DriverMainViewController: UIViewController,
     title = "title.ride".localized
     navigationController?.navigationBar.prefersLargeTitles = true
     determineCurrentLocation()
+    
+    presentModalController()
   }
 
   func locationManager(
@@ -71,5 +73,11 @@ class DriverMainViewController: UIViewController,
   
   func updateUIForDesignatedRide() {
     
+  }
+  
+  @objc func presentModalController() {
+    let vc = DriverModalViewController()
+    vc.modalPresentationStyle = .overCurrentContext
+    self.present(vc, animated: false)
   }
 }

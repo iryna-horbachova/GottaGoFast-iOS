@@ -129,6 +129,10 @@
 		898B9BEB282EDFF2007DAE4F /* ClientMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BE9282EDFF1007DAE4F /* ClientMainViewModel.swift */; };
 		898B9BED282F7408007DAE4F /* DriverMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BEC282F7408007DAE4F /* DriverMainViewModel.swift */; };
 		898B9BEE282F7408007DAE4F /* DriverMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898B9BEC282F7408007DAE4F /* DriverMainViewModel.swift */; };
+		899674E12833A658009D94D6 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899674E02833A658009D94D6 /* ModalViewController.swift */; };
+		899674E22833A658009D94D6 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899674E02833A658009D94D6 /* ModalViewController.swift */; };
+		899674E42833B65D009D94D6 /* DriverModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899674E32833B65D009D94D6 /* DriverModalViewController.swift */; };
+		899674E52833B65D009D94D6 /* DriverModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899674E32833B65D009D94D6 /* DriverModalViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -198,6 +202,8 @@
 		898B9BE0282D356D007DAE4F /* DriverProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverProfileViewModel.swift; sourceTree = "<group>"; };
 		898B9BE9282EDFF1007DAE4F /* ClientMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientMainViewModel.swift; sourceTree = "<group>"; };
 		898B9BEC282F7408007DAE4F /* DriverMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverMainViewModel.swift; sourceTree = "<group>"; };
+		899674E02833A658009D94D6 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		899674E32833B65D009D94D6 /* DriverModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverModalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -442,6 +448,7 @@
 			children = (
 				898B9B97282ADA66007DAE4F /* UIAlertController+Extensions.swift */,
 				898B9BDA282CFC46007DAE4F /* UIViewController+Extensions.swift */,
+				899674E02833A658009D94D6 /* ModalViewController.swift */,
 			);
 			path = UIElements;
 			sourceTree = "<group>";
@@ -492,6 +499,7 @@
 				898B9BCE282CEA60007DAE4F /* DriverMainViewController.swift */,
 				898B9BCF282CEA60007DAE4F /* DriverMainViewController.xib */,
 				898B9BEC282F7408007DAE4F /* DriverMainViewModel.swift */,
+				899674E32833B65D009D94D6 /* DriverModalViewController.swift */,
 			);
 			path = Ride;
 			sourceTree = "<group>";
@@ -623,6 +631,7 @@
 				898B9B58282909BC007DAE4F /* AuthenticationServiceType.swift in Sources */,
 				898B9BA5282C128C007DAE4F /* SignUpClientViewModel.swift in Sources */,
 				898B9B7B282ABCA7007DAE4F /* TargetType.swift in Sources */,
+				899674E12833A658009D94D6 /* ModalViewController.swift in Sources */,
 				898B9B612829CD09007DAE4F /* MobilityEndpoint.swift in Sources */,
 				898B9B46282879CC007DAE4F /* AuthenticationManager.swift in Sources */,
 				898B9B3C28287749007DAE4F /* String+Extensions.swift in Sources */,
@@ -662,6 +671,7 @@
 				898B9B50282902A3007DAE4F /* NetworkingService.swift in Sources */,
 				898B9BDE282D0F98007DAE4F /* ClientProfileViewModel.swift in Sources */,
 				898B9B4A28287C06007DAE4F /* DataEncoder.swift in Sources */,
+				899674E42833B65D009D94D6 /* DriverModalViewController.swift in Sources */,
 				898B9B642829D14F007DAE4F /* MobilityServiceType.swift in Sources */,
 				898B9BD6282CEA71007DAE4F /* DriverProfileViewController.swift in Sources */,
 				898B9B302828762C007DAE4F /* NetworkingError.swift in Sources */,
@@ -682,6 +692,7 @@
 				898B9B59282909BC007DAE4F /* AuthenticationServiceType.swift in Sources */,
 				898B9B7C282ABCA7007DAE4F /* TargetType.swift in Sources */,
 				898B9B622829CD09007DAE4F /* MobilityEndpoint.swift in Sources */,
+				899674E22833A658009D94D6 /* ModalViewController.swift in Sources */,
 				898B9BAD282C5120007DAE4F /* SignUpClientViewModel.swift in Sources */,
 				898B9B47282879CC007DAE4F /* AuthenticationManager.swift in Sources */,
 				898B9B3D28287749007DAE4F /* String+Extensions.swift in Sources */,
@@ -721,6 +732,7 @@
 				898B9B4B28287C06007DAE4F /* DataEncoder.swift in Sources */,
 				898B9BDF282D0F98007DAE4F /* ClientProfileViewModel.swift in Sources */,
 				898B9BA8282C1A11007DAE4F /* SignInViewModel.swift in Sources */,
+				899674E52833B65D009D94D6 /* DriverModalViewController.swift in Sources */,
 				898B9B652829D14F007DAE4F /* MobilityServiceType.swift in Sources */,
 				898B9BD7282CEA71007DAE4F /* DriverProfileViewController.swift in Sources */,
 				898B9B312828762C007DAE4F /* NetworkingError.swift in Sources */,
