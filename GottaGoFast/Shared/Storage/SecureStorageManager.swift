@@ -23,8 +23,8 @@ enum SecureStoreDataType: String {
 class SecureStorageManager {
 
   static let shared = SecureStorageManager()
-  private let server = "AuthenticationServer"
-  
+  private let authenticationDateKey = "AuthenticationDate"
+
   private init() { }
 
   func addData(_ value: String, type: SecureStoreDataType) throws {
@@ -36,7 +36,7 @@ class SecureStorageManager {
 
     let status = SecItemAdd(itemQuery as CFDictionary, nil)
     guard status == errSecSuccess else { throw KeychainError.unhandledError(status: status) }
-    UserDefaults.standard.set(Date(), forKey: "AuthenticationDate")
+    UserDefaults.standard.set(Date(), forKey: authenticationDateKey)
   }
 
   func getData(type: SecureStoreDataType) throws -> String {
@@ -82,18 +82,46 @@ class SecureStorageManager {
     guard status == errSecSuccess else {
       throw KeychainError.unhandledError(status: status)
     }
-    UserDefaults.standard.set(Date(), forKey: "AuthenticationDate")
+    UserDefaults.standard.set(Date(), forKey: authenticationDateKey)
+  }
+  
+  func removeAllData() throws {
+    UserDefaults.standard.removeObject(forKey: authenticationDateKey)
+    
+    let accessTokenQuery: [String: Any] = [
+      kSecAttrAccount as String: SecureStoreDataType.accessToken.rawValue,
+      kSecClass as String: kSecClassGenericPassword
+    ]
+    
+    let refreshTokenQuery: [String: Any] = [
+      kSecAttrAccount as String: SecureStoreDataType.refreshToken.rawValue,
+      kSecClass as String: kSecClassGenericPassword
+    ]
+    
+    let userIdQuery: [String: Any] = [
+      kSecAttrAccount as String: SecureStoreDataType.userId.rawValue,
+      kSecClass as String: kSecClassGenericPassword
+    ]
+    
+    let accessTokenStatus = SecItemDelete(accessTokenQuery as CFDictionary)
+    let refreshTokenStatus = SecItemDelete(refreshTokenQuery as CFDictionary)
+    let userIdStatus = SecItemDelete(userIdQuery as CFDictionary)
+    
+    guard (accessTokenStatus == errSecSuccess || accessTokenStatus == errSecItemNotFound) &&
+      (refreshTokenStatus == errSecSuccess || refreshTokenStatus == errSecItemNotFound) &&
+      (userIdStatus == errSecSuccess || userIdStatus == errSecItemNotFound)
+      else { throw KeychainError.unhandledError(status: accessTokenStatus) }
   }
   
   func isUserLoggedIn() -> Bool {
-    guard UserDefaults.standard.object(forKey: "AuthenticationDate") is Date else {
+    guard UserDefaults.standard.object(forKey: authenticationDateKey) is Date else {
       return false
     }
     return true
   }
   
   func isAccessTokenValid() -> Bool {
-    guard let date = UserDefaults.standard.object(forKey: "AuthenticationDate") as? Date else {
+    guard let date = UserDefaults.standard.object(forKey: authenticationDateKey) as? Date else {
       return false
     }
     if date.addingTimeInterval(86400) < Date() {

@@ -138,7 +138,7 @@ class SignUpDriverViewController: UIViewController {
   }
   
   @IBAction func tappedSignInButton(_ sender: UIButton) {
-    performTransition(to: SignInViewController(nibName: "SignInViewController", bundle: .main) )
+    performTransition(to: SignInViewController(nibName: "SignInViewController", bundle: .main))
   }
 
   func proceedToMainApplication() {

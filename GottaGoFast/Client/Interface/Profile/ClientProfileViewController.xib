@@ -70,11 +70,23 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hgu-c3-S4q">
+                    <rect key="frame" x="20" y="403" width="374" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="O4w-N8-aao"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Logout"/>
+                    <connections>
+                        <action selector="tappedLogoutButton:" destination="-1" eventType="touchUpInside" id="rJb-Lh-XYA"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="ZRk-oG-jEE" firstAttribute="top" secondItem="TUI-NK-ow8" secondAttribute="bottom" constant="20" id="2Ec-o2-f76"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Hgu-c3-S4q" secondAttribute="trailing" constant="20" id="6Dt-gl-e5V"/>
                 <constraint firstItem="eJ7-tz-t6r" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="A5h-4g-n25"/>
                 <constraint firstItem="mow-fP-UR9" firstAttribute="top" secondItem="ZRk-oG-jEE" secondAttribute="bottom" constant="10" id="Emp-K9-Un2"/>
                 <constraint firstItem="TUI-NK-ow8" firstAttribute="top" secondItem="mi5-Rr-uz2" secondAttribute="bottom" constant="10" id="FeK-Ag-3Gi"/>
@@ -82,12 +94,14 @@
                 <constraint firstItem="Z00-kR-rOT" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="NBu-Zo-9vn"/>
                 <constraint firstItem="mi5-Rr-uz2" firstAttribute="top" secondItem="IWU-dw-sjY" secondAttribute="bottom" constant="20" id="NPc-vF-Exd"/>
                 <constraint firstItem="ZRk-oG-jEE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="RIa-sg-Xdx"/>
+                <constraint firstItem="Hgu-c3-S4q" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Rpn-Jn-8MA"/>
                 <constraint firstItem="mow-fP-UR9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Xew-Qa-QO6"/>
                 <constraint firstItem="TUI-NK-ow8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Y01-bF-ZSQ"/>
                 <constraint firstItem="eJ7-tz-t6r" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="35" id="fHm-Rh-faa"/>
                 <constraint firstItem="acf-Tj-1EE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="gjV-4i-Yf5"/>
                 <constraint firstItem="IWU-dw-sjY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="hME-ox-erS"/>
                 <constraint firstItem="Z00-kR-rOT" firstAttribute="top" secondItem="mow-fP-UR9" secondAttribute="bottom" constant="20" id="hag-mb-Iu6"/>
+                <constraint firstItem="Hgu-c3-S4q" firstAttribute="top" secondItem="acf-Tj-1EE" secondAttribute="bottom" constant="20" id="rVs-iG-Qk7"/>
                 <constraint firstItem="mi5-Rr-uz2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="us4-n9-pij"/>
                 <constraint firstItem="acf-Tj-1EE" firstAttribute="top" secondItem="Z00-kR-rOT" secondAttribute="bottom" constant="10" id="zyM-bD-9DT"/>
             </constraints>

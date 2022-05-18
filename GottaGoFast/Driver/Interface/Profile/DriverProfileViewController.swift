@@ -49,10 +49,10 @@ class DriverProfileViewController: UIViewController {
     vehicleChildrenSeatsLabel.text = String(viewModel.driver!.vehicle.childrenSeatsNumber)
     vehicleAnimalSeatsLabel.text = String(viewModel.driver!.vehicle.animalSeatsNumber)
     vehicleTrunkCapacityLabel.text = String(viewModel.driver!.vehicle.trunkCapacity)
-    
-    /*
-     Driver(user: GottaGoFastDriver.User(id: Optional(14), email: "driver@me.com", firstName: "Oleg", lastName: "Driver", gender: "U", phoneNumber: "214432"), vehicle: GottaGoFastDriver.Vehicle(id: Optional(8), model: "Tesla", type: "P", category: "N", insurancePolicyNumber: "329874329", adultsSeatsNumber: 4, childrenSeatsNumber: 0, animalSeatsNumber: 0, trunkCapacity: 0, airConditionerPresent: true), passportNumber: "34234234", driverLicenseNumber: "4235223", taxiLicenseNumber: "425223", status: "N")
-     */
   }
 
+  @IBAction func tappedLogoutButton(_ sender: UIButton) {
+    viewModel.logout()
+    performTransition(to: SignInViewController(nibName: "SignInViewController", bundle: .main))
+  }
 }

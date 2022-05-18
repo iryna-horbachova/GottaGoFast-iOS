@@ -31,5 +31,9 @@ class ClientProfileViewController: UIViewController {
     emailLabel.text = viewModel.client?.user.email
     phoneNumberLabel.text = viewModel.client?.user.phoneNumber
   }
-
+  @IBAction func tappedLogoutButton(_ sender: UIButton) {
+    viewModel.logout()
+    performTransition(to: SignInViewController(nibName: "SignInViewController", bundle: .main))
+  }
+  
 }

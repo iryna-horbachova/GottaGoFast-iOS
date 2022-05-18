@@ -42,4 +42,12 @@ class ClientProfileViewModel {
       }
     }
   }
+  
+  func logout() {
+    do {
+      try SecureStorageManager.shared.removeAllData()
+    } catch {
+      NSLog("Unable to logout user")
+    }
+  }
 }
