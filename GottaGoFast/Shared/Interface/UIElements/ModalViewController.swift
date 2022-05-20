@@ -14,10 +14,11 @@ class ModalViewController: UIViewController {
     view.backgroundColor = .white
     view.layer.cornerRadius = 16
     view.clipsToBounds = true
+    view.tag = 100
     return view
   }()
-
-  let maxDimmedAlpha: CGFloat = 0.6
+  
+  let maxDimmedAlpha: CGFloat = 0.3
   lazy var dimmedView: UIView = {
     let view = UIView()
     view.backgroundColor = .black
@@ -32,14 +33,15 @@ class ModalViewController: UIViewController {
   
   var containerViewHeightConstraint: NSLayoutConstraint?
   var containerViewBottomConstraint: NSLayoutConstraint?
-
+  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     setupView()
     setupConstraints()
     setupPanGesture()
   }
-
+  
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     animateShowDimmedView()
@@ -61,7 +63,6 @@ class ModalViewController: UIViewController {
       dimmedView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
       dimmedView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       dimmedView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-
       containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
     ])
@@ -74,12 +75,13 @@ class ModalViewController: UIViewController {
   }
   
   func animatePresentContainer() {
+    print("Animate present")
     UIView.animate(withDuration: 0.3) {
       self.containerViewBottomConstraint?.constant = 0
       self.view.layoutIfNeeded()
     }
   }
-
+  
   func animateShowDimmedView() {
     dimmedView.alpha = 0
     UIView.animate(withDuration: 0.4) {
@@ -139,15 +141,50 @@ class ModalViewController: UIViewController {
   
   func animateDismissView() {
     UIView.animate(withDuration: 0.3) {
+
       self.containerViewBottomConstraint?.constant = self.defaultHeight
       self.view.layoutIfNeeded()
     }
 
-    dimmedView.alpha = maxDimmedAlpha
     UIView.animate(withDuration: 0.4) {
       self.dimmedView.alpha = 0
     } completion: { _ in
       self.dismiss(animated: false)
     }
+  }
+  
+  func setupContentView(_ contentView: UIView) {
+    containerView.addSubview(contentView)
+    contentView.translatesAutoresizingMaskIntoConstraints = false
+
+    NSLayoutConstraint.activate([
+      contentView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 32),
+      contentView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20),
+      contentView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+      contentView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
+    ])
+  }
+  
+  func clearContainerView() {
+    containerView.subviews.forEach({ $0.removeFromSuperview() })
+  }
+}
+
+extension ModalViewController {
+  func makeActionButton() -> UIButton {
+    let button = UIButton()
+    button.backgroundColor = .systemBlue
+    button.layer.cornerRadius = 10
+    button.setTitle("Action button", for: .normal)
+    button.titleLabel?.font = .preferredFont(forTextStyle: .body)
+    button.translatesAutoresizingMaskIntoConstraints = false
+    return button
+  }
+  
+  func makeTitleLabel() -> UILabel {
+    let label = UILabel()
+    label.text = "Title"
+    label.font = .preferredFont(forTextStyle: .title1)
+    return label
   }
 }

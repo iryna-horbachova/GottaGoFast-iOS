@@ -7,8 +7,21 @@
 
 import Foundation
 
+enum DriverMainControllerState {
+  case inActive
+  case searchingForRideRequest
+  case driveToDesignatedRideStartPoint
+  case driveToDesignatedRideEndPoint
+}
+
 class DriverMainViewModel {
-  weak var viewController: DriverMainViewController!
+  private var viewController: DriverMainViewController!
+  var modalViewController: DriverModalViewController!
+  var controllerState = DriverMainControllerState.inActive {
+    didSet {
+      modalViewController.setupContentViewForDriverState()
+    }
+  }
   
   private let mobilityService = MobilityService()
   private let authenticationService = AuthenticationService()
@@ -19,6 +32,9 @@ class DriverMainViewModel {
   private var designatedRide: DesignatedRide? {
     didSet {
       DispatchQueue.main.async {
+        if self.designatedRide != nil {
+          self.controllerState = .driveToDesignatedRideStartPoint
+        }
         self.viewController.updateUIForDesignatedRide()
       }
     }
@@ -56,21 +72,6 @@ class DriverMainViewModel {
     }
   }
   
-  func createRideRequest(_ rideRequest: RideRequest) {
-    mobilityService.createRideRequest(rideRequest) { result in
-      switch result {
-      case .success(let ride):
-        self.rideRequestId = ride.id
-        self.scheduleTimer() { _ in
-          self.checkForDesignatedRide()
-        }
-        NSLog("Successfully created ride request")
-      case .failure(let error):
-        NSLog("Ride request creation failed with error \(error.localizedDescription)")
-      }
-    }
-  }
-  
   func scheduleTimer(for method: @escaping (Timer) -> ()) {
     timer = Timer.scheduledTimer(
       withTimeInterval: 7,
@@ -104,11 +105,17 @@ class DriverMainViewModel {
     guard let driverId = driverId else {
       return
     }
+    if status == "A" {
+      controllerState = .searchingForRideRequest
+    }
   
     authenticationService.updateDriverStatus(id: driverId, status: status) { result in
       switch result {
       case .success(_):
         NSLog("Updated driver status!")
+        self.scheduleTimer() { _ in
+          self.checkForDesignatedRide()
+        }
       case .failure(let error):
         NSLog("Updating driver status failed with error: \(error.localizedDescription)")
       }
@@ -130,5 +137,4 @@ class DriverMainViewModel {
       }
     }
   }
-  
 }

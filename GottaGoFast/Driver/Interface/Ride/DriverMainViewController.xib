@@ -22,13 +22,27 @@
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ItS-f6-tyd">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                 </mapView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R0s-x6-H8J">
+                    <rect key="frame" x="20" y="802" width="374" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="fbW-9y-x6P"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Show info"/>
+                    <connections>
+                        <action selector="tappedShowInfoButton:" destination="-1" eventType="touchUpInside" id="OPj-IM-nKN"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="R0s-x6-H8J" secondAttribute="trailing" constant="20" id="0nM-AA-V2c"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ItS-f6-tyd" secondAttribute="trailing" id="2tr-ws-1Mt"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="R0s-x6-H8J" secondAttribute="bottom" constant="10" id="Dsb-cH-hUH"/>
                 <constraint firstItem="ItS-f6-tyd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="FIU-gr-j6D"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ItS-f6-tyd" secondAttribute="bottom" id="Ors-1v-X6l"/>
+                <constraint firstItem="R0s-x6-H8J" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Twz-jd-T6V"/>
                 <constraint firstItem="ItS-f6-tyd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Yi6-bR-YMh"/>
             </constraints>
             <point key="canvasLocation" x="139" y="72"/>

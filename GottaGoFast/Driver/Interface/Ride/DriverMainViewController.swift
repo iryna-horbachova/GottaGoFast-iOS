@@ -13,6 +13,8 @@ class DriverMainViewController: UIViewController,
                                 MKMapViewDelegate,
                                 CLLocationManagerDelegate {
 
+  private var viewModel: DriverMainViewModel!
+
   @IBOutlet weak var mapView: MKMapView!
   var locationManager: CLLocationManager!
   
@@ -21,9 +23,9 @@ class DriverMainViewController: UIViewController,
     
     title = "title.ride".localized
     navigationController?.navigationBar.prefersLargeTitles = true
-    determineCurrentLocation()
     
-    presentModalController()
+    viewModel = DriverMainViewModel(viewController: self)
+    determineCurrentLocation()
   }
 
   func locationManager(
@@ -31,12 +33,14 @@ class DriverMainViewController: UIViewController,
     didUpdateLocations locations: [CLLocation]
   ) {
     let userLocation = locations[0] as CLLocation
-    
-    let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+    let latitude = userLocation.coordinate.latitude
+    let longitude = userLocation.coordinate.longitude
+    let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     let mRegion = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
     
     mapView.setRegion(mRegion, animated: true)
     addAnnotation(location: userLocation)
+    viewModel.sendDriverLocation(latitude: latitude, longitude: longitude)
   }
 
   func locationManager(
@@ -74,10 +78,15 @@ class DriverMainViewController: UIViewController,
   func updateUIForDesignatedRide() {
     
   }
+
+  @IBAction func tappedShowInfoButton(_ sender: UIButton) {
+    presentModalController()
+  }
   
-  @objc func presentModalController() {
-    let vc = DriverModalViewController()
-    vc.modalPresentationStyle = .overCurrentContext
-    self.present(vc, animated: false)
+  func presentModalController() {
+    let modal = DriverModalViewController()
+    modal.viewModel = viewModel
+    modal.modalPresentationStyle = .overCurrentContext
+    present(modal, animated: false)
   }
 }
