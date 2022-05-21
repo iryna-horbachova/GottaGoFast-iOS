@@ -26,10 +26,10 @@ class ModalViewController: UIViewController {
     return view
   }()
 
-  let defaultHeight: CGFloat = 300
+  let defaultHeight: CGFloat = 310
   let dismissibleHeight: CGFloat = 200
   let maximumContainerHeight: CGFloat = UIScreen.main.bounds.height - 64
-  var currentContainerHeight: CGFloat = 300
+  var currentContainerHeight: CGFloat = 310
   
   var containerViewHeightConstraint: NSLayoutConstraint?
   var containerViewBottomConstraint: NSLayoutConstraint?
@@ -185,6 +185,13 @@ extension ModalViewController {
     let label = UILabel()
     label.text = "Title"
     label.font = .preferredFont(forTextStyle: .title1)
+    return label
+  }
+  
+  func makeSecondaryLabel() -> UILabel {
+    let label = UILabel()
+    label.text = "Secondary label"
+    label.font = .preferredFont(forTextStyle: .body)
     return label
   }
 }

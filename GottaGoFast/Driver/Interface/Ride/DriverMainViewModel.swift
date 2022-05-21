@@ -15,31 +15,65 @@ enum DriverMainControllerState {
 }
 
 class DriverMainViewModel {
+  // UI
   private var viewController: DriverMainViewController!
   var modalViewController: DriverModalViewController!
   var controllerState = DriverMainControllerState.inActive {
     didSet {
-      modalViewController.setupContentViewForDriverState()
+      switch controllerState {
+      case .inActive:
+        NSLog("Driver is currently not performing any job")
+        finishDesignatedRide()
+      case .searchingForRideRequest:
+        NSLog("Searching for ride request")
+        updateDriverStatus(status: "A")
+        searchDesignatedRide()
+      case .driveToDesignatedRideStartPoint:
+        NSLog("Driving to the start point")
+      case .driveToDesignatedRideEndPoint:
+        updateDesignatedRideStatus(status: "I")
+        NSLog("Driving to the end point")
+      }
+      DispatchQueue.main.async {
+        self.modalViewController.setupContentViewForDriverState()
+      }
+     
     }
   }
   
+  // Networking
   private let mobilityService = MobilityService()
   private let authenticationService = AuthenticationService()
   private var timer = Timer()
   
+  // Data
   private var driverId: Int?
-  private var rideRequestId: Int?
-  private var designatedRide: DesignatedRide? {
+
+  private(set) var currentDesignatedRide: DesignatedRide? {
     didSet {
-      DispatchQueue.main.async {
-        if self.designatedRide != nil {
-          self.controllerState = .driveToDesignatedRideStartPoint
-        }
-        self.viewController.updateUIForDesignatedRide()
+      if currentDesignatedRide != nil {
+        getRideRequest()
       }
     }
   }
-
+  
+  private(set) var currentRideRequest: RideRequest? {
+    didSet {
+      getClientInfo()
+    }
+  }
+  
+  private(set) var currentClient: Client? {
+    didSet {
+      self.controllerState = .driveToDesignatedRideStartPoint
+      DispatchQueue.main.async {
+        //self.modalViewController.setupContentViewForDriverState()
+      }
+      
+    }
+  }
+  
+  // Current location of the client
   private var userLocation: Geotag? {
     didSet {
       if let userLocation = userLocation {
@@ -59,6 +93,7 @@ class DriverMainViewModel {
     }
   }
   
+  // Update server with current location of the driver
   func sendDriverLocation(latitude: Double, longitude: Double) {
     let geotag = Geotag(userId: nil, latitude: latitude, longitude: longitude, timestamp: nil)
     
@@ -72,7 +107,7 @@ class DriverMainViewModel {
     }
   }
   
-  func searchDesignatedRide() {
+  private func searchDesignatedRide() {
     NSLog("Begin searching for designated ride")
     scheduleTimer() { _ in
       self.checkForDesignatedRide()
@@ -81,13 +116,13 @@ class DriverMainViewModel {
   
   private func scheduleTimer(for method: @escaping (Timer) -> ()) {
     timer = Timer.scheduledTimer(
-      withTimeInterval: 7,
+      withTimeInterval: 10,
       repeats: true,
       block: method
     )
   }
         
-  func checkForDesignatedRide() {
+  private func checkForDesignatedRide() {
     NSLog("Checking for designated ride")
     guard let driverId = driverId else {
       return
@@ -98,10 +133,8 @@ class DriverMainViewModel {
     ) { result in
       switch result {
       case .success(let ride):
-        if let ride = ride {
-          self.designatedRide = ride
-          self.timer.invalidate()
-        }
+        self.currentDesignatedRide = ride
+        self.timer.invalidate()
         NSLog("Received designated ride!")
       case .failure(let error):
         NSLog("Getting designated ride failed with error: \(error.localizedDescription)")
@@ -109,12 +142,43 @@ class DriverMainViewModel {
     }
   }
   
-  func updateDriverStatus(status: String) {
-    guard let driverId = driverId else {
+  private func getRideRequest() {
+    guard let designatedRide = currentDesignatedRide else {
       return
     }
-    if status == "A" {
-      controllerState = .searchingForRideRequest
+    mobilityService.getRideRequest(
+      id: designatedRide.rideRequestId
+    ) { result in
+        switch result {
+        case .success(let rideRequest):
+          self.currentRideRequest = rideRequest
+          NSLog("Received ride request info!")
+        case .failure(let error):
+          NSLog("Getting ride request failed with error: \(error.localizedDescription)")
+        }
+    }
+  }
+  
+  private func getClientInfo() {
+    guard let currentRideRequest = currentRideRequest else {
+      return
+    }
+    authenticationService.getClientProfile(
+      id: String(currentRideRequest.clientId)
+    ) { result in
+      switch result {
+      case .success(let client):
+        self.currentClient = client
+        NSLog("Received client info!")
+      case .failure(let error):
+        NSLog("Getting client info failed with error: \(error.localizedDescription)")
+      }
+    }
+  }
+  
+  private func updateDriverStatus(status: String) {
+    guard let driverId = driverId else {
+      return
     }
   
     authenticationService.updateDriverStatus(id: driverId, status: status) { result in
@@ -129,7 +193,7 @@ class DriverMainViewModel {
   
   func updateDesignatedRideStatus(status: String) {
     
-    guard let designatedRide = designatedRide else {
+    guard let designatedRide = currentDesignatedRide else {
       return
     }
     
@@ -141,5 +205,12 @@ class DriverMainViewModel {
         NSLog("Updating designated ride status failed with error: \(error.localizedDescription)")
       }
     }
+  }
+  
+  func finishDesignatedRide() {
+    currentRideRequest = nil
+    currentDesignatedRide = nil
+    currentClient = nil
+    updateDriverStatus(status: "A")
   }
 }

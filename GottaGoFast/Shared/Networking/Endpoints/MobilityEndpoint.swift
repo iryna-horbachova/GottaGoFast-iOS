@@ -9,6 +9,7 @@ import Foundation
 
 enum MobilityEndpoint {
   case createRideRequest(_ rideRequest: RideRequest)
+  case getRideRequest(id: Int)
   case getDesignatedRideDetailForClient(rideRequestId: Int)
   case getDesignatedRideDetailForDriver(driverId: Int)
   case updateUserLocation(location: Geotag)
@@ -21,6 +22,8 @@ extension MobilityEndpoint: EndpointType {
     switch self {
     case .createRideRequest:
       return ":8080/api/mobility/rides/request/create/"
+    case .getRideRequest(let id):
+      return ":8080/api/mobility/rides/request/\(id)/"
     case .getDesignatedRideDetailForClient(let requestRideId):
       return ":8080/api/mobility/rides/designated/requested_ride/\(requestRideId)/"
     case .getDesignatedRideDetailForDriver(let driverId):
@@ -38,6 +41,8 @@ extension MobilityEndpoint: EndpointType {
     switch self {
     case .createRideRequest:
       return .post
+    case .getRideRequest:
+      return .get
     case .getDesignatedRideDetailForClient:
       return .get
     case .getDesignatedRideDetailForDriver:
@@ -63,6 +68,8 @@ extension MobilityEndpoint: EndpointType {
     switch self {
     case .createRideRequest(let rideRequest):
       return rideRequest
+    case .getRideRequest:
+      return nil
     case .getDesignatedRideDetailForClient:
       return nil
     case .getDesignatedRideDetailForDriver:

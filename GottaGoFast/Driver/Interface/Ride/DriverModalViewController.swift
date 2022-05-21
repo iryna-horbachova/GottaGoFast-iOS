@@ -51,6 +51,22 @@ class DriverModalViewController: ModalViewController {
     return stackView
   }()
   
+  lazy var clientRideRequestInfoView: UIStackView = {
+    let clientNameLabel = makeSecondaryLabel()
+    clientNameLabel.text = "Client: \(viewModel.currentClient!.user.firstName) \(viewModel.currentClient!.user.lastName)"
+    let seatsInfoLabel = makeSecondaryLabel()
+    seatsInfoLabel.text = "\(viewModel.currentRideRequest!.adultsSeatsNumber) adults, \(viewModel.currentRideRequest!.childrenSeatsNumber) children, \(viewModel.currentRideRequest!.animalSeatsNumber) animals, \(viewModel.currentRideRequest!.trunkCapacity) trunk space."
+    let priceLabel = makeSecondaryLabel()
+    priceLabel.text = "Price: \(viewModel.currentDesignatedRide!.price) $"
+    
+    let stackView = UIStackView(arrangedSubviews: [clientNameLabel, seatsInfoLabel, priceLabel])
+    stackView.axis = .vertical
+    stackView.alignment = .center
+    stackView.spacing = 12.0
+    
+    return stackView
+  }()
+  
   lazy var designatedRideToStartPointStateStackView: UIStackView = {
     let title = makeTitleLabel()
     title.text = "Drive to start point"
@@ -62,7 +78,7 @@ class DriverModalViewController: ModalViewController {
     button.addTarget(self, action: #selector(tappedBeginRideButton), for: .touchUpInside)
     
     let spacer = UIView()
-    let stackView = UIStackView(arrangedSubviews: [title, button, spacer])
+    let stackView = UIStackView(arrangedSubviews: [title, clientRideRequestInfoView, button, spacer])
     stackView.axis = .vertical
     stackView.alignment = .center
     stackView.spacing = 12.0
@@ -81,7 +97,7 @@ class DriverModalViewController: ModalViewController {
     button.addTarget(self, action: #selector(tappedEndRideButton), for: .touchUpInside)
     
     let spacer = UIView()
-    let stackView = UIStackView(arrangedSubviews: [title, spacer])
+    let stackView = UIStackView(arrangedSubviews: [title, clientRideRequestInfoView, button, spacer])
     stackView.axis = .vertical
     stackView.alignment = .center
     stackView.spacing = 12.0
@@ -121,8 +137,7 @@ class DriverModalViewController: ModalViewController {
   }
   
   @objc func tappedSearchFoRideRequestButton() {
-    viewModel.updateDriverStatus(status: "A")
-    viewModel.searchDesignatedRide()
+    viewModel.controllerState = .searchingForRideRequest
     setupContentViewForDriverState()
   }
   

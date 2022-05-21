@@ -12,6 +12,11 @@ protocol MobilityServiceType {
     _ rideRequest: RideRequest,
     completion: @escaping (Result <RideRequest, NetworkingError>) -> Void
   )
+  
+  func getRideRequest(
+    id: Int,
+    completion: @escaping (Result <RideRequest, NetworkingError>) -> Void
+  )
 
   func getDesignatedRideDetailForClient(
     rideRequestId: Int,
@@ -20,7 +25,7 @@ protocol MobilityServiceType {
 
   func getDesignatedRideDetailForDriver(
     driverId: Int,
-    completion: @escaping (Result <DesignatedRide?, NetworkingError>) -> Void
+    completion: @escaping (Result <DesignatedRide, NetworkingError>) -> Void
   )
 
   func updateUserLocation(

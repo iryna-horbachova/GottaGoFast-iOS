@@ -23,6 +23,22 @@ final class MobilityService: NetworkingService, MobilityServiceType {
       }
     }
   }
+  
+  func getRideRequest(
+    id: Int,
+    completion: @escaping (Result <RideRequest, NetworkingError>) -> Void
+  ) {
+    provider.request(MobilityEndpoint.getRideRequest(id: id)) {
+      (result: Result<RideRequest, NetworkingError>) in
+
+      switch result {
+      case .success(let rideRequest):
+        completion(.success(rideRequest))
+      case .failure(let error):
+        completion(.failure(error))
+      }
+    }
+  }
 
   func getDesignatedRideDetailForClient(
     rideRequestId: Int,
@@ -42,10 +58,10 @@ final class MobilityService: NetworkingService, MobilityServiceType {
 
   func getDesignatedRideDetailForDriver(
     driverId: Int,
-    completion: @escaping (Result<DesignatedRide?, NetworkingError>) -> Void
+    completion: @escaping (Result<DesignatedRide, NetworkingError>) -> Void
   ) {
     provider.request(MobilityEndpoint.getDesignatedRideDetailForDriver(driverId: driverId)) {
-      (result: Result<DesignatedRide?, NetworkingError>) in
+      (result: Result<DesignatedRide, NetworkingError>) in
 
       switch result {
       case .success(let designatedRide):
