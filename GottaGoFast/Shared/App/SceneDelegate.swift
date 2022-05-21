@@ -67,8 +67,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Called as the scene transitions from the foreground to the background.
     // Use this method to save data, release shared resources, and store enough scene-specific state information
     // to restore the scene back to its current state.
+    if TargetType.getCurrentTarget() == .driver {
+      do {
+        let driverId = try Int(SecureStorageManager.shared.getData(type: .userId))!
+        AuthenticationService().updateDriverStatus(id: driverId, status: "I") { result in
+          switch result {
+          case .success(_):
+            NSLog("Updated driver status to inactive!")
+          case .failure(let error):
+            NSLog("Updating driver status failed with error: \(error.localizedDescription)")
+          }
+        }
+      } catch {
+        NSLog("Unable to update driver status due to invalid driver id")
+      }
+    }
   }
-  
 
 }
 

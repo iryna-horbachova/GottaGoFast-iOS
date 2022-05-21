@@ -72,7 +72,14 @@ class DriverMainViewModel {
     }
   }
   
-  func scheduleTimer(for method: @escaping (Timer) -> ()) {
+  func searchDesignatedRide() {
+    NSLog("Begin searching for designated ride")
+    scheduleTimer() { _ in
+      self.checkForDesignatedRide()
+    }
+  }
+  
+  private func scheduleTimer(for method: @escaping (Timer) -> ()) {
     timer = Timer.scheduledTimer(
       withTimeInterval: 7,
       repeats: true,
@@ -81,6 +88,7 @@ class DriverMainViewModel {
   }
         
   func checkForDesignatedRide() {
+    NSLog("Checking for designated ride")
     guard let driverId = driverId else {
       return
     }
@@ -113,9 +121,6 @@ class DriverMainViewModel {
       switch result {
       case .success(_):
         NSLog("Updated driver status!")
-        self.scheduleTimer() { _ in
-          self.checkForDesignatedRide()
-        }
       case .failure(let error):
         NSLog("Updating driver status failed with error: \(error.localizedDescription)")
       }

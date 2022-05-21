@@ -122,6 +122,7 @@ class DriverModalViewController: ModalViewController {
   
   @objc func tappedSearchFoRideRequestButton() {
     viewModel.updateDriverStatus(status: "A")
+    viewModel.searchDesignatedRide()
     setupContentViewForDriverState()
   }
   

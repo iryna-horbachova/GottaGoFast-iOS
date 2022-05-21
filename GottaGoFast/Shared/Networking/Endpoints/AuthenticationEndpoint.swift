@@ -56,7 +56,7 @@ extension AuthenticationEndpoint: EndpointType {
 
   var needsAuthorization: Bool {
     switch self {
-    case .getClientProfile, .getDriverProfile:
+    case .getClientProfile, .getDriverProfile, .updateDriverStatus:
       return true
     default:
       return false

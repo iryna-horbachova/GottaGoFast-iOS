@@ -133,6 +133,8 @@
 		899674E22833A658009D94D6 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899674E02833A658009D94D6 /* ModalViewController.swift */; };
 		899674E42833B65D009D94D6 /* DriverModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899674E32833B65D009D94D6 /* DriverModalViewController.swift */; };
 		899674E52833B65D009D94D6 /* DriverModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899674E32833B65D009D94D6 /* DriverModalViewController.swift */; };
+		899674EC2838D9E8009D94D6 /* GottaGoFastDriver-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 891B308C282821A4002CEA82 /* GottaGoFastDriver-Info.plist */; };
+		899674ED2838D9E9009D94D6 /* GottaGoFastDriver-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 891B308C282821A4002CEA82 /* GottaGoFastDriver-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -592,6 +594,7 @@
 			files = (
 				898B9B82282ABE57007DAE4F /* SignInViewController.xib in Resources */,
 				898B9BD8282CEA71007DAE4F /* DriverProfileViewController.xib in Resources */,
+				899674EC2838D9E8009D94D6 /* GottaGoFastDriver-Info.plist in Resources */,
 				898B9BC3282CE95B007DAE4F /* ClientProfileViewController.xib in Resources */,
 				891B307728282051002CEA82 /* LaunchScreen.storyboard in Resources */,
 				898B9B3528287655007DAE4F /* Localizable.strings in Resources */,
@@ -608,6 +611,7 @@
 			files = (
 				898B9BA1282B9782007DAE4F /* SignUpDriverViewController.xib in Resources */,
 				898B9BD9282CEA71007DAE4F /* DriverProfileViewController.xib in Resources */,
+				899674ED2838D9E9009D94D6 /* GottaGoFastDriver-Info.plist in Resources */,
 				898B9BC4282CE95B007DAE4F /* ClientProfileViewController.xib in Resources */,
 				898B9B3628287655007DAE4F /* Localizable.strings in Resources */,
 				891B3085282821A4002CEA82 /* LaunchScreen.storyboard in Resources */,
@@ -946,7 +950,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UFGZF6CY79;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "GottaGoFastDriver-Info.plist";
+				INFOPLIST_FILE = GottaGoFast/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = GottaGoFastDriver;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -975,7 +979,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UFGZF6CY79;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "GottaGoFastDriver-Info.plist";
+				INFOPLIST_FILE = GottaGoFast/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = GottaGoFastDriver;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

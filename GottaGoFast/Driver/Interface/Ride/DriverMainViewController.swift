@@ -23,10 +23,13 @@ class DriverMainViewController: UIViewController,
     
     title = "title.ride".localized
     navigationController?.navigationBar.prefersLargeTitles = true
+    mapView.delegate = self
     
     viewModel = DriverMainViewModel(viewController: self)
     determineCurrentLocation()
   }
+
+  // MARK: - Managing Location and Maps
 
   func locationManager(
     _ manager: CLLocationManager,
@@ -60,6 +63,26 @@ class DriverMainViewController: UIViewController,
     mapView.addAnnotation(mkAnnotation)
   }
   
+  func mapView(
+    _ mapView: MKMapView,
+    viewFor annotation: MKAnnotation
+  ) -> MKAnnotationView? {
+    guard annotation is MKPointAnnotation else { return nil }
+    
+    let identifier = "Annotation"
+    var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+    
+    if annotationView == nil {
+      annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+      annotationView!.canShowCallout = true
+      annotationView!.image = UIImage(named: "car")
+    } else {
+      annotationView!.image = UIImage(named: "car")
+    }
+
+    return annotationView
+  }
+  
   func determineCurrentLocation() {
     locationManager = CLLocationManager()
     locationManager.delegate = self
@@ -70,7 +93,9 @@ class DriverMainViewController: UIViewController,
       locationManager.startUpdatingLocation()
     }
   }
-  
+
+  // MARK: - UI updates
+
   func updateUserLocation(_ userLocation: Geotag) {
     
   }
