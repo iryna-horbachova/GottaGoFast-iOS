@@ -14,10 +14,10 @@ class DriverMainViewController: UIViewController,
                                 CLLocationManagerDelegate {
 
   private var viewModel: DriverMainViewModel!
+  private var locationManager: CLLocationManager!
 
   @IBOutlet weak var mapView: MKMapView!
-  var locationManager: CLLocationManager!
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -38,10 +38,18 @@ class DriverMainViewController: UIViewController,
     let userLocation = locations[0] as CLLocation
     let latitude = userLocation.coordinate.latitude
     let longitude = userLocation.coordinate.longitude
+    viewModel.currentLocation = userLocation.coordinate
     let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-    let mRegion = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
+    let mRegion = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
     
     mapView.setRegion(mRegion, animated: true)
+    print("Updated location")
+    for annotation in mapView.annotations {
+      if let title = annotation.title, title == "You" {
+        mapView.removeAnnotation(annotation)
+      }
+    }
+    //userLocation.title
     addAnnotation(location: userLocation)
     viewModel.sendDriverLocation(latitude: latitude, longitude: longitude)
   }
@@ -72,15 +80,31 @@ class DriverMainViewController: UIViewController,
     let identifier = "Annotation"
     var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
     
+    
     if annotationView == nil {
       annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
       annotationView!.canShowCallout = true
+    }
+
+    if let location = locationManager.location,
+       annotation.coordinate.latitude == location.coordinate.latitude &&
+       annotation.coordinate.longitude == location.coordinate.longitude {
       annotationView!.image = UIImage(named: "car")
     } else {
-      annotationView!.image = UIImage(named: "car")
+      annotationView!.image = UIImage(named: "map-pin")
     }
 
     return annotationView
+  }
+  
+  func mapView(
+    _ mapView: MKMapView,
+    rendererFor overlay: MKOverlay
+  ) -> MKOverlayRenderer {
+    let renderer = MKPolylineRenderer(overlay: overlay)
+    renderer.strokeColor = UIColor(red: 17.0/255.0, green: 147.0/255.0, blue: 255.0/255.0, alpha: 1)
+    renderer.lineWidth = 5.0
+    return renderer
   }
   
   func determineCurrentLocation() {
@@ -101,7 +125,71 @@ class DriverMainViewController: UIViewController,
   }
   
   func updateUIForDesignatedRide() {
+    // Build and show route between start and end points
     
+    mapView.removeOverlays(mapView.overlays)
+    var startCoordinate: CLLocationCoordinate2D
+    var endCoordinate: CLLocationCoordinate2D
+    if viewModel.controllerState == .driveToDesignatedRideStartPoint,
+      let location = locationManager.location {
+      startCoordinate = location.coordinate
+      endCoordinate = CLLocationCoordinate2D(
+        latitude: viewModel.currentRideRequest!.startLocationLatitude,
+        longitude: viewModel.currentRideRequest!.startLocationLongitude
+      )
+    } else if viewModel.controllerState == .driveToDesignatedRideEndPoint {
+      startCoordinate = CLLocationCoordinate2D(
+        latitude: viewModel.currentRideRequest!.startLocationLatitude,
+        longitude: viewModel.currentRideRequest!.startLocationLongitude
+      )
+      endCoordinate = CLLocationCoordinate2D(
+        latitude: viewModel.currentRideRequest!.endLocationLatitude,
+        longitude: viewModel.currentRideRequest!.endLocationLongitude
+      )
+    } else {
+      return
+    }
+    let sourcePlacemark = MKPlacemark(coordinate: startCoordinate, addressDictionary: nil)
+    let destinationPlacemark = MKPlacemark(coordinate: endCoordinate, addressDictionary: nil)
+    
+    let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
+    let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
+    
+    let sourceAnnotation = MKPointAnnotation()
+    sourceAnnotation.title = "You"
+    
+    if let location = sourcePlacemark.location {
+      sourceAnnotation.coordinate = location.coordinate
+    }
+    
+    let destinationAnnotation = MKPointAnnotation()
+    
+    if let location = destinationPlacemark.location {
+      destinationAnnotation.coordinate = location.coordinate
+    }
+    
+    mapView.showAnnotations([sourceAnnotation,destinationAnnotation], animated: true )
+    
+    let directionRequest = MKDirections.Request()
+    directionRequest.source = sourceMapItem
+    directionRequest.destination = destinationMapItem
+    directionRequest.transportType = .automobile
+    
+    // Calculate the direction
+    let directions = MKDirections(request: directionRequest)
+    directions.calculate { (response, error) -> Void in
+      guard let response = response else {
+        if let error = error {
+          NSLog("Error: \(error)")
+        }
+        return
+      }
+      
+      let builtRoute = response.routes[0]
+      self.mapView.addOverlay((builtRoute.polyline), level: MKOverlayLevel.aboveRoads)
+      let region = builtRoute.polyline.boundingMapRect
+      self.mapView.setRegion(MKCoordinateRegion(region), animated: true)
+    }
   }
 
   @IBAction func tappedShowInfoButton(_ sender: UIButton) {

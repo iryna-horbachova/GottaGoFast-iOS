@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import CoreLocation
+import MapKit
 
 enum DriverMainControllerState {
   case inActive
@@ -17,6 +19,7 @@ enum DriverMainControllerState {
 class DriverMainViewModel {
   // UI
   private var viewController: DriverMainViewController!
+  private let geoManager  = GeoManager()
   var modalViewController: DriverModalViewController!
   var controllerState = DriverMainControllerState.inActive {
     didSet {
@@ -30,8 +33,15 @@ class DriverMainViewModel {
         searchDesignatedRide()
       case .driveToDesignatedRideStartPoint:
         NSLog("Driving to the start point")
+        DispatchQueue.main.async {
+          self.viewController.updateUIForDesignatedRide()
+        }
+        
       case .driveToDesignatedRideEndPoint:
         updateDesignatedRideStatus(status: "I")
+        DispatchQueue.main.async {
+          self.viewController.updateUIForDesignatedRide()
+        }
         NSLog("Driving to the end point")
       }
       DispatchQueue.main.async {
@@ -40,6 +50,7 @@ class DriverMainViewModel {
      
     }
   }
+  var currentLocation: CLLocationCoordinate2D!
   
   // Networking
   private let mobilityService = MobilityService()
