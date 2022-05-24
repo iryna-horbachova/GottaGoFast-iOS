@@ -26,7 +26,7 @@ class ModalViewController: UIViewController {
     return view
   }()
 
-  let defaultHeight: CGFloat = 310
+  var defaultHeight: CGFloat = 310
   let dismissibleHeight: CGFloat = 200
   let maximumContainerHeight: CGFloat = UIScreen.main.bounds.height - 64
   var currentContainerHeight: CGFloat = 310
@@ -193,5 +193,31 @@ extension ModalViewController {
     label.text = "Secondary label"
     label.font = .preferredFont(forTextStyle: .body)
     return label
+  }
+  
+  func makeTextField() -> UITextField {
+    let textField =  UITextField()
+    textField.font = .preferredFont(forTextStyle: .body)
+    textField.borderStyle = UITextField.BorderStyle.roundedRect
+    textField.backgroundColor = .systemBackground
+    textField.layer.borderWidth = 1.0
+    textField.layer.borderColor = UIColor.black.cgColor
+    
+    textField.autocorrectionType = .no
+    textField.keyboardType = .default
+    textField.returnKeyType = .next
+    textField.clearButtonMode = UITextField.ViewMode.whileEditing
+    textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+    
+    textField.layer.cornerRadius = 10
+    textField.translatesAutoresizingMaskIntoConstraints = false
+    return textField
+  }
+  
+  func makeStepper() -> UIStepper {
+    let stepper = UIStepper()
+    stepper.minimumValue = 0
+    stepper.maximumValue = 50
+    return stepper
   }
 }

@@ -38,12 +38,11 @@ class DriverMainViewController: UIViewController,
     let userLocation = locations[0] as CLLocation
     let latitude = userLocation.coordinate.latitude
     let longitude = userLocation.coordinate.longitude
-    viewModel.currentLocation = userLocation.coordinate
     let center = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     let mRegion = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
     
     mapView.setRegion(mRegion, animated: true)
-    print("Updated location")
+  
     for annotation in mapView.annotations {
       if let title = annotation.title, title == "You" {
         mapView.removeAnnotation(annotation)
@@ -201,5 +200,9 @@ class DriverMainViewController: UIViewController,
     modal.viewModel = viewModel
     modal.modalPresentationStyle = .overCurrentContext
     present(modal, animated: false)
+  }
+  
+  func finishRide() {
+    mapView.removeOverlays(mapView.overlays)
   }
 }

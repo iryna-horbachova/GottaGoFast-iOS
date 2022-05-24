@@ -1,0 +1,366 @@
+//
+//  ClientModalViewController.swift
+//  GottaGoFast
+//
+//  Created by Iryna Horbachova on 23.05.2022.
+//
+
+import UIKit
+import CoreLocation
+import MapKit
+
+class ClientModalViewController: ModalViewController,
+                                 UITextFieldDelegate {
+  weak var viewModel: ClientMainViewModel! {
+    didSet {
+      viewModel.modalViewController = self
+    }
+  }
+  let completer = MKLocalSearchCompleter()
+
+  // UI States
+  // Ride request details
+  private lazy var startLocationTextField = makeTextField()
+  private lazy var endLocationTextField = makeTextField()
+  private lazy var locationSuggestionLabel = makeSecondaryLabel()
+  private var editingTextField: UITextField?
+
+  private lazy var adultsSeatsLabel = makeSecondaryLabel()
+  private lazy var childrenSeatsLabel = makeSecondaryLabel()
+  private lazy var animalSeatsLabel = makeSecondaryLabel()
+  private lazy var trunkCapacityLabel = makeSecondaryLabel()
+
+  private lazy var vehicleTypeSegmentedControl: UISegmentedControl = {
+    let sControl = UISegmentedControl()
+    sControl.frame = CGRect(x: 10, y: 150, width: 600, height: 50)
+    sControl.selectedSegmentIndex = 0
+
+    sControl.insertSegment(withTitle: "Passenger", at: 0, animated: true)
+    sControl.insertSegment(withTitle: "Truck", at: 1, animated: true)
+    sControl.insertSegment(withTitle: "Minivan", at: 2, animated: true)
+  
+    sControl.translatesAutoresizingMaskIntoConstraints = false
+    return sControl
+  }()
+  
+  private lazy var airConditionerPresentSegmentedControl: UISegmentedControl = {
+    let sControl = UISegmentedControl()
+    sControl.frame = CGRect(x: 10, y: 150, width: 500, height: 50)
+    sControl.selectedSegmentIndex = 0
+
+     sControl.insertSegment(withTitle: "Yes", at: 0, animated: true)
+    sControl.insertSegment(withTitle: "No", at: 1, animated: true)
+
+    sControl.translatesAutoresizingMaskIntoConstraints = false
+    return sControl
+  }()
+
+  private lazy var locationSuggestionView: UIStackView = {
+    let title = makeSecondaryLabel()
+    title.text = "Did you mean"
+    
+    let stackView = UIStackView(arrangedSubviews: [title, locationSuggestionLabel])
+    stackView.axis = .vertical
+    stackView.alignment = .center
+    stackView.spacing = 8.0
+    return stackView
+  }()
+  
+  private lazy var adultsSeatsView: UIStackView = {
+    let stepper = makeStepper()
+    stepper.addTarget(self, action: #selector(adultsSeatsStepperValueChanged(_:)), for: .valueChanged)
+    let stackView = UIStackView(arrangedSubviews: [adultsSeatsLabel, stepper])
+    stackView.axis = .horizontal
+    stackView.alignment = .center
+    stackView.spacing = 5.0
+    return stackView
+  }()
+  
+  private lazy var childrenSeatsView: UIStackView = {
+    let stepper = makeStepper()
+    stepper.addTarget(self, action: #selector(childrenSeatsStepperValueChanged(_:)), for: .valueChanged)
+    let stackView = UIStackView(arrangedSubviews: [childrenSeatsLabel, stepper])
+    stackView.axis = .horizontal
+    stackView.alignment = .center
+    stackView.spacing = 5.0
+    return stackView
+  }()
+  
+  private lazy var animalSeatsView: UIStackView = {
+    let stepper = makeStepper()
+    stepper.addTarget(self, action: #selector(animalSeatsStepperValueChanged(_:)), for: .valueChanged)
+    let stackView = UIStackView(arrangedSubviews: [animalSeatsLabel, stepper])
+    stackView.axis = .horizontal
+    stackView.alignment = .center
+    stackView.spacing = 5.0
+    return stackView
+  }()
+  
+  private lazy var trunkCapacityView: UIStackView = {
+    let stepper = makeStepper()
+    stepper.addTarget(self, action: #selector(trunkCapacityStepperValueChanged(_:)), for: .valueChanged)
+    let stackView = UIStackView(arrangedSubviews: [trunkCapacityLabel, stepper])
+    stackView.axis = .horizontal
+    stackView.alignment = .center
+    stackView.spacing = 5.0
+    return stackView
+  }()
+  
+  private lazy var airConditionerView: UIStackView = {
+    let title = makeSecondaryLabel()
+    title.text = "Air coditioner:"
+
+    let stackView = UIStackView(arrangedSubviews: [title, airConditionerPresentSegmentedControl])
+    stackView.axis = .horizontal
+    stackView.alignment = .center
+    stackView.spacing = 5.0
+    return stackView
+  }()
+
+  lazy var makingRideRequestStackView: UIStackView = {
+    let title = makeTitleLabel()
+    title.text = "Make ride request"
+
+    let button = makeActionButton()
+    button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    button.widthAnchor.constraint(equalToConstant: 200).isActive = true
+    button.setTitle("Continue", for: .normal)
+    button.addTarget(self, action: #selector(tappedMakeRideRequestButton), for: .touchUpInside)
+    
+    let adultSeatsTitle = makeSecondaryLabel()
+    adultSeatsTitle.text = "Adults:"
+    
+    let childrenSeatsTitle = makeSecondaryLabel()
+    childrenSeatsTitle.text = "Children:"
+    
+    let animalSeatsTitle = makeSecondaryLabel()
+    animalSeatsTitle.text = "Animals:"
+    
+    let trunkCapacityTitle = makeSecondaryLabel()
+    trunkCapacityTitle.text = "Trunk capacity:"
+
+    let spacer = UIView()
+
+    let stackView = UIStackView(arrangedSubviews: [title, startLocationTextField, endLocationTextField,
+                                                   locationSuggestionView, vehicleTypeSegmentedControl,
+                                                   adultSeatsTitle, adultsSeatsView,
+                                                   childrenSeatsTitle, childrenSeatsView,
+                                                   animalSeatsTitle, animalSeatsView,
+                                                   trunkCapacityTitle, trunkCapacityView,
+                                                   airConditionerView,
+                                                   button, spacer])
+    locationSuggestionView.isHidden = true
+    stackView.axis = .vertical
+    stackView.alignment = .center
+    stackView.spacing = 10.0
+    
+    stackView.translatesAutoresizingMaskIntoConstraints = false
+  
+    return stackView
+  }()
+  
+  lazy var processingRideRequestStackView: UIStackView = {
+    let title = makeTitleLabel()
+    title.text = "Processing your ride request"
+    
+    var activityView = UIActivityIndicatorView(style: .large)
+    activityView.center = containerView.center
+    activityView.startAnimating()
+    
+    let spacer = UIView()
+    let stackView = UIStackView(arrangedSubviews: [title, activityView, spacer])
+    stackView.axis = .vertical
+    stackView.alignment = .center
+    stackView.spacing = 12.0
+  
+    return stackView
+  }()
+
+  // MARK: - Lifecycle methods
+
+  override func viewDidLoad() {
+    if viewModel.controllerState == .makingRideRequest {
+      defaultHeight = 700
+      currentContainerHeight = 700
+    }
+    super.viewDidLoad()
+
+    completer.delegate = self
+    configureTextFields()
+    configureSeatsLabels()
+    configureGestures()
+    setupContentViewForClientState()
+  }
+
+  // MARK: - UI Configuration methods
+
+  private func configureTextFields() {
+    startLocationTextField.widthAnchor.constraint(equalToConstant: 250).isActive = true
+    endLocationTextField.widthAnchor.constraint(equalToConstant: 250).isActive = true
+    
+    startLocationTextField.placeholder = "Start location"
+    endLocationTextField.placeholder = "End location"
+    
+    startLocationTextField.delegate = self
+    endLocationTextField.delegate = self
+    
+    startLocationTextField.addTarget(
+      self,
+      action: #selector(textFieldDidChange(_:)),
+      for: .editingChanged
+    )
+    endLocationTextField.addTarget(
+      self,
+      action: #selector(textFieldDidChange(_:)),
+      for: .editingChanged
+    )
+  }
+  
+  private func configureSeatsLabels() {
+    adultsSeatsLabel.text = "\(1)"
+    childrenSeatsLabel.text = "\(0)"
+    animalSeatsLabel.text = "\(0)"
+    trunkCapacityLabel.text = "\(0)"
+  }
+  
+  private func configureGestures() {
+    locationSuggestionView.addGestureRecognizer(
+      UITapGestureRecognizer(
+        target: self,
+        action: #selector(suggestionTapped(_:))
+      )
+    )
+  }
+
+  func setupContentViewForClientState() {
+    clearContainerView()
+    var contentView: UIView!
+    switch viewModel.controllerState {
+    case .makingRideRequest:
+      contentView = makingRideRequestStackView
+    case .processingRideRequest:
+      contentView = processingRideRequestStackView
+    default:
+      NSLog("Setting up content view in modal controller")
+    }
+
+    setupContentView(contentView)
+  }
+  
+  @objc func tappedMakeRideRequestButton() {
+    var clientId: Int
+    do {
+      try clientId = Int(SecureStorageManager.shared.getData(type: .userId))!
+    } catch {
+      clientId = 1
+    }
+    
+    let vehicleTypeIndex = vehicleTypeSegmentedControl.selectedSegmentIndex
+    let airConditionerPresentIndex = airConditionerPresentSegmentedControl.selectedSegmentIndex
+    var vehicleType: String
+    
+    switch vehicleTypeIndex {
+    case 0:
+      vehicleType = "P"
+    case 1:
+      vehicleType = "T"
+    default:
+      vehicleType = "M"
+    }
+    
+    let airConditionerPresent = airConditionerPresentIndex == 0 ? true : false
+    let adultsSeatsNum = Int(adultsSeatsLabel.text!)!
+    let childrenSeatsNum = Int(childrenSeatsLabel.text!)!
+    let animalSeatsNum = Int(animalSeatsLabel.text!)!
+    let trunkCapacityNum = Int(trunkCapacityLabel.text!)!
+    
+    let rideRequest = RideRequest(
+      id: nil, clientId: clientId,
+      startLocationLatitude: 0, startLocationLongitude: 0,
+      endLocationLatitude: 0, endLocationLongitude: 0,
+      adultsSeatsNumber: adultsSeatsNum, childrenSeatsNumber: childrenSeatsNum,
+      animalSeatsNumber: animalSeatsNum, trunkCapacity: trunkCapacityNum, airConditionerPresent: airConditionerPresent
+    )
+    viewModel.createRideRequest(rideRequest)
+    viewModel.controllerState = .processingRideRequest
+    NSLog("Submitting Ride request")
+  }
+
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    hideSuggestionView()
+
+    if completer.isSearching {
+      completer.cancel()
+    }
+
+    editingTextField = textField
+  }
+
+  @objc private func textFieldDidChange(_ field: UITextField) {
+    guard let query = field.text else {
+      hideSuggestionView()
+      
+      if completer.isSearching {
+        completer.cancel()
+      }
+      return
+    }
+    
+    completer.queryFragment = query
+  }
+  
+  private func hideSuggestionView() {
+    UIView.animate(withDuration: 1.0) {
+      self.locationSuggestionView.isHidden = true
+    }
+  }
+  
+  private func showSuggestion(_ suggestion: String) {
+    locationSuggestionLabel.text = suggestion
+
+    UIView.animate(withDuration: 1.0) {
+      self.locationSuggestionView.isHidden = false
+    }
+  }
+  
+  @objc func adultsSeatsStepperValueChanged(_ sender: UIStepper) {
+    adultsSeatsLabel.text = Int(sender.value).description
+  }
+  
+  @objc func childrenSeatsStepperValueChanged(_ sender: UIStepper) {
+    childrenSeatsLabel.text = Int(sender.value).description
+  }
+  
+  @objc func animalSeatsStepperValueChanged(_ sender: UIStepper) {
+    animalSeatsLabel.text = Int(sender.value).description
+  }
+  
+  @objc func trunkCapacityStepperValueChanged(_ sender: UIStepper) {
+    trunkCapacityLabel.text = Int(sender.value).description
+  }
+
+  @objc private func suggestionTapped(_ gesture: UITapGestureRecognizer) {
+    hideSuggestionView()
+
+    editingTextField?.text = locationSuggestionLabel.text
+    editingTextField = nil
+  }
+}
+
+extension ClientModalViewController: MKLocalSearchCompleterDelegate {
+
+  func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+    guard let firstResult = completer.results.first else {
+      return
+    }
+    
+    showSuggestion(firstResult.title)
+  }
+
+  func completer(
+    _ completer: MKLocalSearchCompleter,
+    didFailWithError error: Error
+  ) {
+    NSLog("Error suggesting a location: \(error.localizedDescription)")
+  }
+}

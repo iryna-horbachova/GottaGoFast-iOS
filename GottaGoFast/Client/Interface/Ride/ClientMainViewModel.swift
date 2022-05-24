@@ -6,13 +6,39 @@
 //
 
 import Foundation
+import MapKit
+
+enum ClientMainControllerState {
+  case makingRideRequest
+  case processingRideRequest
+  case waitingForDriver
+  case rideInProgress
+}
 
 class ClientMainViewModel {
-  weak var viewController: ClientMainViewController!
-  
+  // UI
+  private var viewController: ClientMainViewController!
+  var modalViewController: ClientModalViewController! {
+    didSet {
+      if let region = region, let modalViewController = modalViewController {
+        modalViewController.completer.region = region
+      }
+    }
+  }
+  var controllerState = ClientMainControllerState.makingRideRequest {
+    didSet {
+      DispatchQueue.main.async {
+        self.modalViewController.setupContentViewForClientState()
+      }
+    }
+  }
+  var region: MKCoordinateRegion?
+
+  // Networking
   private let mobilityService = MobilityService()
   private var timer = Timer()
   
+  // Data
   private var rideRequestId: Int?
   private var designatedRide: DesignatedRide? {
     didSet {

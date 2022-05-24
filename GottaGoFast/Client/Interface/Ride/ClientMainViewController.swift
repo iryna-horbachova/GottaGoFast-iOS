@@ -14,20 +14,23 @@ class ClientMainViewController: UIViewController,
                                 CLLocationManagerDelegate  {
 
   @IBOutlet weak var mapView: MKMapView!
-  var locationManager: CLLocationManager!
-  var viewModel: ClientMainViewModel!
+  
+  private var locationManager: CLLocationManager!
+  private var viewModel: ClientMainViewModel!
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    viewModel = ClientMainViewModel(viewController: self)
+
     title = "title.ride".localized
     navigationController?.navigationBar.prefersLargeTitles = true
+    mapView.delegate = self
+    
+    viewModel = ClientMainViewModel(viewController: self)
     determineCurrentLocation()
   }
-  
-  // MARK: - Location
-  
+
+  // MARK: - Managing Location and Maps
+
   func locationManager(
     _ manager: CLLocationManager,
     didUpdateLocations locations: [CLLocation]
@@ -40,10 +43,18 @@ class ClientMainViewController: UIViewController,
                                         )
     let mRegion = MKCoordinateRegion(
                                      center: center,
-                                     span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
+                                     span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
                                     )
+    viewModel.region = mRegion
     
     mapView.setRegion(mRegion, animated: true)
+
+    for annotation in mapView.annotations {
+      if let title = annotation.title, title == "You" {
+        mapView.removeAnnotation(annotation)
+      }
+    }
+
     addAnnotation(location: userLocation)
 
     viewModel.sendUserLocation(
@@ -69,6 +80,44 @@ class ClientMainViewController: UIViewController,
     mapView.addAnnotation(mkAnnotation)
   }
   
+  func mapView(
+    _ mapView: MKMapView,
+    viewFor annotation: MKAnnotation
+  ) -> MKAnnotationView? {
+    guard annotation is MKPointAnnotation else { return nil }
+    
+    let identifier = "Annotation"
+    var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+    
+    
+    if annotationView == nil {
+      annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+      annotationView!.canShowCallout = true
+    }
+
+    if let location = locationManager.location,
+       annotation.coordinate.latitude == location.coordinate.latitude &&
+       annotation.coordinate.longitude == location.coordinate.longitude {
+      annotationView!.image = UIImage(named: "client")
+    } else if annotation.title == "Driver" {
+      annotationView!.image = UIImage(named: "car")
+    } else {
+      annotationView!.image = UIImage(named: "map-pin")
+    }
+
+    return annotationView
+  }
+
+  func mapView(
+    _ mapView: MKMapView,
+    rendererFor overlay: MKOverlay
+  ) -> MKOverlayRenderer {
+    let renderer = MKPolylineRenderer(overlay: overlay)
+    renderer.strokeColor = UIColor(red: 17.0/255.0, green: 147.0/255.0, blue: 255.0/255.0, alpha: 1)
+    renderer.lineWidth = 5.0
+    return renderer
+  }
+
   func determineCurrentLocation() {
     locationManager = CLLocationManager()
     locationManager.delegate = self
@@ -85,12 +134,24 @@ class ClientMainViewController: UIViewController,
   func updateUIForDesignatedRide() {
     
   }
-  
-  func updateUIForWaiting() {
-    
-  }
 
   func updateDriverLocation(_ driverLocation: Geotag) {
     
   }
+  
+  func presentModalController() {
+    let modal = ClientModalViewController()
+    modal.viewModel = viewModel
+    modal.modalPresentationStyle = .overCurrentContext
+    present(modal, animated: false)
+  }
+  
+  func finishRide() {
+    mapView.removeOverlays(mapView.overlays)
+  }
+
+  @IBAction func tappedShowInfoButton(_ sender: UIButton) {
+    presentModalController()
+  }
+  
 }

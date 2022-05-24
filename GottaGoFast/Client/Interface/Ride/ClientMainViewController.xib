@@ -22,13 +22,27 @@
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7fN-20-D6o">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                 </mapView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjV-4h-KP0">
+                    <rect key="frame" x="20" y="792" width="374" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="fwA-2c-GOZ"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Show Info"/>
+                    <connections>
+                        <action selector="tappedShowInfoButton:" destination="-1" eventType="touchUpInside" id="C5m-3A-Ubd"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="7fN-20-D6o" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0GS-iX-uic"/>
                 <constraint firstAttribute="trailing" secondItem="7fN-20-D6o" secondAttribute="trailing" id="GBp-3U-atK"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kjV-4h-KP0" secondAttribute="trailing" constant="20" id="GL7-hC-2RW"/>
                 <constraint firstItem="7fN-20-D6o" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Iup-5n-ghp"/>
+                <constraint firstItem="kjV-4h-KP0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="P8Z-TM-VBr"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="kjV-4h-KP0" secondAttribute="bottom" constant="20" id="kqx-Ul-cGV"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="7fN-20-D6o" secondAttribute="bottom" id="v1e-6d-WHx"/>
             </constraints>
             <point key="canvasLocation" x="139" y="76"/>

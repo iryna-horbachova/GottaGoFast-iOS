@@ -19,7 +19,6 @@ enum DriverMainControllerState {
 class DriverMainViewModel {
   // UI
   private var viewController: DriverMainViewController!
-  private let geoManager  = GeoManager()
   var modalViewController: DriverModalViewController!
   var controllerState = DriverMainControllerState.inActive {
     didSet {
@@ -27,6 +26,9 @@ class DriverMainViewModel {
       case .inActive:
         NSLog("Driver is currently not performing any job")
         finishDesignatedRide()
+        DispatchQueue.main.async {
+          self.viewController.finishRide()
+        }
       case .searchingForRideRequest:
         NSLog("Searching for ride request")
         updateDriverStatus(status: "A")
@@ -50,7 +52,6 @@ class DriverMainViewModel {
      
     }
   }
-  var currentLocation: CLLocationCoordinate2D!
   
   // Networking
   private let mobilityService = MobilityService()
