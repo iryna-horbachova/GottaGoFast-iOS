@@ -17,6 +17,8 @@ class ClientModalViewController: ModalViewController,
     }
   }
   let completer = MKLocalSearchCompleter()
+  var startLocationCoordinate: CLLocationCoordinate2D?
+  var endLocationCoordinate: CLLocationCoordinate2D?
 
   // UI States
   // Ride request details
@@ -167,8 +169,14 @@ class ClientModalViewController: ModalViewController,
     activityView.center = containerView.center
     activityView.startAnimating()
     
+    let button = makeActionButton()
+    button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    button.widthAnchor.constraint(equalToConstant: 200).isActive = true
+    button.setTitle("Cancel", for: .normal)
+    button.addTarget(self, action: #selector(tappedCancelRideRequestButton), for: .touchUpInside)
+    
     let spacer = UIView()
-    let stackView = UIStackView(arrangedSubviews: [title, activityView, spacer])
+    let stackView = UIStackView(arrangedSubviews: [title, activityView, button, spacer])
     stackView.axis = .vertical
     stackView.alignment = .center
     stackView.spacing = 12.0
@@ -180,8 +188,8 @@ class ClientModalViewController: ModalViewController,
 
   override func viewDidLoad() {
     if viewModel.controllerState == .makingRideRequest {
-      defaultHeight = 700
-      currentContainerHeight = 700
+      defaultHeight = 750
+      currentContainerHeight = 750
     }
     super.viewDidLoad()
 
@@ -248,42 +256,90 @@ class ClientModalViewController: ModalViewController,
   }
   
   @objc func tappedMakeRideRequestButton() {
-    var clientId: Int
-    do {
-      try clientId = Int(SecureStorageManager.shared.getData(type: .userId))!
-    } catch {
-      clientId = 1
+    guard let startLocationText = startLocationTextField.text,
+          let endLocationText = endLocationTextField.text,
+          let region = viewModel.region else {
+      present(
+        UIAlertController.alertWithOKAction(
+          title: "Error!",
+          message: "Invalid locations!"),
+        animated: true
+      )
+      return
     }
     
-    let vehicleTypeIndex = vehicleTypeSegmentedControl.selectedSegmentIndex
-    let airConditionerPresentIndex = airConditionerPresentSegmentedControl.selectedSegmentIndex
-    var vehicleType: String
-    
-    switch vehicleTypeIndex {
-    case 0:
-      vehicleType = "P"
-    case 1:
-      vehicleType = "T"
-    default:
-      vehicleType = "M"
+    let group = DispatchGroup()
+    group.enter()
+    searchPlace(naturalLanguageQuery: startLocationText, region: region) { coordinate in
+      if let coordinate = coordinate {
+        self.startLocationCoordinate = coordinate
+      }
+      group.leave()
     }
     
-    let airConditionerPresent = airConditionerPresentIndex == 0 ? true : false
-    let adultsSeatsNum = Int(adultsSeatsLabel.text!)!
-    let childrenSeatsNum = Int(childrenSeatsLabel.text!)!
-    let animalSeatsNum = Int(animalSeatsLabel.text!)!
-    let trunkCapacityNum = Int(trunkCapacityLabel.text!)!
-    
-    let rideRequest = RideRequest(
-      id: nil, clientId: clientId,
-      startLocationLatitude: 0, startLocationLongitude: 0,
-      endLocationLatitude: 0, endLocationLongitude: 0,
-      adultsSeatsNumber: adultsSeatsNum, childrenSeatsNumber: childrenSeatsNum,
-      animalSeatsNumber: animalSeatsNum, trunkCapacity: trunkCapacityNum, airConditionerPresent: airConditionerPresent
-    )
-    viewModel.createRideRequest(rideRequest)
-    viewModel.controllerState = .processingRideRequest
-    NSLog("Submitting Ride request")
+    group.enter()
+    searchPlace(naturalLanguageQuery: endLocationText, region: region) { coordinate in
+      if let coordinate = coordinate {
+        self.endLocationCoordinate = coordinate
+      }
+      group.leave()
+    }
+
+    group.notify(queue: .main) {
+      guard let startLocationCoordinate = self.startLocationCoordinate,
+      let endLocationCoordinate = self.endLocationCoordinate  else {
+        DispatchQueue.main.async {
+          self.present(
+            UIAlertController.alertWithOKAction(
+              title: "Error!",
+              message: "Invalid values were provided for locations!"),
+            animated: true
+          )
+        }
+        return
+      }
+
+      var clientId: Int
+      do {
+        try clientId = Int(SecureStorageManager.shared.getData(type: .userId))!
+      } catch {
+        clientId = 1
+      }
+      
+      let vehicleTypeIndex = self.vehicleTypeSegmentedControl.selectedSegmentIndex
+      let airConditionerPresentIndex = self.airConditionerPresentSegmentedControl.selectedSegmentIndex
+      var vehicleType: String
+      
+      switch vehicleTypeIndex {
+      case 0:
+        vehicleType = "P"
+      case 1:
+        vehicleType = "T"
+      default:
+        vehicleType = "M"
+      }
+      
+      let airConditionerPresent = airConditionerPresentIndex == 0 ? true : false
+      let adultsSeatsNum = Int(self.adultsSeatsLabel.text!)!
+      let childrenSeatsNum = Int(self.childrenSeatsLabel.text!)!
+      let animalSeatsNum = Int(self.animalSeatsLabel.text!)!
+      let trunkCapacityNum = Int(self.trunkCapacityLabel.text!)!
+      
+      let rideRequest = RideRequest(
+        id: nil, clientId: clientId,
+        startLocationLatitude: startLocationCoordinate.latitude, startLocationLongitude: startLocationCoordinate.longitude,
+        endLocationLatitude: endLocationCoordinate.latitude, endLocationLongitude: endLocationCoordinate.longitude,
+        adultsSeatsNumber: adultsSeatsNum, childrenSeatsNumber: childrenSeatsNum,
+        animalSeatsNumber: animalSeatsNum, trunkCapacity: trunkCapacityNum, airConditionerPresent: airConditionerPresent
+      )
+      self.viewModel.createRideRequest(rideRequest)
+      self.viewModel.controllerState = .processingRideRequest
+      NSLog("Submitting Ride request")
+    }
+  }
+  
+  @objc func tappedCancelRideRequestButton() {
+    viewModel.cancelRideRequest()
   }
 
   func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -322,6 +378,8 @@ class ClientModalViewController: ModalViewController,
       self.locationSuggestionView.isHidden = false
     }
   }
+  
+  // UI targets
   
   @objc func adultsSeatsStepperValueChanged(_ sender: UIStepper) {
     adultsSeatsLabel.text = Int(sender.value).description
@@ -362,5 +420,21 @@ extension ClientModalViewController: MKLocalSearchCompleterDelegate {
     didFailWithError error: Error
   ) {
     NSLog("Error suggesting a location: \(error.localizedDescription)")
+  }
+  
+  func searchPlace(naturalLanguageQuery: String, region: MKCoordinateRegion, completion: @escaping (CLLocationCoordinate2D?) -> Void) {
+    let request = MKLocalSearch.Request()
+    request.naturalLanguageQuery = naturalLanguageQuery
+    request.region = region
+
+    MKLocalSearch(request: request).start { response, _ in
+ 
+      if let firstItem = response?.mapItems.first {
+        completion(firstItem.placemark.location?.coordinate)
+      } else {
+        completion(nil)
+      }
+    }
+
   }
 }

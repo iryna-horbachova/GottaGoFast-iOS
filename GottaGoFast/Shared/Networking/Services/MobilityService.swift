@@ -24,6 +24,22 @@ final class MobilityService: NetworkingService, MobilityServiceType {
     }
   }
   
+  func cancelRideRequest(
+    rideRequestId: Int,
+    completion: @escaping (Result<EmptyResult, NetworkingError>) -> Void
+  ) {
+    provider.request(MobilityEndpoint.cancelRideRequest(rideRequestId: rideRequestId)) {
+      (result: Result<EmptyResult, NetworkingError>) in
+
+      switch result {
+      case .success(let rideRequest):
+        completion(.success(rideRequest))
+      case .failure(let error):
+        completion(.failure(error))
+      }
+    }
+  }
+  
   func getRideRequest(
     id: Int,
     completion: @escaping (Result <RideRequest, NetworkingError>) -> Void

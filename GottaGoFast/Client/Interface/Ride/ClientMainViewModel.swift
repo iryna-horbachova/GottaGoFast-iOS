@@ -122,6 +122,22 @@ class ClientMainViewModel {
     }
   }
   
+  func cancelRideRequest() {
+    guard let rideRequestId = rideRequestId else {
+      return
+    }
+    mobilityService.cancelRideRequest(rideRequestId: rideRequestId) { result in
+      switch result {
+      case .success(_):
+        self.controllerState = .makingRideRequest
+        NSLog("Successfully cancelled ride request")
+      case .failure(let error):
+        NSLog("Getting designated ride failed with error: \(error.localizedDescription)")
+      }
+    }
+    
+  }
+  
   func getDriverLocation() {
     guard let designatedRide = designatedRide else {
       return

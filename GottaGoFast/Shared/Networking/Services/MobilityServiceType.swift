@@ -13,6 +13,11 @@ protocol MobilityServiceType {
     completion: @escaping (Result <RideRequest, NetworkingError>) -> Void
   )
   
+  func cancelRideRequest(
+    rideRequestId: Int,
+    completion: @escaping (Result<EmptyResult, NetworkingError>) -> Void
+  )
+  
   func getRideRequest(
     id: Int,
     completion: @escaping (Result <RideRequest, NetworkingError>) -> Void
