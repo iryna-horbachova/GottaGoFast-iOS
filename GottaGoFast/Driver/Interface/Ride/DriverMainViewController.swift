@@ -125,7 +125,9 @@ class DriverMainViewController: UIViewController,
   
   func updateUIForDesignatedRide() {
     // Build and show route between start and end points
-    
+    guard let currentRideRequest = viewModel.currentRideRequest else {
+      return
+    }
     mapView.removeOverlays(mapView.overlays)
     var startCoordinate: CLLocationCoordinate2D
     var endCoordinate: CLLocationCoordinate2D
@@ -133,17 +135,17 @@ class DriverMainViewController: UIViewController,
       let location = locationManager.location {
       startCoordinate = location.coordinate
       endCoordinate = CLLocationCoordinate2D(
-        latitude: viewModel.currentRideRequest!.startLocationLatitude,
-        longitude: viewModel.currentRideRequest!.startLocationLongitude
+        latitude: currentRideRequest.startLocationLatitude,
+        longitude: currentRideRequest.startLocationLongitude
       )
     } else if viewModel.controllerState == .driveToDesignatedRideEndPoint {
       startCoordinate = CLLocationCoordinate2D(
-        latitude: viewModel.currentRideRequest!.startLocationLatitude,
-        longitude: viewModel.currentRideRequest!.startLocationLongitude
+        latitude: currentRideRequest.startLocationLatitude,
+        longitude: currentRideRequest.startLocationLongitude
       )
       endCoordinate = CLLocationCoordinate2D(
-        latitude: viewModel.currentRideRequest!.endLocationLatitude,
-        longitude: viewModel.currentRideRequest!.endLocationLongitude
+        latitude: currentRideRequest.endLocationLatitude,
+        longitude: currentRideRequest.endLocationLongitude
       )
     } else {
       return

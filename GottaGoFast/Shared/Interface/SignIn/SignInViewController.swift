@@ -48,7 +48,7 @@ class SignInViewController: UIViewController {
       present(
         UIAlertController.alertWithOKAction(
           title: "Error!",
-          message: "Invalid input"),
+          message: "Input you entered was invalid"),
         animated: true
       )
     }

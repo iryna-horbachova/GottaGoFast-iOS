@@ -51,10 +51,10 @@ class SecureStorageManager {
     guard status == errSecSuccess else { throw KeychainError.unhandledError(status: status) }
     
     guard let existingItem = item as? [String : Any],
-        let tokenData = existingItem[kSecValueData as String] as? Data,
-        let token = String(data: tokenData, encoding: String.Encoding.utf8)
+          let tokenData = existingItem[kSecValueData as String] as? Data,
+          let token = String(data: tokenData, encoding: String.Encoding.utf8)
     else {
-        throw KeychainError.unexpectedTokenData
+      throw KeychainError.unexpectedTokenData
     }
     return token
   }

@@ -13,6 +13,7 @@ enum ClientMainControllerState {
   case processingRideRequest
   case waitingForDriver
   case rideInProgress
+  case rideFinished
 }
 
 class ClientMainViewModel {
@@ -28,7 +29,7 @@ class ClientMainViewModel {
   var controllerState = ClientMainControllerState.makingRideRequest {
     didSet {
       DispatchQueue.main.async {
-        self.modalViewController.setupContentViewForClientState()
+        self.modalViewController?.setupContentViewForClientState()
       }
     }
   }
@@ -36,14 +37,32 @@ class ClientMainViewModel {
 
   // Networking
   private let mobilityService = MobilityService()
+  private let authenticationService = AuthenticationService()
+
   private var timer = Timer()
   
   // Data
   private var rideRequestId: Int?
-  private var designatedRide: DesignatedRide? {
+  var designatedRide: DesignatedRide? {
     didSet {
-      DispatchQueue.main.async {
-        self.viewController.updateUIForDesignatedRide()
+      guard let designatedRide = designatedRide else {
+        return
+      }
+
+      if designatedRide.status == "A" {
+        getDriverInfo()
+        getDriverLocation()
+      } else {
+        //timer.invalidate()
+        designatedRideStatusUpdated()
+      }
+    }
+  }
+  
+  var driver: Driver? {
+    didSet {
+      if driver != nil {
+        controllerState = .waitingForDriver
       }
     }
   }
@@ -63,7 +82,7 @@ class ClientMainViewModel {
   }
   
   func sendUserLocation(latitude: Double, longitude: Double) {
-    let geotag = Geotag(userId: nil, latitude: latitude, longitude: longitude, timestamp: nil)
+    let geotag = Geotag(_id: nil, userId: nil, latitude: latitude, longitude: longitude, timestamp: nil)
     
     mobilityService.updateUserLocation(location: geotag) { result in
       switch result {
@@ -76,21 +95,33 @@ class ClientMainViewModel {
   }
   
   func createRideRequest(_ rideRequest: RideRequest) {
+    // Build on map
+    viewController.updateUIForRideRequest(
+      startLocationLatitude: rideRequest.startLocationLatitude,
+      startLocationLongitude: rideRequest.startLocationLongitude,
+      endLocationLatitude: rideRequest.endLocationLatitude,
+      endLocationLongitude: rideRequest.endLocationLongitude
+    )
+
     mobilityService.createRideRequest(rideRequest) { result in
       switch result {
       case .success(let ride):
         self.rideRequestId = ride.id
-        self.scheduleTimer() { _ in
-          self.checkForDesignatedRide()
-        }
+
         NSLog("Successfully created ride request")
       case .failure(let error):
         NSLog("Ride request creation failed with error \(error.localizedDescription)")
       }
     }
+    scheduleTimer() { _ in
+      NSLog("Scheduling timer")
+      self.checkForDesignatedRide()
+      self.getDriverLocation()
+    }
   }
   
   func scheduleTimer(for method: @escaping (Timer) -> ()) {
+    NSLog("Schedule timer")
     timer = Timer.scheduledTimer(
       withTimeInterval: 7,
       repeats: true,
@@ -103,22 +134,48 @@ class ClientMainViewModel {
       return
     }
 
+    NSLog("Check for designated ride")
     mobilityService.getDesignatedRideDetailForClient(
       rideRequestId: rideRequestId
     ) { result in
       switch result {
       case .success(let ride):
         if let ride = ride {
-          self.designatedRide = ride
-          self.timer.invalidate()
-          self.scheduleTimer() { _ in
-            self.getDriverLocation()
+          if self.designatedRide == nil || self.designatedRide != ride{
+            self.designatedRide = ride
           }
+         // self.scheduleTimer() { _ in
+         //   self.getDriverLocation()
+         // }
         }
         NSLog("Received designated ride!")
       case .failure(let error):
         NSLog("Getting designated ride failed with error: \(error.localizedDescription)")
       }
+    }
+  }
+  
+  func designatedRideStatusUpdated() {
+    guard let designatedRide = designatedRide else {
+      return
+    }
+    
+    switch designatedRide.status {
+    case "I":
+      controllerState = .rideInProgress
+      DispatchQueue.main.async {
+        self.viewController.updateUIForDesignatedRideStatus(designatedRide.status)
+      }
+      
+      NSLog("Update UI for inprogress ride")
+    case "F":
+      controllerState = .rideFinished
+      NSLog("Update UI for finished ride")
+    case "C":
+      controllerState = .makingRideRequest
+      NSLog("Update UI for cancelled ride")
+    default:
+      NSLog("Status did not change")
     }
   }
   
@@ -135,7 +192,6 @@ class ClientMainViewModel {
         NSLog("Getting designated ride failed with error: \(error.localizedDescription)")
       }
     }
-    
   }
   
   func getDriverLocation() {
@@ -147,6 +203,25 @@ class ClientMainViewModel {
       switch result {
       case .success(let geotag):
         self.driverLocation = geotag
+        NSLog("GEOTAG ***********")
+        NSLog("\(self.driverLocation)")
+        NSLog("\(geotag)")
+        NSLog("Successfully retrieved driver's location")
+      case .failure(let error):
+        NSLog("Getting driver's location failed with error \(error.localizedDescription)")
+      }
+    }
+  }
+  
+  func getDriverInfo() {
+    guard let designatedRide = designatedRide else {
+      return
+    }
+    
+    authenticationService.getDriverProfile(id: "\(designatedRide.driverId)") { result in
+      switch result {
+      case .success(let driver):
+        self.driver = driver
         NSLog("Successfully retrieved driver's location")
       case .failure(let error):
         NSLog("Getting driver's location failed with error \(error.localizedDescription)")

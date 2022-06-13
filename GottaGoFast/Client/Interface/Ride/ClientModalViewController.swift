@@ -183,6 +183,74 @@ class ClientModalViewController: ModalViewController,
   
     return stackView
   }()
+  
+  lazy var waitingForDriverView: UIStackView = {
+    let title = makeTitleLabel()
+    title.text = "Waiting for driver"
+    
+    let driverNameLabel = makeSecondaryLabel()
+    driverNameLabel.text = "Name: \(viewModel.driver!.user.firstName) \(viewModel.driver!.user.lastName)"
+    let driverCarLabel = makeSecondaryLabel()
+    driverCarLabel.text = "Vehicle: \(viewModel.driver!.vehicle.model)"
+    let driverPhoneLabel = makeSecondaryLabel()
+    driverPhoneLabel.text = "Phone: \(viewModel.driver!.user.phoneNumber)"
+    let priceLabel = makeSecondaryLabel()
+    priceLabel.text = "Price: \(viewModel.designatedRide!.price) $"
+    
+  /* let button = makeActionButton()
+    button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    button.widthAnchor.constraint(equalToConstant: 200).isActive = true
+    button.setTitle("Cancel", for: .normal)
+    button.addTarget(self, action: #selector(tappedCancelRideRequestButton), for: .touchUpInside)*/
+    
+    let spacer = UIView()
+    let stackView = UIStackView(arrangedSubviews: [title, driverNameLabel, driverCarLabel, driverPhoneLabel, priceLabel, spacer])
+    stackView.axis = .vertical
+    stackView.alignment = .center
+    stackView.spacing = 12.0
+  
+    return stackView
+  }()
+  
+  lazy var rideInProgressView: UIStackView = {
+    let title = makeTitleLabel()
+    title.text = "Have a lovely ride!"
+    
+    let driverNameLabel = makeSecondaryLabel()
+    driverNameLabel.text = "Name: \(viewModel.driver!.user.firstName) \(viewModel.driver!.user.lastName)"
+    let driverCarLabel = makeSecondaryLabel()
+    driverCarLabel.text = "Vehicle: \(viewModel.driver!.vehicle.model)"
+    let driverPhoneLabel = makeSecondaryLabel()
+    driverPhoneLabel.text = "Phone: \(viewModel.driver!.user.phoneNumber)"
+    let priceLabel = makeSecondaryLabel()
+    priceLabel.text = "Price: \(viewModel.designatedRide!.price) $"
+    
+    let spacer = UIView()
+    let stackView = UIStackView(arrangedSubviews: [title, driverNameLabel, driverCarLabel, driverPhoneLabel, priceLabel, spacer])
+    stackView.axis = .vertical
+    stackView.alignment = .center
+    stackView.spacing = 12.0
+  
+    return stackView
+  }()
+  
+  lazy var rideFinishedView: UIStackView = {
+    let title = makeTitleLabel()
+    title.text = "And here we go!"
+    
+    let hopeLabel = makeSecondaryLabel()
+    hopeLabel.text = "We hope you enjoyed using our services!"
+    let payLabel = makeSecondaryLabel()
+    payLabel.text = "Please pay your driver: \(viewModel.designatedRide!.price)$"
+    
+    let spacer = UIView()
+    let stackView = UIStackView(arrangedSubviews: [title, hopeLabel, payLabel, spacer])
+    stackView.axis = .vertical
+    stackView.alignment = .center
+    stackView.spacing = 12.0
+  
+    return stackView
+  }()
 
   // MARK: - Lifecycle methods
 
@@ -248,6 +316,12 @@ class ClientModalViewController: ModalViewController,
       contentView = makingRideRequestStackView
     case .processingRideRequest:
       contentView = processingRideRequestStackView
+    case .waitingForDriver:
+      contentView = waitingForDriverView
+    case .rideInProgress:
+      contentView = rideInProgressView
+    case .rideFinished:
+      contentView = rideFinishedView
     default:
       NSLog("Setting up content view in modal controller")
     }

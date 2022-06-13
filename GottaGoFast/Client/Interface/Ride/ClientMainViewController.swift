@@ -17,6 +17,7 @@ class ClientMainViewController: UIViewController,
   
   private var locationManager: CLLocationManager!
   private var viewModel: ClientMainViewModel!
+  private var rideInProgress = false
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -77,6 +78,11 @@ class ClientMainViewController: UIViewController,
                                                          location.coordinate.longitude
                                                         )
     mkAnnotation.title = "You"
+    for annotation in mapView.annotations {
+      if let title = annotation.title, title == "You" {
+        mapView.removeAnnotation(annotation)
+      }
+    }
     mapView.addAnnotation(mkAnnotation)
   }
   
@@ -95,10 +101,8 @@ class ClientMainViewController: UIViewController,
       annotationView!.canShowCallout = true
     }
 
-    if let location = locationManager.location,
-       annotation.coordinate.latitude == location.coordinate.latitude &&
-       annotation.coordinate.longitude == location.coordinate.longitude {
-      annotationView!.image = UIImage(named: "client")
+    if annotation.title == "You" {
+      annotationView!.image = rideInProgress ? UIImage(named: "car") : UIImage(named: "client")
     } else if annotation.title == "Driver" {
       annotationView!.image = UIImage(named: "car")
     } else {
@@ -130,13 +134,96 @@ class ClientMainViewController: UIViewController,
   }
   
   // MARK: - Update UI
-  
-  func updateUIForDesignatedRide() {
-    
-  }
 
   func updateDriverLocation(_ driverLocation: Geotag) {
+    let mkAnnotation: MKPointAnnotation = MKPointAnnotation()
+    mkAnnotation.coordinate = CLLocationCoordinate2DMake(
+                                                         driverLocation.latitude,
+                                                         driverLocation.longitude
+                                                        )
+    mkAnnotation.title = "Driver"
+    for annotation in mapView.annotations {
+      if let title = annotation.title, title == "Driver" {
+        mapView.removeAnnotation(annotation)
+      }
+    }
+    mapView.addAnnotation(mkAnnotation)
     
+  }
+  
+  func updateUIForRideRequest(
+    startLocationLatitude: Double, startLocationLongitude: Double,
+    endLocationLatitude: Double, endLocationLongitude: Double
+  ) {
+    // Build and show route between start and end points
+    
+    mapView.removeOverlays(mapView.overlays)
+    let startCoordinate = CLLocationCoordinate2D(latitude: startLocationLatitude, longitude: startLocationLongitude)
+    let endCoordinate = CLLocationCoordinate2D(latitude: endLocationLatitude, longitude: endLocationLongitude)
+
+    let sourcePlacemark = MKPlacemark(coordinate: startCoordinate, addressDictionary: nil)
+    let destinationPlacemark = MKPlacemark(coordinate: endCoordinate, addressDictionary: nil)
+    
+    let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
+    let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
+    
+    let sourceAnnotation = MKPointAnnotation()
+    //sourceAnnotation.title = "You"
+    
+    if let location = sourcePlacemark.location {
+      sourceAnnotation.coordinate = location.coordinate
+    }
+    
+    let destinationAnnotation = MKPointAnnotation()
+    
+    if let location = destinationPlacemark.location {
+      destinationAnnotation.coordinate = location.coordinate
+    }
+    
+    mapView.showAnnotations([sourceAnnotation,destinationAnnotation], animated: true )
+    
+    let directionRequest = MKDirections.Request()
+    directionRequest.source = sourceMapItem
+    directionRequest.destination = destinationMapItem
+    directionRequest.transportType = .automobile
+    
+    // Calculate the direction
+    let directions = MKDirections(request: directionRequest)
+    directions.calculate { (response, error) -> Void in
+      guard let response = response else {
+        if let error = error {
+          NSLog("Error: \(error)")
+        }
+        return
+      }
+      
+      let builtRoute = response.routes[0]
+      self.mapView.addOverlay((builtRoute.polyline), level: MKOverlayLevel.aboveRoads)
+      let region = builtRoute.polyline.boundingMapRect
+      self.mapView.setRegion(MKCoordinateRegion(region), animated: true)
+    }
+  }
+  
+  func updateUIForDesignatedRideStatus(_ status: String) {
+    switch status {
+    case "I":
+      rideInProgress = true
+      for annotation in mapView.annotations {
+        if let title = annotation.title, title == "You" {
+          mapView.removeAnnotation(annotation)
+        }
+      }
+      NSLog("Update UI for inprogress ride")
+    case "F":
+      rideInProgress = false
+      mapView.removeOverlays(mapView.overlays)
+      NSLog("Update UI for finished ride")
+    case "C":
+      mapView.removeOverlays(mapView.overlays)
+      NSLog("Update UI for cancelled ride")
+    default:
+      NSLog("Status did not change")
+    }
   }
   
   func presentModalController() {

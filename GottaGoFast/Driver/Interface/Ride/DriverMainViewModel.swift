@@ -65,6 +65,8 @@ class DriverMainViewModel {
     didSet {
       if currentDesignatedRide != nil {
         getRideRequest()
+      } else {
+        controllerState = .inActive
       }
     }
   }
@@ -107,7 +109,7 @@ class DriverMainViewModel {
   
   // Update server with current location of the driver
   func sendDriverLocation(latitude: Double, longitude: Double) {
-    let geotag = Geotag(userId: nil, latitude: latitude, longitude: longitude, timestamp: nil)
+    let geotag = Geotag(_id: nil, userId: nil, latitude: latitude, longitude: longitude, timestamp: nil)
     
     mobilityService.updateUserLocation(location: geotag) { result in
       switch result {
@@ -223,6 +225,7 @@ class DriverMainViewModel {
     currentRideRequest = nil
     currentDesignatedRide = nil
     currentClient = nil
-    updateDriverStatus(status: "A")
+    controllerState = .inActive
+    updateDriverStatus(status: "I")
   }
 }

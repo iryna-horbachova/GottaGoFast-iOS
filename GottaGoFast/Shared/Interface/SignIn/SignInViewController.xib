@@ -83,6 +83,12 @@
                         <action selector="tappedRegisterButton:" destination="-1" eventType="touchUpInside" id="rxK-th-K4S"/>
                     </connections>
                 </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="2cd-oo-qKV">
+                    <rect key="frame" x="20" y="428" width="374" height="300"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="yiT-Qr-AZy"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -96,20 +102,24 @@
                 <constraint firstItem="6c3-Wq-KyI" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="G5d-wP-s2B"/>
                 <constraint firstItem="hDs-bn-b2P" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="GBZ-tw-T4k"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zxJ-sV-W8V" secondAttribute="trailing" constant="20" id="Mfv-G1-ZYl"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="2cd-oo-qKV" secondAttribute="trailing" constant="20" id="PdN-yS-BzH"/>
                 <constraint firstItem="dfz-W7-riA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="QFw-kd-sHS"/>
                 <constraint firstItem="dfz-W7-riA" firstAttribute="top" secondItem="7Xx-8j-AdB" secondAttribute="bottom" constant="15" id="Xy3-E7-gbZ"/>
+                <constraint firstItem="2cd-oo-qKV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="brd-Mv-d0Q"/>
                 <constraint firstItem="dY5-il-dKo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="d3G-M1-eYM"/>
                 <constraint firstItem="7Xx-8j-AdB" firstAttribute="top" secondItem="dY5-il-dKo" secondAttribute="bottom" constant="7" id="ed5-Jp-tgc"/>
                 <constraint firstItem="EHH-N8-j9d" firstAttribute="top" secondItem="dfz-W7-riA" secondAttribute="bottom" constant="7" id="fgc-HK-L5y"/>
                 <constraint firstItem="hDs-bn-b2P" firstAttribute="top" secondItem="zxJ-sV-W8V" secondAttribute="bottom" constant="20" id="pVN-rR-vfg"/>
                 <constraint firstItem="zxJ-sV-W8V" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="pwz-ac-WOn"/>
                 <constraint firstItem="dY5-il-dKo" firstAttribute="top" secondItem="6c3-Wq-KyI" secondAttribute="bottom" constant="15" id="sPP-xs-VVz"/>
+                <constraint firstItem="2cd-oo-qKV" firstAttribute="top" secondItem="hDs-bn-b2P" secondAttribute="bottom" constant="30" id="vOl-j4-lVs"/>
                 <constraint firstItem="7Xx-8j-AdB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="yQs-3Q-LZz"/>
             </constraints>
             <point key="canvasLocation" x="139" y="84"/>
         </view>
     </objects>
     <resources>
+        <image name="logo" width="677" height="662"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

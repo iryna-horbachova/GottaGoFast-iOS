@@ -18,7 +18,7 @@ class SignInViewModel {
   }
 
   func inputIsValid(email: String, password: String) -> Bool {
-    return true //Validator.isValid(email: email) && password.count > 5
+    return Validator.isValid(email: email) && password.count > 5
   }
 
   func performSignIn(email: String, password: String) {

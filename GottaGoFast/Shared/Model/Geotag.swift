@@ -8,8 +8,11 @@
 import Foundation
 
 struct Geotag: Codable {
+  let _id: [String: String]?
   let userId: Int?
   let latitude: Double
   let longitude: Double
   let timestamp: String?
 }
+
+
